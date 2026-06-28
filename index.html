@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CHECKIN KANTOR - LINE TOGEL | RESET ALL</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%8D%3C/text%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{
+      --bg:#050711;
+      --paper:#0c1020;
+      --paper2:#11172a;
+      --line:rgba(255,255,255,.11);
+      --text:#f9fbff;
+      --muted:#98a1b8;
+      --blue:#38bdf8;
+      --violet:#8b5cf6;
+      --amber:#f59e0b;
+      --green:#16c784;
+      --red:#f43f5e;
+      --slate:#263044;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+    body{
+      font-family:'Inter',sans-serif;
+      min-height:100vh;
+      background:
+        linear-gradient(135deg,rgba(56,189,248,.12),transparent 28%),
+        linear-gradient(315deg,rgba(245,158,11,.10),transparent 28%),
+        radial-gradient(circle at 50% 0%,rgba(139,92,246,.16),transparent 32%),
+        var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+    .page{max-width:1720px;margin:0 auto;padding:18px 20px 16px}
+
+    /* DESAIN BARU: command-board, tanpa sidebar, bukan model absensi */
+    .hero{
+      position:relative;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
+      border-radius:24px;
+      overflow:hidden;
+      padding:18px 20px;
+      box-shadow:0 24px 60px rgba(0,0,0,.28);
+      margin-bottom:14px;
+    }
+    .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(56,189,248,.18),transparent 35%,rgba(245,158,11,.15));pointer-events:none}
+    .heroRow{position:relative;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
+    .titleWrap{display:flex;align-items:center;gap:14px;min-width:0}
+    .emblem{width:58px;height:58px;border-radius:20px;background:conic-gradient(from 180deg,var(--blue),var(--violet),var(--amber),var(--blue));display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(56,189,248,.20);font-size:24px;flex:0 0 auto}
+    .titleWrap h1{font-size:2rem;font-weight:950;letter-spacing:-.06em;line-height:1}
+    .titleWrap p{color:#c4c9d8;font-weight:700;margin-top:5px;font-size:.9rem}
+    .topActions{display:flex;align-items:center;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+    .datePill,.statusPill,.refreshBtn,.resetAllBtn{
+      border:1px solid rgba(255,255,255,.13);background:rgba(2,6,23,.40);border-radius:16px;padding:10px 13px;color:#fff;font-weight:850;white-space:nowrap
+    }
+    .statusPill{display:flex;align-items:center;gap:8px;color:#cbd5e1}.liveDot{width:9px;height:9px;border-radius:99px;background:#64748b}.liveDot.ok{background:var(--green);box-shadow:0 0 14px var(--green)}
+    .refreshBtn{cursor:pointer;background:linear-gradient(135deg,rgba(56,189,248,.20),rgba(139,92,246,.20));border-color:rgba(56,189,248,.25)}
+    .resetAllBtn{cursor:pointer;background:linear-gradient(135deg,rgba(244,63,94,.28),rgba(245,158,11,.20));border-color:rgba(244,63,94,.35)}
+    .refreshBtn:active,.resetAllBtn:active{transform:scale(.98)}
+    .resetAllBtn:disabled{opacity:.55;cursor:not-allowed}
+
+    .controlBar{display:grid;grid-template-columns:1fr 360px;gap:12px;margin-bottom:14px}
+    .statsStrip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .statBox{border:1px solid rgba(255,255,255,.10);background:rgba(12,16,32,.72);border-radius:18px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:74px}
+    .statBox b{font-size:1.75rem;font-weight:950;letter-spacing:-.04em}.statBox span{display:block;color:var(--muted);font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.03em}.statIcon{width:42px;height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);font-size:18px}.statBox.total .statIcon{color:var(--blue)}.statBox.ok .statIcon{color:var(--green)}.statBox.wait .statIcon{color:var(--amber)}.statBox.off .statIcon{color:#c084fc}
+    .searchBox{position:relative;border:1px solid rgba(255,255,255,.12);background:rgba(2,6,23,.45);border-radius:18px;min-height:74px;display:flex;align-items:center;padding:0 14px}
+    .searchBox i{color:var(--blue);font-size:18px;margin-right:10px}.searchBox input{width:100%;background:transparent;border:0;outline:0;color:#fff;font-size:1rem;font-weight:650}.searchBox input::placeholder{color:#7b8498}
+
+    .board{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+    .lane{position:relative;border-radius:28px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.26)}
+    .lane:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.95}
+    .lane.pagi{border:1px solid rgba(251,191,36,.30);background:linear-gradient(180deg,rgba(57,34,8,.88),rgba(13,17,30,.95) 18%,rgba(12,16,32,.92));}
+    .lane.pagi:before{background:linear-gradient(180deg,rgba(251,191,36,.16),rgba(251,191,36,0) 26%)}
+    .lane.malam{border:1px solid rgba(129,140,248,.28);background:linear-gradient(180deg,rgba(25,25,68,.92),rgba(12,16,32,.95) 18%,rgba(8,12,30,.94));}
+    .lane.malam:before{background:linear-gradient(180deg,rgba(129,140,248,.18),rgba(56,189,248,0) 26%)}
+    .laneHead{position:relative;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,.10)}
+    .lane.pagi .laneHead{background:linear-gradient(90deg,rgba(251,191,36,.24),rgba(120,53,15,.22) 40%,rgba(255,255,255,.02))}
+    .lane.malam .laneHead{background:linear-gradient(90deg,rgba(129,140,248,.28),rgba(91,33,182,.22) 45%,rgba(255,255,255,.02))}
+    .laneTitle{display:flex;align-items:center;gap:12px;font-size:1.16rem;font-weight:950;letter-spacing:-.04em;text-transform:uppercase}
+    .laneTitle i{font-size:1.22rem}
+    .lane.pagi .laneTitle{color:#fff7d6}.lane.pagi .laneTitle i{color:#fbbf24}
+    .lane.malam .laneTitle{color:#ede9fe}.lane.malam .laneTitle i{color:#c4b5fd}
+    .laneMeta{display:flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:flex-end}
+    .shiftCount{display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border-radius:15px;font-size:.78rem;font-weight:950;border:1px solid rgba(255,255,255,.12);background:rgba(2,6,23,.38);white-space:nowrap}
+    .lane.pagi .shiftCount{color:#fde68a;border-color:rgba(251,191,36,.25);background:rgba(120,53,15,.22)}
+    .lane.malam .shiftCount{color:#ddd6fe;border-color:rgba(129,140,248,.25);background:rgba(49,46,129,.22)}
+    .timeChip{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:15px;font-weight:950;border:1px solid rgba(255,255,255,.13);background:rgba(2,6,23,.42);font-size:.9rem;backdrop-filter:blur(8px)}
+    .lane.pagi .timeChip{color:#fde68a;border-color:rgba(251,191,36,.24);box-shadow:inset 0 0 0 1px rgba(251,191,36,.07)}
+    .lane.malam .timeChip{color:#ddd6fe;border-color:rgba(129,140,248,.24);box-shadow:inset 0 0 0 1px rgba(129,140,248,.08)}
+    .crewGrid{position:relative;padding:13px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .person{
+      position:relative;display:grid;grid-template-columns:42px 1fr auto;align-items:center;gap:10px;min-height:72px;padding:10px 11px;border-radius:18px;border:1px solid rgba(255,255,255,.08);overflow:hidden;backdrop-filter:blur(8px)
+    }
+    .lane.pagi .person{background:linear-gradient(135deg,rgba(251,191,36,.08),rgba(255,255,255,.025));border-color:rgba(251,191,36,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
+    .lane.malam .person{background:linear-gradient(135deg,rgba(129,140,248,.09),rgba(56,189,248,.03));border-color:rgba(129,140,248,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
+    .person:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:#475569}
+    .lane.pagi .person:before{background:linear-gradient(180deg,#f59e0b,#fbbf24)}
+    .lane.malam .person:before{background:linear-gradient(180deg,#8b5cf6,#60a5fa)}
+    .person.checked.on-time{background:linear-gradient(135deg,rgba(22,199,132,.25),rgba(22,199,132,.06));border-color:rgba(22,199,132,.45)}
+    .person.checked.on-time:before{background:var(--green)}
+    .person.checked.late{background:linear-gradient(135deg,rgba(244,63,94,.26),rgba(244,63,94,.055));border-color:rgba(244,63,94,.65)}
+    .person.checked.late:before{background:var(--red)}
+    .avatar{width:42px;height:42px;border-radius:15px;background:linear-gradient(135deg,#475569,#1f2937);display:flex;align-items:center;justify-content:center;font-weight:950;letter-spacing:.02em;color:#fff}
+    .lane.pagi .avatar{background:linear-gradient(135deg,#7c5a18,#302312)}
+    .lane.malam .avatar{background:linear-gradient(135deg,#374151,#1e1b4b)}
+    .person.checked.on-time .avatar{background:linear-gradient(135deg,#10b981,#047857)}.person.checked.late .avatar{background:linear-gradient(135deg,#f43f5e,#9f1239)}
+    .person h4{font-size:.86rem;font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}.person p{font-size:.68rem;color:var(--muted);font-weight:750;display:flex;gap:5px;flex-wrap:wrap}.smallNote{font-size:.63rem;margin-top:3px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.on-time .smallNote{color:#7fffd3}.late .smallNote{color:#ffb3bd}.act{min-width:96px;text-align:right}
+    .btnCheck{border:0;border-radius:14px;padding:10px 12px;min-width:92px;color:#fff;font-size:.72rem;font-weight:950;cursor:pointer}
+    .lane.pagi .btnCheck{background:linear-gradient(135deg,#f59e0b,#fbbf24 55%,#fb7185);box-shadow:0 12px 24px rgba(245,158,11,.18)}
+    .lane.malam .btnCheck{background:linear-gradient(135deg,#2563eb,#7c3aed 55%,#a855f7);box-shadow:0 12px 24px rgba(124,58,237,.18)}
+    .btnCheck:hover{filter:brightness(1.08)}.btnCheck:disabled{opacity:.55;cursor:not-allowed}.btnReset{margin-top:5px;border:1px solid rgba(255,255,255,.14);border-radius:11px;padding:5px 7px;min-width:82px;background:rgba(15,23,42,.62);color:#fcd34d;font-size:.55rem;font-weight:950;cursor:pointer}.btnReset:hover{background:rgba(245,158,11,.18);color:#fff}.btnReset:disabled{opacity:.45;cursor:not-allowed}.stateTag{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:14px;padding:8px 9px;min-width:92px;font-size:.66rem;font-weight:950}.stateTag.ok{background:rgba(22,199,132,.18);color:#7fffd3}.stateTag.late{background:rgba(244,63,94,.18);color:#ffb3bd}.timeText{text-align:center;color:#e2e8f0;font-size:.66rem;font-weight:800;margin-top:4px}
+
+    .offSection{margin-top:14px;border:1px solid rgba(245,158,11,.34);background:linear-gradient(135deg,rgba(245,158,11,.13),rgba(139,92,246,.06));border-radius:24px;overflow:hidden}.offHead{padding:13px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(245,158,11,.28)}.offHead h2{font-size:1rem;font-weight:950;display:flex;align-items:center;gap:10px}.offHead i{color:#f59e0b}.offGrid{padding:10px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.offItem{display:grid;grid-template-columns:38px 1fr auto;gap:9px;align-items:center;background:rgba(2,6,23,.35);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:9px}.offItem .avatar{width:38px;height:38px;border-radius:14px;background:linear-gradient(135deg,#92400e,#451a03)}.offItem.cuti .avatar{background:linear-gradient(135deg,#f59e0b,#b45309)}.offItem.offday .avatar{background:linear-gradient(135deg,#8b5cf6,#4c1d95)}.offItem h4{font-size:.78rem;font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.offItem p{font-size:.65rem;color:var(--muted);font-weight:750}.offBadge{font-size:.62rem;font-weight:950;border-radius:12px;padding:7px 8px;white-space:nowrap}.offItem.cuti .offBadge{background:rgba(245,158,11,.18);color:#fcd34d}.offItem.offday .offBadge{background:rgba(139,92,246,.20);color:#ddd6fe}
+    .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:24px;font-weight:750}.toast{position:fixed;left:50%;bottom:20px;z-index:999;transform:translateX(-50%) translateY(80px);opacity:0;border-radius:16px;padding:13px 18px;background:#334155;color:#fff;font-weight:900;box-shadow:0 20px 40px rgba(0,0,0,.35);transition:.22s}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}.toast.success{background:var(--green)}.toast.error{background:var(--red)}.toast.warning{background:var(--amber);color:#1f1300}.foot{text-align:center;color:var(--muted);font-size:.78rem;font-weight:700;margin:12px 0 0}
+
+    @media(max-width:1260px){.controlBar{grid-template-columns:1fr}.searchBox{min-height:56px}.board{grid-template-columns:1fr}.crewGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.offGrid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:760px){.page{padding:10px}.heroRow{grid-template-columns:1fr}.topActions{justify-content:flex-start}.titleWrap h1{font-size:1.55rem}.emblem{width:48px;height:48px}.statsStrip{grid-template-columns:repeat(2,1fr)}.crewGrid{grid-template-columns:1fr}.person{grid-template-columns:38px 1fr}.act{grid-column:1/3;width:100%}.btnCheck,.stateTag{width:100%}.offGrid{grid-template-columns:1fr}.controlBar{gap:8px}.hero{padding:14px}.statBox{min-height:62px;padding:10px}.statBox b{font-size:1.35rem}}
+    @media(min-width:1261px) and (max-height:850px){.page{padding:10px 16px}.hero{padding:12px 16px;margin-bottom:9px}.emblem{width:48px;height:48px}.titleWrap h1{font-size:1.65rem}.controlBar{margin-bottom:9px}.statBox{min-height:58px;padding:9px 12px}.statBox b{font-size:1.35rem}.statIcon{width:34px;height:34px}.laneHead{padding:11px 13px}.crewGrid{gap:7px;padding:9px}.person{min-height:59px;padding:8px;grid-template-columns:36px 1fr 88px}.avatar{width:36px;height:36px;border-radius:13px}.person h4{font-size:.76rem}.person p{font-size:.61rem}.btnCheck{min-width:80px;padding:8px 8px;font-size:.64rem}.btnReset{min-width:72px;padding:4px 6px;font-size:.50rem}.stateTag{min-width:80px;padding:7px 7px;font-size:.58rem}.smallNote{font-size:.56rem}.timeText{font-size:.58rem}.offSection{margin-top:9px}.offHead{padding:9px 13px}.offGrid{gap:7px;padding:8px}.offItem{padding:7px}.offItem h4{font-size:.69rem}.foot{display:none}}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <div class="heroRow">
+        <div class="titleWrap">
+          <div class="emblem"><i class="fas fa-location-crosshairs"></i></div>
+          <div>
+            <h1>CHECKIN KANTOR</h1>
+            <p>LINE TOGEL · Arrival Board Staff</p>
+          </div>
+        </div>
+        <div class="topActions">
+          <div class="datePill"><i class="fas fa-calendar-day"></i> <span id="dateText">Memuat...</span></div>
+          <div class="statusPill"><span class="liveDot" id="liveDot"></span><span id="liveText">OFFLINE</span></div>
+          <button class="refreshBtn" id="refreshBtn"><i class="fas fa-rotate-right"></i> Refresh</button>
+          <button class="resetAllBtn" id="resetAllBtn" title="Reset semua staff yang sudah checkin menjadi Belum Checkin"><i class="fas fa-eraser"></i> Reset All</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="controlBar">
+      <div class="statsStrip">
+        <div class="statBox total"><div><span>Total Aktif</span><b id="totalStaff">0</b></div><div class="statIcon"><i class="fas fa-user-group"></i></div></div>
+        <div class="statBox ok"><div><span>Sudah</span><b id="checkedCount">0</b></div><div class="statIcon"><i class="fas fa-circle-check"></i></div></div>
+        <div class="statBox wait"><div><span>Belum</span><b id="pendingCount">0</b></div><div class="statIcon"><i class="fas fa-hourglass-half"></i></div></div>
+        <div class="statBox off"><div><span>Off / Cuti</span><b id="offCount">0</b></div><div class="statIcon"><i class="fas fa-user-slash"></i></div></div>
+      </div>
+      <label class="searchBox"><i class="fas fa-search"></i><input id="searchInput" type="text" placeholder="Cari nama staff..."></label>
+    </div>
+
+    <main class="board">
+      <section class="lane pagi">
+        <div class="laneHead">
+          <div class="laneTitle"><i class="fas fa-sun"></i> SHIFT PAGI</div>
+          <div class="laneMeta">
+            <div class="shiftCount"><i class="fas fa-user-group"></i><span id="pagiShiftCount">0 Staff</span></div>
+            <div class="timeChip"><i class="far fa-clock"></i>07:45:00</div>
+          </div>
+        </div>
+        <div class="crewGrid" id="pagiList"></div>
+      </section>
+      <section class="lane malam">
+        <div class="laneHead">
+          <div class="laneTitle"><i class="fas fa-moon"></i> SHIFT MALAM</div>
+          <div class="laneMeta">
+            <div class="shiftCount"><i class="fas fa-user-group"></i><span id="malamShiftCount">0 Staff</span></div>
+            <div class="timeChip"><i class="far fa-clock"></i>19:45:00</div>
+          </div>
+        </div>
+        <div class="crewGrid" id="malamList"></div>
+      </section>
+    </main>
+
+    <section class="offSection">
+      <div class="offHead"><h2><i class="fas fa-ban"></i> NON AKTIF HARI INI</h2><strong id="offInfo">0 Staff</strong></div>
+      <div class="offGrid" id="offList"></div>
+    </section>
+    <div class="foot"><i class="fas fa-circle-info"></i> Dashboard ini khusus checkin kedatangan kantor. Data akan berganti otomatis mengikuti JADWAL SHIFT harian.</div>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbweh1Z2FZtVOrahg63azhbpheA33NqBKe9I0JlCpOjyuTJRWQXZM-5Vfss2gomhE0G_/exec';
+
+    let allData = [];
+    const pendingCheckins = new Set();
+    const pendingResets = new Set();
+    let isResetAllBusy = false;
+    let isLoading = false;
+    let lastLoadAt = 0;
+    let searchTimer = null;
+    let dataSignature = '';
+    const REALTIME_REFRESH_MS = 5000;
+
+    const els = {
+      dateText: document.getElementById('dateText'),
+      totalStaff: document.getElementById('totalStaff'),
+      checkedCount: document.getElementById('checkedCount'),
+      pendingCount: document.getElementById('pendingCount'),
+      offCount: document.getElementById('offCount'),
+      pagiList: document.getElementById('pagiList'),
+      malamList: document.getElementById('malamList'),
+      pagiShiftCount: document.getElementById('pagiShiftCount'),
+      malamShiftCount: document.getElementById('malamShiftCount'),
+      offList: document.getElementById('offList'),
+      offInfo: document.getElementById('offInfo'),
+      searchInput: document.getElementById('searchInput'),
+      refreshBtn: document.getElementById('refreshBtn'),
+      resetAllBtn: document.getElementById('resetAllBtn'),
+      liveDot: document.getElementById('liveDot'),
+      liveText: document.getElementById('liveText'),
+      toast: document.getElementById('toast')
+    };
+
+    function setLive(ok){
+      els.liveDot.className = 'liveDot ' + (ok ? 'ok' : '');
+      els.liveText.textContent = ok ? 'ONLINE' : 'OFFLINE';
+    }
+
+    async function api(action, method='GET', body=null){
+      const url = BACKEND_URL + '?action=' + encodeURIComponent(action) + '&_=' + Date.now();
+      const options = { method, mode:'cors', cache:'no-cache', headers:{} };
+      if(method === 'POST'){
+        options.body = JSON.stringify(body || {});
+        options.headers['Content-Type'] = 'text/plain';
+      }
+      const res = await fetch(url, options);
+      const text = await res.text();
+      try { return JSON.parse(text); } catch(e){ throw new Error('Response backend bukan JSON: ' + text.slice(0,150)); }
+    }
+
+    async function loadData(silent=false, force=false){
+      if(isLoading) return;
+      if(silent && (pendingCheckins.size || pendingResets.size || isResetAllBusy)) return;
+
+      const now = Date.now();
+      if(silent && !force && now - lastLoadAt < REALTIME_REFRESH_MS - 300) return;
+
+      isLoading = true;
+      try{
+        const result = await api('loadCheckin');
+        if(!result.success) throw new Error(result.message || 'Gagal load data');
+
+        const newData = Array.isArray(result.data) ? result.data : [];
+        const newSignature = JSON.stringify({
+          tanggal: result.tanggal || '',
+          data: newData.map(x => [x.id, x.nama, x.status_checkin, x.waktu_checkin, x.keterangan, x.telat, x.shift, x.kategori])
+        });
+
+        lastLoadAt = Date.now();
+        setLive(true);
+
+        // Render hanya kalau data berubah, supaya dashboard tetap ringan dan responsif.
+        if(force || !silent || newSignature !== dataSignature){
+          dataSignature = newSignature;
+          allData = newData;
+          els.dateText.textContent = result.tanggal || '-';
+          renderAll();
+        }
+      }catch(err){
+        setLive(false);
+        if(!silent) showToast('Gagal memuat data: ' + err.message, 'error');
+        if(!allData.length){
+          els.pagiList.innerHTML = '<div class="empty">Gagal memuat data checkin</div>';
+          els.malamList.innerHTML = '<div class="empty">Gagal memuat data checkin</div>';
+        }
+      }finally{
+        isLoading = false;
+      }
+    }
+
+    function renderAll(){
+      const q = (els.searchInput.value || '').trim().toLowerCase();
+      let data = allData;
+      if(q) data = data.filter(x => String(x.nama || '').toLowerCase().includes(q) || String(x.jabatan || '').toLowerCase().includes(q));
+
+      const active = allData.filter(x => !x.off);
+      const checked = active.filter(x => x.status_checkin === 'Sudah Checkin');
+      const pending = active.filter(x => x.status_checkin !== 'Sudah Checkin');
+      const off = allData.filter(x => x.off);
+      els.totalStaff.textContent = active.length;
+      els.checkedCount.textContent = checked.length;
+      els.pendingCount.textContent = pending.length;
+      els.offCount.textContent = off.length;
+      els.offInfo.textContent = off.length + ' Staff';
+      const pagiTotal = allData.filter(x => !x.off && String(x.shift).toLowerCase() === 'pagi').length;
+      const malamTotal = allData.filter(x => !x.off && String(x.shift).toLowerCase() === 'malam').length;
+      if(els.pagiShiftCount) els.pagiShiftCount.textContent = pagiTotal + ' Staff';
+      if(els.malamShiftCount) els.malamShiftCount.textContent = malamTotal + ' Staff';
+
+      renderList(els.pagiList, data.filter(x => !x.off && String(x.shift).toLowerCase() === 'pagi'));
+      renderList(els.malamList, data.filter(x => !x.off && String(x.shift).toLowerCase() === 'malam'));
+      renderOff(data.filter(x => x.off));
+    }
+
+    function renderList(container, list){
+      if(!list.length){ container.innerHTML = '<div class="empty">Tidak ada data</div>'; return; }
+      container.innerHTML = list.map(item => rowHtml(item)).join('');
+    }
+
+    function rowHtml(item){
+      const checked = item.status_checkin === 'Sudah Checkin';
+      const late = checked && String(item.keterangan || '').toLowerCase().includes('terlambat');
+      const cls = checked ? (late ? 'checked late' : 'checked on-time') : '';
+      const note = checked ? (late ? `<div class="smallNote"><i class="fas fa-triangle-exclamation"></i> Telat ${escapeHtml(item.telat || '')}</div>` : `<div class="smallNote"><i class="fas fa-check-circle"></i> Tepat waktu</div>`) : '';
+      const action = checked ? `<div class="stateTag ${late ? 'late':'ok'}"><i class="fas ${late ? 'fa-triangle-exclamation':'fa-check'}"></i>${late ? 'TELAT':'SUDAH'}</div><div class="timeText">${escapeHtml(item.waktu_checkin || '-')}</div><button class="btnReset" data-id="${escapeAttr(item.id)}" data-name="${escapeAttr(item.nama)}"><i class="fas fa-rotate-left"></i> RESET</button>` : `<button class="btnCheck" data-id="${escapeAttr(item.id)}"><i class="fas fa-location-dot"></i> CHECKIN</button>`;
+      return `
+        <article class="person ${cls}">
+          <div class="avatar">${initials(item.nama)}</div>
+          <div class="info">
+            <h4 title="${escapeAttr(item.nama)}">${escapeHtml(item.nama)}</h4>
+            <p><span>${escapeHtml(item.jabatan || 'Staff')}</span><span>·</span><span>${escapeHtml(item.jam_kerja || '-')}</span></p>
+            ${note}
+          </div>
+          <div class="act">${action}</div>
+        </article>`;
+    }
+
+    function renderOff(list){
+      if(!list.length){ els.offList.innerHTML = '<div class="empty">Tidak ada OFFDAY / CUTI</div>'; return; }
+      els.offList.innerHTML = list.map(item => {
+        const status = String(item.kategori || item.shift || '').toUpperCase();
+        const isCuti = status.includes('CUTI');
+        return `<article class="offItem ${isCuti ? 'cuti':'offday'}"><div class="avatar">${initials(item.nama)}</div><div><h4 title="${escapeAttr(item.nama)}">${escapeHtml(item.nama)}</h4><p>${escapeHtml(item.jabatan || 'Staff')}</p></div><div class="offBadge">${escapeHtml(status || '-')}</div></article>`;
+      }).join('');
+    }
+
+    async function doCheckin(id, button){
+      if(!id || isResetAllBusy) return;
+      const key = normalizeKey(id);
+      if(pendingCheckins.has(key)) return;
+
+      const target = findLocalItem(id);
+      if(!target || target.off || target.status_checkin === 'Sudah Checkin') return;
+
+      // Optimistic update: begitu tombol diklik, kartu langsung berubah.
+      // Request backend tetap berjalan di belakang, jadi bisa klik banyak staff berurutan tanpa menunggu loading.
+      const snapshot = cloneItem(target);
+      pendingCheckins.add(key);
+      applyOptimisticCheckin(target);
+      dataSignature = '';
+      renderAll();
+
+      api('checkin','POST',{ id })
+        .then(result => {
+          if(!result.success) throw new Error(result.message || 'Gagal checkin');
+          updateLocalCheckin(id, result);
+          dataSignature = '';
+          renderAll();
+        })
+        .catch(err => {
+          restoreLocalItem(id, snapshot);
+          dataSignature = '';
+          renderAll();
+          showToast(err.message,'error');
+        })
+        .finally(() => {
+          pendingCheckins.delete(key);
+          setTimeout(() => loadData(true, true), 350);
+        });
+    }
+
+
+    async function doResetCheckin(id, button){
+      if(!id || isResetAllBusy) return;
+      const key = normalizeKey(id);
+      if(pendingResets.has(key)) return;
+
+      const name = button ? (button.dataset.name || id) : id;
+      if(!confirm('Kembalikan checkin ' + name + ' menjadi Belum Checkin?')) return;
+
+      const target = findLocalItem(id);
+      if(!target) return;
+      const snapshot = cloneItem(target);
+
+      pendingResets.add(key);
+      updateLocalReset(id, {});
+      dataSignature = '';
+      renderAll();
+
+      api('resetOneCheckin','POST',{ id })
+        .then(result => {
+          if(!result.success) throw new Error(result.message || 'Gagal reset checkin');
+          updateLocalReset(id, result);
+          dataSignature = '';
+          renderAll();
+        })
+        .catch(err => {
+          restoreLocalItem(id, snapshot);
+          dataSignature = '';
+          renderAll();
+          showToast(err.message,'error');
+        })
+        .finally(() => {
+          pendingResets.delete(key);
+          setTimeout(() => loadData(true, true), 350);
+        });
+    }
+
+
+    async function doResetAllCheckin(){
+      if(isResetAllBusy) return;
+      const checkedCount = allData.filter(x => !x.off && x.status_checkin === 'Sudah Checkin').length;
+      if(checkedCount <= 0){ showToast('Belum ada staff yang sudah checkin untuk direset','warning'); return; }
+      if(!confirm('PERINGATAN: Reset All akan mengembalikan ' + checkedCount + ' staff yang sudah checkin menjadi Belum Checkin. Lanjutkan?')) return;
+      const resetCode = prompt('Untuk melanjutkan Reset All, ketik RESET');
+      if(String(resetCode || '').trim().toUpperCase() !== 'RESET'){
+        showToast('Reset All dibatalkan','warning');
+        return;
+      }
+
+      isResetAllBusy = true;
+      const oldText = els.resetAllBtn ? els.resetAllBtn.innerHTML : '';
+      if(els.resetAllBtn){ els.resetAllBtn.disabled = true; els.resetAllBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Reset...'; }
+      try{
+        const result = await api('resetAllCheckin','POST',{});
+        if(!result.success) throw new Error(result.message || 'Gagal reset all checkin');
+        allData.forEach(item => {
+          if(!item.off && item.status_checkin === 'Sudah Checkin'){
+            item.status_checkin = 'Belum Checkin';
+            item.waktu_checkin = '-';
+            item.keterangan = 'Belum Checkin';
+            item.telat = '';
+            item.timestamp = '';
+          }
+        });
+        dataSignature = '';
+        renderAll();
+        showToast(result.message || 'Reset All berhasil','success');
+        setTimeout(() => loadData(true, true), 350);
+      }catch(err){
+        showToast(err.message,'error');
+      }finally{
+        isResetAllBusy = false;
+        if(els.resetAllBtn){ els.resetAllBtn.disabled = false; els.resetAllBtn.innerHTML = oldText; }
+      }
+    }
+
+
+    function findLocalItem(id){
+      const key = normalizeKey(id);
+      return allData.find(x => normalizeKey(x.id) === key || normalizeKey(x.username) === key || normalizeKey(x.nama) === key);
+    }
+
+    function cloneItem(item){
+      return JSON.parse(JSON.stringify(item || {}));
+    }
+
+    function restoreLocalItem(id, snapshot){
+      const target = findLocalItem(id);
+      if(!target || !snapshot) return;
+      Object.assign(target, snapshot);
+    }
+
+    function applyOptimisticCheckin(item){
+      const waktu = currentWibTime();
+      const jamKerja = normalizeTimeString(item.jam_kerja || '00:00:00');
+      const diff = timeToSeconds(waktu) - timeToSeconds(jamKerja);
+      const late = diff > 0;
+      item.status_checkin = 'Sudah Checkin';
+      item.waktu_checkin = waktu;
+      item.keterangan = late ? 'Terlambat' : 'Tepat Waktu';
+      item.telat = late ? formatLateDuration(diff) : '';
+      item.timestamp = (item.tanggal || '') + ' ' + waktu;
+    }
+
+    function currentWibTime(){
+      const parts = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Asia/Jakarta', hour12: false,
+        hour: '2-digit', minute: '2-digit', second: '2-digit'
+      }).formatToParts(new Date());
+      const get = type => (parts.find(p => p.type === type) || {}).value || '00';
+      return `${get('hour')}:${get('minute')}:${get('second')}`;
+    }
+
+    function normalizeTimeString(value){
+      const m = String(value || '').match(/(\d{1,2})[:.](\d{2})(?::(\d{2}))?/);
+      if(!m) return '00:00:00';
+      return `${String(m[1]).padStart(2,'0')}:${m[2]}:${m[3] || '00'}`;
+    }
+
+    function timeToSeconds(timeStr){
+      const p = normalizeTimeString(timeStr).split(':').map(Number);
+      return (p[0] || 0) * 3600 + (p[1] || 0) * 60 + (p[2] || 0);
+    }
+
+    function formatLateDuration(seconds){
+      seconds = Math.max(0, Number(seconds) || 0);
+      const h = Math.floor(seconds / 3600);
+      const m = Math.floor((seconds % 3600) / 60);
+      if(h > 0 && m > 0) return h + ' jam ' + m + ' menit';
+      if(h > 0) return h + ' jam';
+      return Math.max(1, m) + ' menit';
+    }
+
+    function updateLocalCheckin(id, result){
+      const key = normalizeKey(id);
+      const target = allData.find(x => normalizeKey(x.id) === key || normalizeKey(x.username) === key || normalizeKey(x.nama) === key);
+      if(!target) return;
+      target.status_checkin = 'Sudah Checkin';
+      target.waktu_checkin = result.waktu || target.waktu_checkin || '-';
+      target.keterangan = result.keterangan || target.keterangan || 'Tepat Waktu';
+      target.telat = result.telat || target.telat || '';
+      target.timestamp = result.timestamp || target.timestamp || '';
+    }
+
+
+    function updateLocalReset(id, result){
+      const key = normalizeKey(id);
+      const target = allData.find(x => normalizeKey(x.id) === key || normalizeKey(x.username) === key || normalizeKey(x.nama) === key);
+      if(!target) return;
+      target.status_checkin = 'Belum Checkin';
+      target.waktu_checkin = '-';
+      target.keterangan = 'Belum Checkin';
+      target.telat = '';
+      target.timestamp = '';
+    }
+
+    function showToast(msg,type){
+      els.toast.textContent = msg;
+      els.toast.className = 'toast show ' + (type || '');
+      setTimeout(() => els.toast.classList.remove('show'), 2800);
+    }
+
+    function initials(name){ return String(name || '?').trim().split(/\s+/).slice(0,2).map(x => x[0] || '').join('').toUpperCase() || '?'; }
+    function escapeHtml(s){ return String(s ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
+    function escapeAttr(s){ return escapeHtml(s).replace(/`/g,'&#96;'); }
+    function normalizeKey(value){ return String(value || '').toUpperCase().replace(/[^A-Z0-9]/g, ''); }
+
+    els.pagiList.addEventListener('click', (e) => { const resetBtn = e.target.closest('.btnReset'); if(resetBtn) return doResetCheckin(resetBtn.dataset.id, resetBtn); const btn = e.target.closest('.btnCheck'); if(btn) doCheckin(btn.dataset.id, btn); });
+    els.malamList.addEventListener('click', (e) => { const resetBtn = e.target.closest('.btnReset'); if(resetBtn) return doResetCheckin(resetBtn.dataset.id, resetBtn); const btn = e.target.closest('.btnCheck'); if(btn) doCheckin(btn.dataset.id, btn); });
+    els.searchInput.addEventListener('input', () => { clearTimeout(searchTimer); searchTimer = setTimeout(renderAll, 100); });
+    els.refreshBtn.addEventListener('click', () => loadData(false));
+    els.resetAllBtn.addEventListener('click', doResetAllCheckin);
+
+    // Real-time polling: Apps Script tidak punya push/socket, jadi dashboard dibuat polling ringan.
+    // Setiap 5 detik dashboard cek perubahan dari DATA CHECKIN HARIAN.
+    loadData(false, true);
+    setInterval(() => loadData(true), REALTIME_REFRESH_MS);
+    document.addEventListener('visibilitychange', () => { if(!document.hidden) loadData(true, true); });
+    window.addEventListener('focus', () => loadData(true, true));
+    window.addEventListener('online', () => loadData(true, true));
+  </script>
+</body>
+</html>
