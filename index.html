@@ -84,10 +84,6 @@
     .laneTitle i{font-size:1.22rem}
     .lane.pagi .laneTitle{color:#fff7d6}.lane.pagi .laneTitle i{color:#fbbf24}
     .lane.malam .laneTitle{color:#ede9fe}.lane.malam .laneTitle i{color:#c4b5fd}
-    .laneMeta{display:flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:flex-end}
-    .shiftCount{display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border-radius:15px;font-size:.78rem;font-weight:950;border:1px solid rgba(255,255,255,.12);background:rgba(2,6,23,.38);white-space:nowrap}
-    .lane.pagi .shiftCount{color:#fde68a;border-color:rgba(251,191,36,.25);background:rgba(120,53,15,.22)}
-    .lane.malam .shiftCount{color:#ddd6fe;border-color:rgba(129,140,248,.25);background:rgba(49,46,129,.22)}
     .timeChip{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:15px;font-weight:950;border:1px solid rgba(255,255,255,.13);background:rgba(2,6,23,.42);font-size:.9rem;backdrop-filter:blur(8px)}
     .lane.pagi .timeChip{color:#fde68a;border-color:rgba(251,191,36,.24);box-shadow:inset 0 0 0 1px rgba(251,191,36,.07)}
     .lane.malam .timeChip{color:#ddd6fe;border-color:rgba(129,140,248,.24);box-shadow:inset 0 0 0 1px rgba(129,140,248,.08)}
@@ -115,7 +111,7 @@
     .btnCheck:hover{filter:brightness(1.08)}.btnCheck:disabled{opacity:.55;cursor:not-allowed}.btnReset{margin-top:5px;border:1px solid rgba(255,255,255,.14);border-radius:11px;padding:5px 7px;min-width:82px;background:rgba(15,23,42,.62);color:#fcd34d;font-size:.55rem;font-weight:950;cursor:pointer}.btnReset:hover{background:rgba(245,158,11,.18);color:#fff}.btnReset:disabled{opacity:.45;cursor:not-allowed}.stateTag{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:14px;padding:8px 9px;min-width:92px;font-size:.66rem;font-weight:950}.stateTag.ok{background:rgba(22,199,132,.18);color:#7fffd3}.stateTag.late{background:rgba(244,63,94,.18);color:#ffb3bd}.timeText{text-align:center;color:#e2e8f0;font-size:.66rem;font-weight:800;margin-top:4px}
 
     .offSection{margin-top:14px;border:1px solid rgba(245,158,11,.34);background:linear-gradient(135deg,rgba(245,158,11,.13),rgba(139,92,246,.06));border-radius:24px;overflow:hidden}.offHead{padding:13px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(245,158,11,.28)}.offHead h2{font-size:1rem;font-weight:950;display:flex;align-items:center;gap:10px}.offHead i{color:#f59e0b}.offGrid{padding:10px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.offItem{display:grid;grid-template-columns:38px 1fr auto;gap:9px;align-items:center;background:rgba(2,6,23,.35);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:9px}.offItem .avatar{width:38px;height:38px;border-radius:14px;background:linear-gradient(135deg,#92400e,#451a03)}.offItem.cuti .avatar{background:linear-gradient(135deg,#f59e0b,#b45309)}.offItem.offday .avatar{background:linear-gradient(135deg,#8b5cf6,#4c1d95)}.offItem h4{font-size:.78rem;font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.offItem p{font-size:.65rem;color:var(--muted);font-weight:750}.offBadge{font-size:.62rem;font-weight:950;border-radius:12px;padding:7px 8px;white-space:nowrap}.offItem.cuti .offBadge{background:rgba(245,158,11,.18);color:#fcd34d}.offItem.offday .offBadge{background:rgba(139,92,246,.20);color:#ddd6fe}
-    .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:24px;font-weight:750}.toast{position:fixed;left:50%;bottom:20px;z-index:999;transform:translateX(-50%) translateY(80px);opacity:0;border-radius:16px;padding:13px 18px;background:#334155;color:#fff;font-weight:900;box-shadow:0 20px 40px rgba(0,0,0,.35);transition:.22s}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}.toast.success{background:var(--green)}.toast.error{background:var(--red)}.toast.warning{background:var(--amber);color:#1f1300}.foot{text-align:center;color:var(--muted);font-size:.78rem;font-weight:700;margin:12px 0 0}
+    .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:24px;font-weight:750}.toast{position:fixed;left:50%;bottom:20px;z-index:999;transform:translateX(-50%) translateY(80px);opacity:0;border-radius:16px;padding:13px 18px;background:#334155;color:#fff;font-weight:900;box-shadow:0 20px 40px rgba(0,0,0,.35);transition:.22s}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}.toast.success{background:var(--green)}.toast.error{background:var(--red)}.foot{text-align:center;color:var(--muted);font-size:.78rem;font-weight:700;margin:12px 0 0}
 
     @media(max-width:1260px){.controlBar{grid-template-columns:1fr}.searchBox{min-height:56px}.board{grid-template-columns:1fr}.crewGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.offGrid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:760px){.page{padding:10px}.heroRow{grid-template-columns:1fr}.topActions{justify-content:flex-start}.titleWrap h1{font-size:1.55rem}.emblem{width:48px;height:48px}.statsStrip{grid-template-columns:repeat(2,1fr)}.crewGrid{grid-template-columns:1fr}.person{grid-template-columns:38px 1fr}.act{grid-column:1/3;width:100%}.btnCheck,.stateTag{width:100%}.offGrid{grid-template-columns:1fr}.controlBar{gap:8px}.hero{padding:14px}.statBox{min-height:62px;padding:10px}.statBox b{font-size:1.35rem}}
@@ -156,20 +152,14 @@
       <section class="lane pagi">
         <div class="laneHead">
           <div class="laneTitle"><i class="fas fa-sun"></i> SHIFT PAGI</div>
-          <div class="laneMeta">
-            <div class="shiftCount"><i class="fas fa-user-group"></i><span id="pagiShiftCount">0 Staff</span></div>
-            <div class="timeChip"><i class="far fa-clock"></i>07:45:00</div>
-          </div>
+          <div class="timeChip"><i class="far fa-clock"></i>07:30:00</div>
         </div>
         <div class="crewGrid" id="pagiList"></div>
       </section>
       <section class="lane malam">
         <div class="laneHead">
           <div class="laneTitle"><i class="fas fa-moon"></i> SHIFT MALAM</div>
-          <div class="laneMeta">
-            <div class="shiftCount"><i class="fas fa-user-group"></i><span id="malamShiftCount">0 Staff</span></div>
-            <div class="timeChip"><i class="far fa-clock"></i>19:45:00</div>
-          </div>
+          <div class="timeChip"><i class="far fa-clock"></i>19:30:00</div>
         </div>
         <div class="crewGrid" id="malamList"></div>
       </section>
@@ -204,8 +194,6 @@
       offCount: document.getElementById('offCount'),
       pagiList: document.getElementById('pagiList'),
       malamList: document.getElementById('malamList'),
-      pagiShiftCount: document.getElementById('pagiShiftCount'),
-      malamShiftCount: document.getElementById('malamShiftCount'),
       offList: document.getElementById('offList'),
       offInfo: document.getElementById('offInfo'),
       searchInput: document.getElementById('searchInput'),
@@ -287,10 +275,6 @@
       els.pendingCount.textContent = pending.length;
       els.offCount.textContent = off.length;
       els.offInfo.textContent = off.length + ' Staff';
-      const pagiTotal = allData.filter(x => !x.off && String(x.shift).toLowerCase() === 'pagi').length;
-      const malamTotal = allData.filter(x => !x.off && String(x.shift).toLowerCase() === 'malam').length;
-      if(els.pagiShiftCount) els.pagiShiftCount.textContent = pagiTotal + ' Staff';
-      if(els.malamShiftCount) els.malamShiftCount.textContent = malamTotal + ' Staff';
 
       renderList(els.pagiList, data.filter(x => !x.off && String(x.shift).toLowerCase() === 'pagi'));
       renderList(els.malamList, data.filter(x => !x.off && String(x.shift).toLowerCase() === 'malam'));
@@ -406,12 +390,7 @@
       if(isResetAllBusy) return;
       const checkedCount = allData.filter(x => !x.off && x.status_checkin === 'Sudah Checkin').length;
       if(checkedCount <= 0){ showToast('Belum ada staff yang sudah checkin untuk direset','warning'); return; }
-      if(!confirm('PERINGATAN: Reset All akan mengembalikan ' + checkedCount + ' staff yang sudah checkin menjadi Belum Checkin. Lanjutkan?')) return;
-      const resetCode = prompt('Untuk melanjutkan Reset All, ketik RESET');
-      if(String(resetCode || '').trim().toUpperCase() !== 'RESET'){
-        showToast('Reset All dibatalkan','warning');
-        return;
-      }
+      if(!confirm('RESET ALL akan mengembalikan ' + checkedCount + ' staff yang sudah checkin menjadi Belum Checkin. Lanjutkan?')) return;
 
       isResetAllBusy = true;
       const oldText = els.resetAllBtn ? els.resetAllBtn.innerHTML : '';
