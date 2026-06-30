@@ -242,6 +242,16 @@
     let checkinSyncTimer = null;
     let passportSyncTimer = null;
 
+    // Batch queue supaya klik banyak tidak saling tarik data lama.
+    let checkinBatchTimer = null;
+    let pasporBatchTimer = null;
+    let resetCheckinBatchTimer = null;
+    let resetPasporBatchTimer = null;
+    const checkinBatchQueue = new Map();
+    const pasporBatchQueue = new Map();
+    const resetCheckinBatchQueue = new Map();
+    const resetPasporBatchQueue = new Map();
+
     const els = {
       dateText: document.getElementById('dateText'),
       totalStaff: document.getElementById('totalStaff'),
@@ -309,9 +319,35 @@
       passportSyncTimer = setTimeout(() => loadPassport(true, true), delay);
     }
 
+
+    function queueBatch(map, key, value, flushFn, timerName, delay=180){
+      map.set(key, value);
+      if(timerName === 'checkin'){
+        clearTimeout(checkinBatchTimer);
+        checkinBatchTimer = setTimeout(flushFn, delay);
+      }else if(timerName === 'paspor'){
+        clearTimeout(pasporBatchTimer);
+        pasporBatchTimer = setTimeout(flushFn, delay);
+      }else if(timerName === 'resetCheckin'){
+        clearTimeout(resetCheckinBatchTimer);
+        resetCheckinBatchTimer = setTimeout(flushFn, delay);
+      }else if(timerName === 'resetPaspor'){
+        clearTimeout(resetPasporBatchTimer);
+        resetPasporBatchTimer = setTimeout(flushFn, delay);
+      }
+    }
+
+    function hasCheckinBusy(){
+      return pendingCheckins.size || pendingResets.size || checkinBatchQueue.size || resetCheckinBatchQueue.size || isResetAllBusy;
+    }
+
+    function hasPasporBusy(){
+      return pendingPassport.size || pendingPassportReset.size || pasporBatchQueue.size || resetPasporBatchQueue.size || isPassportResetAllBusy;
+    }
+
     async function loadData(silent=false, force=false){
       if(isLoading) return;
-      if(silent && (pendingCheckins.size || pendingResets.size || isResetAllBusy)) return;
+      if(silent && hasCheckinBusy()) return;
 
       const now = Date.now();
       if(silent && !force && now - lastLoadAt < REALTIME_REFRESH_MS - 300) return;
@@ -351,7 +387,7 @@
 
 
     async function loadPassport(silent=false, force=false){
-      if(silent && (pendingPassport.size || pendingPassportReset.size || isPassportResetAllBusy)) return;
+      if(silent && hasPasporBusy()) return;
       try{
         const result = await api('loadPaspor');
         if(!result.success) throw new Error(result.message || 'Gagal load data paspor');
@@ -502,15 +538,57 @@
       if(pendingPassport.has(key)) return;
       const target = findPassportItem(id);
       if(!target || target.off || target.status_paspor === 'Sudah Kumpul') return;
+
       const snapshot = cloneItem(target);
       pendingPassport.add(key);
       applyPassportLocal(id, true);
       passportSignature = '';
       renderPassport();
-      api('markPaspor','POST',{id})
-        .then(result => { if(!result.success) throw new Error(result.message || 'Gagal ceklis paspor'); applyPassportLocal(id, true, result); passportSignature=''; renderPassport(); })
-        .catch(err => { Object.assign(target, snapshot); passportSignature=''; renderPassport(); showToast(err.message,'error'); })
-        .finally(() => { pendingPassport.delete(key); schedulePassportSync(); });
+
+      queueBatch(
+        pasporBatchQueue,
+        key,
+        { id, snapshot },
+        flushPasporBatch,
+        'paspor'
+      );
+    }
+
+    function flushPasporBatch(){
+      if(!pasporBatchQueue.size) return;
+      const batch = Array.from(pasporBatchQueue.values());
+      pasporBatchQueue.clear();
+      const ids = batch.map(x => x.id);
+
+      api('markPasporBatch','POST',{ ids })
+        .then(result => {
+          if(!result.success) throw new Error(result.message || 'Gagal ceklis paspor batch');
+          const rows = result.results || [];
+          rows.forEach(r => {
+            if(r && r.success) applyPassportLocal(r.id || r.nama || r.username, true, r);
+            else if(r && r.id){
+              const original = batch.find(x => normalizeKey(x.id) === normalizeKey(r.id));
+              const target = findPassportItem(r.id);
+              if(original && target) Object.assign(target, original.snapshot);
+              showToast(r.message || 'Sebagian paspor gagal disimpan', 'error');
+            }
+          });
+          passportSignature = '';
+          renderPassport();
+        })
+        .catch(err => {
+          batch.forEach(x => {
+            const target = findPassportItem(x.id);
+            if(target) Object.assign(target, x.snapshot);
+          });
+          passportSignature = '';
+          renderPassport();
+          showToast(err.message,'error');
+        })
+        .finally(() => {
+          ids.forEach(id => pendingPassport.delete(normalizeKey(id)));
+          schedulePassportSync(1600);
+        });
     }
 
     function doPassportReset(id, button){
@@ -521,15 +599,57 @@
       if(!confirm('Batalkan tanda kumpul paspor untuk ' + name + '?')) return;
       const target = findPassportItem(id);
       if(!target) return;
+
       const snapshot = cloneItem(target);
       pendingPassportReset.add(key);
       applyPassportLocal(id, false);
       passportSignature = '';
       renderPassport();
-      api('resetOnePaspor','POST',{id})
-        .then(result => { if(!result.success) throw new Error(result.message || 'Gagal reset paspor'); applyPassportLocal(id, false, result); passportSignature=''; renderPassport(); })
-        .catch(err => { Object.assign(target, snapshot); passportSignature=''; renderPassport(); showToast(err.message,'error'); })
-        .finally(() => { pendingPassportReset.delete(key); schedulePassportSync(); });
+
+      queueBatch(
+        resetPasporBatchQueue,
+        key,
+        { id, snapshot },
+        flushResetPasporBatch,
+        'resetPaspor'
+      );
+    }
+
+    function flushResetPasporBatch(){
+      if(!resetPasporBatchQueue.size) return;
+      const batch = Array.from(resetPasporBatchQueue.values());
+      resetPasporBatchQueue.clear();
+      const ids = batch.map(x => x.id);
+
+      api('resetPasporBatch','POST',{ ids })
+        .then(result => {
+          if(!result.success) throw new Error(result.message || 'Gagal reset paspor batch');
+          const rows = result.results || [];
+          rows.forEach(r => {
+            if(r && r.success) applyPassportLocal(r.id || r.nama || r.username, false, r);
+            else if(r && r.id){
+              const original = batch.find(x => normalizeKey(x.id) === normalizeKey(r.id));
+              const target = findPassportItem(r.id);
+              if(original && target) Object.assign(target, original.snapshot);
+              showToast(r.message || 'Sebagian reset paspor gagal disimpan', 'error');
+            }
+          });
+          passportSignature = '';
+          renderPassport();
+        })
+        .catch(err => {
+          batch.forEach(x => {
+            const target = findPassportItem(x.id);
+            if(target) Object.assign(target, x.snapshot);
+          });
+          passportSignature = '';
+          renderPassport();
+          showToast(err.message,'error');
+        })
+        .finally(() => {
+          ids.forEach(id => pendingPassportReset.delete(normalizeKey(id)));
+          schedulePassportSync(1600);
+        });
     }
 
     async function doResetAllPaspor(){
@@ -548,7 +668,7 @@
         passportSignature='';
         renderPassport();
         showToast(result.message || 'Reset All Paspor berhasil','success');
-        schedulePassportSync();
+        schedulePassportSync(1600);
       }catch(err){ showToast(err.message,'error'); }
       finally{ isPassportResetAllBusy=false; els.resetAllPasporBtn.disabled=false; els.resetAllPasporBtn.innerHTML=oldText; }
     }
@@ -561,30 +681,52 @@
       const target = findLocalItem(id);
       if(!target || target.off || target.status_checkin === 'Sudah Checkin') return;
 
-      // Optimistic update: begitu tombol diklik, kartu langsung berubah.
-      // Request backend tetap berjalan di belakang, jadi bisa klik banyak staff berurutan tanpa menunggu loading.
       const snapshot = cloneItem(target);
       pendingCheckins.add(key);
       applyOptimisticCheckin(target);
       dataSignature = '';
       renderAll();
 
-      api('checkin','POST',{ id })
+      queueBatch(
+        checkinBatchQueue,
+        key,
+        { id, snapshot },
+        flushCheckinBatch,
+        'checkin'
+      );
+    }
+
+    function flushCheckinBatch(){
+      if(!checkinBatchQueue.size) return;
+      const batch = Array.from(checkinBatchQueue.values());
+      checkinBatchQueue.clear();
+      const ids = batch.map(x => x.id);
+
+      api('checkinBatch','POST',{ ids })
         .then(result => {
-          if(!result.success) throw new Error(result.message || 'Gagal checkin');
-          updateLocalCheckin(id, result);
+          if(!result.success) throw new Error(result.message || 'Gagal checkin batch');
+          const rows = result.results || [];
+          rows.forEach(r => {
+            if(r && r.success) updateLocalCheckin(r.id || r.nama || r.username, r);
+            else if(r && r.id){
+              const original = batch.find(x => normalizeKey(x.id) === normalizeKey(r.id));
+              const target = findLocalItem(r.id);
+              if(original && target) Object.assign(target, original.snapshot);
+              showToast(r.message || 'Sebagian checkin gagal disimpan', 'error');
+            }
+          });
           dataSignature = '';
           renderAll();
         })
         .catch(err => {
-          restoreLocalItem(id, snapshot);
+          batch.forEach(x => restoreLocalItem(x.id, x.snapshot));
           dataSignature = '';
           renderAll();
           showToast(err.message,'error');
         })
         .finally(() => {
-          pendingCheckins.delete(key);
-          scheduleCheckinSync();
+          ids.forEach(id => pendingCheckins.delete(normalizeKey(id)));
+          scheduleCheckinSync(1600);
         });
     }
 
@@ -606,22 +748,45 @@
       dataSignature = '';
       renderAll();
 
-      api('resetOneCheckin','POST',{ id })
+      queueBatch(
+        resetCheckinBatchQueue,
+        key,
+        { id, snapshot },
+        flushResetCheckinBatch,
+        'resetCheckin'
+      );
+    }
+
+    function flushResetCheckinBatch(){
+      if(!resetCheckinBatchQueue.size) return;
+      const batch = Array.from(resetCheckinBatchQueue.values());
+      resetCheckinBatchQueue.clear();
+      const ids = batch.map(x => x.id);
+
+      api('resetCheckinBatch','POST',{ ids })
         .then(result => {
-          if(!result.success) throw new Error(result.message || 'Gagal reset checkin');
-          updateLocalReset(id, result);
+          if(!result.success) throw new Error(result.message || 'Gagal reset checkin batch');
+          const rows = result.results || [];
+          rows.forEach(r => {
+            if(r && r.success) updateLocalReset(r.id || r.nama || r.username, r);
+            else if(r && r.id){
+              const original = batch.find(x => normalizeKey(x.id) === normalizeKey(r.id));
+              if(original) restoreLocalItem(r.id, original.snapshot);
+              showToast(r.message || 'Sebagian reset checkin gagal disimpan', 'error');
+            }
+          });
           dataSignature = '';
           renderAll();
         })
         .catch(err => {
-          restoreLocalItem(id, snapshot);
+          batch.forEach(x => restoreLocalItem(x.id, x.snapshot));
           dataSignature = '';
           renderAll();
           showToast(err.message,'error');
         })
         .finally(() => {
-          pendingResets.delete(key);
-          scheduleCheckinSync();
+          ids.forEach(id => pendingResets.delete(normalizeKey(id)));
+          scheduleCheckinSync(1600);
         });
     }
 
@@ -650,7 +815,7 @@
         dataSignature = '';
         renderAll();
         showToast(result.message || 'Reset All berhasil','success');
-        scheduleCheckinSync();
+        scheduleCheckinSync(1600);
       }catch(err){
         showToast(err.message,'error');
       }finally{
