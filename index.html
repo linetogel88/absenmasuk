@@ -252,6 +252,11 @@
     const resetCheckinBatchQueue = new Map();
     const resetPasporBatchQueue = new Map();
 
+    // Khusus paspor: tahan status lokal beberapa detik agar tidak bolak-balik
+    // saat auto-sync membaca data lama dari Apps Script/Sheet.
+    const PASPOR_LOCAL_HOLD_MS = 15000;
+    const pasporLocalHold = new Map();
+
     const els = {
       dateText: document.getElementById('dateText'),
       totalStaff: document.getElementById('totalStaff'),
@@ -345,6 +350,46 @@
       return pendingPassport.size || pendingPassportReset.size || pasporBatchQueue.size || resetPasporBatchQueue.size || isPassportResetAllBusy;
     }
 
+    function setPasporHold(id, collected, result={}){
+      const key = normalizeKey(id);
+      if(!key) return;
+      pasporLocalHold.set(key, {
+        collected: !!collected,
+        status_paspor: collected ? 'Sudah Kumpul' : 'Belum Kumpul',
+        waktu_paspor: collected ? (result.waktu || currentWibTime()) : '-',
+        timestamp: collected ? (result.timestamp || '') : '',
+        until: Date.now() + PASPOR_LOCAL_HOLD_MS
+      });
+    }
+
+    function clearPasporHold(id){
+      pasporLocalHold.delete(normalizeKey(id));
+    }
+
+    function applyPasporHolds(data){
+      const now = Date.now();
+      for(const [key, hold] of Array.from(pasporLocalHold.entries())){
+        if(!hold || hold.until < now){
+          pasporLocalHold.delete(key);
+          continue;
+        }
+
+        const item = data.find(x =>
+          normalizeKey(x.id) === key ||
+          normalizeKey(x.username) === key ||
+          normalizeKey(x.nama) === key
+        );
+
+        if(item && !item.off){
+          item.status_paspor = hold.status_paspor;
+          item.terkumpul = hold.collected;
+          item.waktu_paspor = hold.waktu_paspor;
+          item.timestamp = hold.timestamp;
+        }
+      }
+      return data;
+    }
+
     async function loadData(silent=false, force=false){
       if(isLoading) return;
       if(silent && hasCheckinBusy()) return;
@@ -391,7 +436,8 @@
       try{
         const result = await api('loadPaspor');
         if(!result.success) throw new Error(result.message || 'Gagal load data paspor');
-        const newData = Array.isArray(result.data) ? result.data : [];
+        let newData = Array.isArray(result.data) ? result.data : [];
+        newData = applyPasporHolds(newData);
         const newSignature = JSON.stringify({ tanggal: result.tanggal || '', data: newData.map(x => [x.id,x.nama,x.status_paspor,x.waktu_paspor,x.shift,x.kategori]) });
         setLive(true);
         if(force || !silent || newSignature !== passportSignature){
@@ -418,6 +464,11 @@
       els.modePaspor.classList.toggle('active', paspor);
       els.checkinView.classList.toggle('hide', paspor);
       els.passportView.classList.toggle('show', paspor);
+
+      // Saat menu PASPOR aktif, tombol Reset All utama disembunyikan.
+      // Yang tampil cukup Reset All Paspor di panel paspor.
+      if(els.resetAllBtn) els.resetAllBtn.style.display = paspor ? 'none' : '';
+
       if(paspor) loadPassport(false, true); else loadData(false, true);
     }
 
@@ -542,6 +593,7 @@
       const snapshot = cloneItem(target);
       pendingPassport.add(key);
       applyPassportLocal(id, true);
+      setPasporHold(id, true);
       passportSignature = '';
       renderPassport();
 
@@ -565,11 +617,16 @@
           if(!result.success) throw new Error(result.message || 'Gagal ceklis paspor batch');
           const rows = result.results || [];
           rows.forEach(r => {
-            if(r && r.success) applyPassportLocal(r.id || r.nama || r.username, true, r);
+            if(r && r.success){
+              const rid = r.id || r.nama || r.username;
+              applyPassportLocal(rid, true, r);
+              setPasporHold(rid, true, r);
+            }
             else if(r && r.id){
               const original = batch.find(x => normalizeKey(x.id) === normalizeKey(r.id));
               const target = findPassportItem(r.id);
               if(original && target) Object.assign(target, original.snapshot);
+              clearPasporHold(r.id);
               showToast(r.message || 'Sebagian paspor gagal disimpan', 'error');
             }
           });
@@ -580,6 +637,7 @@
           batch.forEach(x => {
             const target = findPassportItem(x.id);
             if(target) Object.assign(target, x.snapshot);
+            clearPasporHold(x.id);
           });
           passportSignature = '';
           renderPassport();
@@ -603,6 +661,7 @@
       const snapshot = cloneItem(target);
       pendingPassportReset.add(key);
       applyPassportLocal(id, false);
+      setPasporHold(id, false);
       passportSignature = '';
       renderPassport();
 
@@ -626,11 +685,16 @@
           if(!result.success) throw new Error(result.message || 'Gagal reset paspor batch');
           const rows = result.results || [];
           rows.forEach(r => {
-            if(r && r.success) applyPassportLocal(r.id || r.nama || r.username, false, r);
+            if(r && r.success){
+              const rid = r.id || r.nama || r.username;
+              applyPassportLocal(rid, false, r);
+              setPasporHold(rid, false, r);
+            }
             else if(r && r.id){
               const original = batch.find(x => normalizeKey(x.id) === normalizeKey(r.id));
               const target = findPassportItem(r.id);
               if(original && target) Object.assign(target, original.snapshot);
+              clearPasporHold(r.id);
               showToast(r.message || 'Sebagian reset paspor gagal disimpan', 'error');
             }
           });
@@ -641,6 +705,7 @@
           batch.forEach(x => {
             const target = findPassportItem(x.id);
             if(target) Object.assign(target, x.snapshot);
+            clearPasporHold(x.id);
           });
           passportSignature = '';
           renderPassport();
@@ -664,11 +729,19 @@
       try{
         const result = await api('resetAllPaspor','POST',{});
         if(!result.success) throw new Error(result.message || 'Gagal reset all paspor');
-        passportData.forEach(x => { if(!x.off){ x.status_paspor='Belum Kumpul'; x.terkumpul=false; x.waktu_paspor='-'; x.timestamp=''; }});
+        passportData.forEach(x => {
+          if(!x.off){
+            x.status_paspor='Belum Kumpul';
+            x.terkumpul=false;
+            x.waktu_paspor='-';
+            x.timestamp='';
+            setPasporHold(x.id || x.username || x.nama, false);
+          }
+        });
         passportSignature='';
         renderPassport();
         showToast(result.message || 'Reset All Paspor berhasil','success');
-        schedulePassportSync(1600);
+        schedulePassportSync(2500);
       }catch(err){ showToast(err.message,'error'); }
       finally{ isPassportResetAllBusy=false; els.resetAllPasporBtn.disabled=false; els.resetAllPasporBtn.innerHTML=oldText; }
     }
