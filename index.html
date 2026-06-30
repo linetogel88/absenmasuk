@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>CHECKIN KANTOR - LINE TOGEL | TAB PASPOR SHIFT</title>
+  <title>CHECKIN KANTOR & PASPOR - LINE TOGEL</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%8D%3C/text%3E%3C/svg%3E">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -71,20 +70,6 @@
     .searchBox{position:relative;border:1px solid rgba(255,255,255,.12);background:rgba(2,6,23,.45);border-radius:18px;min-height:74px;display:flex;align-items:center;padding:0 14px}
     .searchBox i{color:var(--blue);font-size:18px;margin-right:10px}.searchBox input{width:100%;background:transparent;border:0;outline:0;color:#fff;font-size:1rem;font-weight:650}.searchBox input::placeholder{color:#7b8498}
 
-    .tabBar{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:0 0 14px;padding:5px;border:1px solid rgba(255,255,255,.12);background:rgba(2,6,23,.48);border-radius:18px;box-shadow:0 16px 34px rgba(0,0,0,.22);backdrop-filter:blur(12px)}
-    .tabBtn{position:relative;border:1px solid rgba(255,255,255,.09);background:rgba(15,23,42,.58);color:#cbd5e1;border-radius:14px;padding:13px 16px;min-height:46px;cursor:pointer;font-weight:950;letter-spacing:-.02em;display:flex;align-items:center;justify-content:center;gap:10px;transition:.18s;overflow:hidden}
-    .tabBtn:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(56,189,248,.12),rgba(139,92,246,.10));opacity:0;transition:.18s;pointer-events:none}
-    .tabBtn:hover{border-color:rgba(56,189,248,.28);color:#fff}
-    .tabBtn.active{background:linear-gradient(135deg,rgba(56,189,248,.18),rgba(139,92,246,.18));border-color:rgba(56,189,248,.38);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.05),0 12px 28px rgba(56,189,248,.10)}
-    .tabBtn.active:before{opacity:1}
-    .tabBtn span,.tabBtn i{position:relative;z-index:1}
-    .tabBadge{position:relative;z-index:1;min-width:22px;height:20px;padding:0 7px;border-radius:99px;background:rgba(148,163,184,.22);border:1px solid rgba(148,163,184,.22);display:inline-flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:950;color:#e2e8f0}
-    .tabBtn.active .tabBadge{background:rgba(56,189,248,.20);border-color:rgba(56,189,248,.24);color:#bae6fd}
-    .tabBtn.passport.active .tabBadge{background:rgba(22,199,132,.20);border-color:rgba(22,199,132,.25);color:#9fffe0}
-    .pageView{display:none;animation:fadePage .18s ease-out}
-    .pageView.active{display:block}
-    @keyframes fadePage{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
-    .workArea{display:block}
     .board{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
     .lane{position:relative;border-radius:28px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.26)}
     .lane:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.95}
@@ -125,50 +110,19 @@
     .lane.malam .btnCheck{background:linear-gradient(135deg,#2563eb,#7c3aed 55%,#a855f7);box-shadow:0 12px 24px rgba(124,58,237,.18)}
     .btnCheck:hover{filter:brightness(1.08)}.btnCheck:disabled{opacity:.55;cursor:not-allowed}.btnReset{margin-top:5px;border:1px solid rgba(255,255,255,.14);border-radius:11px;padding:5px 7px;min-width:82px;background:rgba(15,23,42,.62);color:#fcd34d;font-size:.55rem;font-weight:950;cursor:pointer}.btnReset:hover{background:rgba(245,158,11,.18);color:#fff}.btnReset:disabled{opacity:.45;cursor:not-allowed}.stateTag{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:14px;padding:8px 9px;min-width:92px;font-size:.66rem;font-weight:950}.stateTag.ok{background:rgba(22,199,132,.18);color:#7fffd3}.stateTag.late{background:rgba(244,63,94,.18);color:#ffb3bd}.timeText{text-align:center;color:#e2e8f0;font-size:.66rem;font-weight:800;margin-top:4px}
 
-    .passportPageShell{display:grid;gap:14px}
-    .passportToolBar{display:grid;grid-template-columns:minmax(0,1fr) 360px auto;gap:12px;align-items:stretch}
-    .passportInfoCard{border:1px solid rgba(56,189,248,.20);background:linear-gradient(135deg,rgba(56,189,248,.12),rgba(139,92,246,.08));border-radius:20px;padding:14px 16px;display:flex;align-items:center;gap:13px;min-height:74px}
-    .passportInfoCard .bigIcon{width:46px;height:46px;border-radius:16px;background:linear-gradient(135deg,#0f766e,#2563eb);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;box-shadow:0 12px 28px rgba(56,189,248,.14);flex:0 0 auto}
-    .passportInfoCard h3{font-size:1.03rem;font-weight:950;letter-spacing:-.04em;text-transform:uppercase}
-    .passportInfoCard p{margin-top:4px;color:#b8c4d8;font-size:.72rem;font-weight:800}
-    .passportSearch{min-height:74px}
-    .passportResetBtn{border:1px solid rgba(255,255,255,.14);background:rgba(2,6,23,.42);color:#fcd34d;border-radius:13px;padding:8px 10px;font-size:.65rem;font-weight:950;cursor:pointer;white-space:nowrap}
-    .passportResetBtn:hover{background:rgba(245,158,11,.18);color:#fff}
-    .passportResetBtn.big{min-height:74px;padding:0 18px;border-radius:18px;background:linear-gradient(135deg,rgba(245,158,11,.22),rgba(244,63,94,.14));border-color:rgba(245,158,11,.28);color:#fff}
-    .passportShiftBoard{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
-    .passportPanel{position:relative;top:auto;border:1px solid rgba(56,189,248,.26);background:linear-gradient(180deg,rgba(8,47,73,.84),rgba(12,16,32,.96) 18%,rgba(7,10,22,.96));border-radius:28px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.28)}
-    .passportPanel.pagiPassport{border-color:rgba(251,191,36,.30);background:linear-gradient(180deg,rgba(57,34,8,.88),rgba(13,17,30,.95) 18%,rgba(12,16,32,.94))}
-    .passportPanel.malamPassport{border-color:rgba(129,140,248,.30);background:linear-gradient(180deg,rgba(25,25,68,.92),rgba(12,16,32,.95) 18%,rgba(8,12,30,.95))}
-    .passportHead{padding:15px 16px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,.10);background:linear-gradient(90deg,rgba(56,189,248,.20),rgba(139,92,246,.14),rgba(255,255,255,.02))}
-    .pagiPassport .passportHead{background:linear-gradient(90deg,rgba(251,191,36,.24),rgba(120,53,15,.20),rgba(255,255,255,.02))}
-    .malamPassport .passportHead{background:linear-gradient(90deg,rgba(129,140,248,.28),rgba(91,33,182,.20),rgba(255,255,255,.02))}
-    .passportHead h2{font-size:1rem;font-weight:950;letter-spacing:-.04em;display:flex;align-items:center;gap:10px;text-transform:uppercase}
-    .passportHead h2 i{color:#67e8f9}.pagiPassport .passportHead h2 i{color:#fbbf24}.malamPassport .passportHead h2 i{color:#c4b5fd}
-    .passportHead p{margin-top:4px;color:#b8c4d8;font-size:.68rem;font-weight:800}
-    .passportMiniBadge{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:28px;padding:0 10px;border-radius:99px;background:rgba(2,6,23,.38);border:1px solid rgba(255,255,255,.12);font-size:.76rem;font-weight:950;color:#e2e8f0;white-space:nowrap}
-    .pagiPassport .passportMiniBadge{color:#fde68a;border-color:rgba(251,191,36,.24)}.malamPassport .passportMiniBadge{color:#ddd6fe;border-color:rgba(129,140,248,.24)}
-    .passportStats{padding:10px 12px;display:grid;grid-template-columns:1fr 1fr;gap:8px;border-bottom:1px solid rgba(255,255,255,.08)}
-    .passportStat{border:1px solid rgba(255,255,255,.10);background:rgba(2,6,23,.38);border-radius:16px;padding:10px 11px;display:flex;align-items:center;justify-content:space-between}
-    .passportStat span{color:var(--muted);font-size:.66rem;font-weight:900;text-transform:uppercase}.passportStat b{font-size:1.25rem;font-weight:950}.passportStat.done b{color:#7fffd3}.passportStat.wait b{color:#fcd34d}
-    .passportList{padding:12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-height:none;overflow:visible}
-    .passportList::-webkit-scrollbar{width:7px}.passportList::-webkit-scrollbar-thumb{background:rgba(56,189,248,.35);border-radius:99px}.passportList::-webkit-scrollbar-track{background:rgba(255,255,255,.04)}
-    .passportItem{position:relative;display:grid;grid-template-columns:38px minmax(0,1fr) 40px;gap:9px;align-items:center;min-height:58px;padding:9px;border:1px solid rgba(255,255,255,.09);background:linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border-radius:17px;cursor:pointer;user-select:none}
-    .passportItem:hover{border-color:rgba(56,189,248,.28);background:linear-gradient(135deg,rgba(56,189,248,.10),rgba(255,255,255,.02))}
-    .pagiPassport .passportItem:hover{border-color:rgba(251,191,36,.30);background:linear-gradient(135deg,rgba(251,191,36,.10),rgba(255,255,255,.02))}.malamPassport .passportItem:hover{border-color:rgba(129,140,248,.30);background:linear-gradient(135deg,rgba(129,140,248,.12),rgba(255,255,255,.02))}
-    .passportItem.done{border-color:rgba(22,199,132,.46);background:linear-gradient(135deg,rgba(22,199,132,.22),rgba(22,199,132,.05))}
-    .passportIcon{width:38px;height:38px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0f766e,#1e3a8a);font-weight:950;font-size:.75rem;color:#fff}.pagiPassport .passportIcon{background:linear-gradient(135deg,#7c5a18,#302312)}.malamPassport .passportIcon{background:linear-gradient(135deg,#374151,#1e1b4b)}
-    .passportItem.done .passportIcon{background:linear-gradient(135deg,#10b981,#047857)}
-    .passportInfo{min-width:0}.passportInfo b{display:block;font-size:.78rem;font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.passportInfo small{display:block;margin-top:3px;color:var(--muted);font-size:.62rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .passportCheck{position:absolute;opacity:0;pointer-events:none}
-    .passportBox{width:32px;height:32px;border-radius:12px;border:2px solid rgba(148,163,184,.45);display:flex;align-items:center;justify-content:center;color:transparent;background:rgba(2,6,23,.35);transition:.16s}.passportItem.done .passportBox{border-color:rgba(22,199,132,.85);background:rgba(22,199,132,.22);color:#7fffd3;box-shadow:0 0 18px rgba(22,199,132,.20)}
-    .passportEmpty{grid-column:1/-1;text-align:center;color:var(--muted);padding:26px 12px;font-weight:800;border:1px dashed rgba(255,255,255,.12);border-radius:18px;background:rgba(2,6,23,.22)}
-
     .offSection{margin-top:14px;border:1px solid rgba(245,158,11,.34);background:linear-gradient(135deg,rgba(245,158,11,.13),rgba(139,92,246,.06));border-radius:24px;overflow:hidden}.offHead{padding:13px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(245,158,11,.28)}.offHead h2{font-size:1rem;font-weight:950;display:flex;align-items:center;gap:10px}.offHead i{color:#f59e0b}.offGrid{padding:10px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.offItem{display:grid;grid-template-columns:38px 1fr auto;gap:9px;align-items:center;background:rgba(2,6,23,.35);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:9px}.offItem .avatar{width:38px;height:38px;border-radius:14px;background:linear-gradient(135deg,#92400e,#451a03)}.offItem.cuti .avatar{background:linear-gradient(135deg,#f59e0b,#b45309)}.offItem.offday .avatar{background:linear-gradient(135deg,#8b5cf6,#4c1d95)}.offItem h4{font-size:.78rem;font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.offItem p{font-size:.65rem;color:var(--muted);font-weight:750}.offBadge{font-size:.62rem;font-weight:950;border-radius:12px;padding:7px 8px;white-space:nowrap}.offItem.cuti .offBadge{background:rgba(245,158,11,.18);color:#fcd34d}.offItem.offday .offBadge{background:rgba(139,92,246,.20);color:#ddd6fe}
-    .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:24px;font-weight:750}.toast{position:fixed;left:50%;bottom:20px;z-index:999;transform:translateX(-50%) translateY(80px);opacity:0;border-radius:16px;padding:13px 18px;background:#334155;color:#fff;font-weight:900;box-shadow:0 20px 40px rgba(0,0,0,.35);transition:.22s}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}.toast.success{background:var(--green)}.toast.error{background:var(--red)}.toast.warning{background:var(--amber)}.foot{text-align:center;color:var(--muted);font-size:.78rem;font-weight:700;margin:12px 0 0}
+    .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:24px;font-weight:750}.toast{position:fixed;left:50%;bottom:20px;z-index:999;transform:translateX(-50%) translateY(80px);opacity:0;border-radius:16px;padding:13px 18px;background:#334155;color:#fff;font-weight:900;box-shadow:0 20px 40px rgba(0,0,0,.35);transition:.22s}.toast.show{transform:translateX(-50%) translateY(0);opacity:1}.toast.success{background:var(--green)}.toast.error{background:var(--red)}.foot{text-align:center;color:var(--muted);font-size:.78rem;font-weight:700;margin:12px 0 0}
 
-    @media(max-width:1380px){.passportToolBar{grid-template-columns:1fr 320px auto}.passportList{grid-template-columns:1fr}}
-    @media(max-width:1260px){.controlBar{grid-template-columns:1fr}.searchBox{min-height:56px}.board{grid-template-columns:1fr}.crewGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.offGrid{grid-template-columns:repeat(2,1fr)}.passportToolBar{grid-template-columns:1fr}.passportSearch,.passportResetBtn.big{min-height:56px}.passportShiftBoard{grid-template-columns:1fr}.passportList{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media(max-width:760px){.page{padding:10px}.heroRow{grid-template-columns:1fr}.topActions{justify-content:flex-start}.titleWrap h1{font-size:1.55rem}.emblem{width:48px;height:48px}.tabBar{grid-template-columns:1fr}.tabBtn{min-height:42px;padding:11px 12px}.statsStrip{grid-template-columns:repeat(2,1fr)}.crewGrid{grid-template-columns:1fr}.person{grid-template-columns:38px 1fr}.act{grid-column:1/3;width:100%}.btnCheck,.stateTag{width:100%}.passportList{grid-template-columns:1fr}.offGrid{grid-template-columns:1fr}.controlBar{gap:8px}.hero{padding:14px}.statBox{min-height:62px;padding:10px}.statBox b{font-size:1.35rem}}
+
+    .switchPanel{display:flex;gap:10px;align-items:center;margin:0 0 14px;position:sticky;top:8px;z-index:10;background:rgba(5,7,17,.70);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:8px;box-shadow:0 14px 30px rgba(0,0,0,.18)}
+    .modeBtn{border:1px solid rgba(255,255,255,.12);background:rgba(15,23,42,.65);color:#cbd5e1;border-radius:14px;padding:11px 16px;font-weight:950;cursor:pointer;letter-spacing:.01em;display:flex;align-items:center;gap:9px}.modeBtn.active{color:#fff;background:linear-gradient(135deg,rgba(14,165,233,.34),rgba(124,58,237,.34));border-color:rgba(56,189,248,.35);box-shadow:0 12px 25px rgba(14,165,233,.12)}.modeBtn.passport.active{background:linear-gradient(135deg,rgba(20,184,166,.35),rgba(245,158,11,.28));border-color:rgba(45,212,191,.34)}
+    .passportView{display:none}.passportView.show{display:block}.checkinView.hide{display:none}
+    .passportHero{border:1px solid rgba(45,212,191,.26);background:linear-gradient(135deg,rgba(20,184,166,.15),rgba(245,158,11,.08));border-radius:24px;padding:14px;margin-bottom:14px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}.passportHero h2{font-size:1.35rem;font-weight:950;letter-spacing:-.04em;display:flex;align-items:center;gap:10px}.passportHero h2 i{color:#2dd4bf}.passportHero p{color:#a7f3d0;font-weight:750;font-size:.82rem;margin-top:3px}.passportStats{display:flex;gap:9px;flex-wrap:wrap}.miniStat{min-width:118px;border:1px solid rgba(255,255,255,.10);background:rgba(2,6,23,.35);border-radius:16px;padding:9px 12px}.miniStat span{display:block;color:#94a3b8;font-size:.66rem;font-weight:900;text-transform:uppercase}.miniStat b{font-size:1.4rem;font-weight:950}.miniStat.ok b{color:#34d399}.miniStat.wait b{color:#fbbf24}.miniStat.off b{color:#c4b5fd}.btnPassportResetAll{border:1px solid rgba(244,63,94,.30);background:linear-gradient(135deg,rgba(244,63,94,.22),rgba(245,158,11,.16));color:#fff;border-radius:14px;padding:9px 12px;font-weight:950;cursor:pointer}.btnPassportResetAll:disabled{opacity:.55;cursor:not-allowed}
+    .passportBoard{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}.passportLane{border-radius:24px;overflow:hidden;border:1px solid rgba(45,212,191,.18);background:rgba(12,16,32,.86);box-shadow:0 18px 45px rgba(0,0,0,.22)}.passportLane.pagi{border-color:rgba(251,191,36,.28);background:linear-gradient(180deg,rgba(71,45,8,.85),rgba(12,16,32,.95) 20%)}.passportLane.malam{border-color:rgba(129,140,248,.25);background:linear-gradient(180deg,rgba(30,27,75,.88),rgba(12,16,32,.95) 20%)}.passportHead{padding:13px 15px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.09)}.passportLane.pagi .passportHead{background:rgba(251,191,36,.16)}.passportLane.malam .passportHead{background:rgba(129,140,248,.16)}.passportHead h3{font-size:1rem;font-weight:950;display:flex;gap:9px;align-items:center}.passportHead small{color:#cbd5e1;font-weight:900}.passportGrid{padding:11px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+    .passportPerson{display:grid;grid-template-columns:34px 1fr auto;gap:9px;align-items:center;min-height:58px;padding:9px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.025));position:relative;overflow:hidden}.passportPerson:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:#64748b}.passportPerson.collected{background:linear-gradient(135deg,rgba(22,199,132,.25),rgba(20,184,166,.08));border-color:rgba(22,199,132,.40)}.passportPerson.collected:before{background:#16c784}.checkBox{width:34px;height:34px;border-radius:11px;border:2px solid rgba(148,163,184,.35);display:flex;align-items:center;justify-content:center;font-weight:950;color:#94a3b8;background:rgba(2,6,23,.35)}.passportPerson.collected .checkBox{background:#16c784;border-color:#34d399;color:white;box-shadow:0 0 18px rgba(22,199,132,.22)}.passportPerson h4{font-size:.78rem;font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.passportPerson p{font-size:.62rem;color:#94a3b8;font-weight:800;margin-top:2px}.pasporAct{text-align:right}.btnPaspor{border:0;border-radius:12px;padding:8px 10px;min-width:72px;font-size:.62rem;font-weight:950;cursor:pointer;color:#fff;background:linear-gradient(135deg,#14b8a6,#0ea5e9)}.btnPaspor.undo{background:rgba(15,23,42,.75);border:1px solid rgba(255,255,255,.15);color:#fcd34d}.pasporTime{font-size:.58rem;color:#bbf7d0;font-weight:900;margin-top:3px;text-align:center}.passportOff{margin-top:14px;border:1px solid rgba(20,184,166,.22);border-radius:22px;background:linear-gradient(135deg,rgba(20,184,166,.09),rgba(139,92,246,.07));overflow:hidden}.passportOff .offHead{border-bottom-color:rgba(45,212,191,.22)}
+
+    @media(max-width:1260px){.controlBar{grid-template-columns:1fr}.searchBox{min-height:56px}.board{grid-template-columns:1fr}.crewGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.offGrid{grid-template-columns:repeat(2,1fr)}.passportBoard{grid-template-columns:1fr}.passportGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.passportHero{grid-template-columns:1fr}}
+    @media(max-width:760px){.page{padding:10px}.heroRow{grid-template-columns:1fr}.topActions{justify-content:flex-start}.titleWrap h1{font-size:1.55rem}.emblem{width:48px;height:48px}.statsStrip{grid-template-columns:repeat(2,1fr)}.crewGrid{grid-template-columns:1fr}.person{grid-template-columns:38px 1fr}.act{grid-column:1/3;width:100%}.btnCheck,.stateTag{width:100%}.offGrid{grid-template-columns:1fr}.controlBar{gap:8px}.hero{padding:14px}.statBox{min-height:62px;padding:10px}.statBox b{font-size:1.35rem}.switchPanel{position:relative;top:auto}.modeBtn{flex:1;justify-content:center;padding:10px}.passportGrid{grid-template-columns:1fr}.passportPerson{grid-template-columns:34px 1fr}.pasporAct{grid-column:1/3}.btnPaspor{width:100%}}
     @media(min-width:1261px) and (max-height:850px){.page{padding:10px 16px}.hero{padding:12px 16px;margin-bottom:9px}.emblem{width:48px;height:48px}.titleWrap h1{font-size:1.65rem}.controlBar{margin-bottom:9px}.statBox{min-height:58px;padding:9px 12px}.statBox b{font-size:1.35rem}.statIcon{width:34px;height:34px}.laneHead{padding:11px 13px}.crewGrid{gap:7px;padding:9px}.person{min-height:59px;padding:8px;grid-template-columns:36px 1fr 88px}.avatar{width:36px;height:36px;border-radius:13px}.person h4{font-size:.76rem}.person p{font-size:.61rem}.btnCheck{min-width:80px;padding:8px 8px;font-size:.64rem}.btnReset{min-width:72px;padding:4px 6px;font-size:.50rem}.stateTag{min-width:80px;padding:7px 7px;font-size:.58rem}.smallNote{font-size:.56rem}.timeText{font-size:.58rem}.offSection{margin-top:9px}.offHead{padding:9px 13px}.offGrid{gap:7px;padding:8px}.offItem{padding:7px}.offItem h4{font-size:.69rem}.foot{display:none}}
   </style>
 </head>
@@ -177,10 +131,10 @@
     <section class="hero">
       <div class="heroRow">
         <div class="titleWrap">
-          <div class="emblem"><i class="fas fa-location-crosshairs" id="emblemIcon"></i></div>
+          <div class="emblem"><i class="fas fa-location-crosshairs"></i></div>
           <div>
-            <h1 id="mainTitle">CHECKIN KANTOR</h1>
-            <p id="subTitle">LINE TOGEL · Arrival Board Staff</p>
+            <h1>CHECKIN KANTOR</h1>
+            <p>LINE TOGEL · Arrival Board Staff</p>
           </div>
         </div>
         <div class="topActions">
@@ -192,99 +146,78 @@
       </div>
     </section>
 
-    <nav class="tabBar" aria-label="Pilih halaman dashboard">
-      <button class="tabBtn active" type="button" data-tab="checkin" id="tabCheckinBtn">
-        <i class="fas fa-location-dot"></i><span>Absen Checkin</span><span class="tabBadge" id="tabCheckinBadge">0</span>
-      </button>
-      <button class="tabBtn passport" type="button" data-tab="passport" id="tabPassportBtn">
-        <i class="fas fa-passport"></i><span>Kumpul Paspor</span><span class="tabBadge" id="tabPassportBadge">0</span>
-      </button>
-    </nav>
+    <div class="switchPanel">
+      <button class="modeBtn active" id="modeCheckin"><i class="fas fa-location-dot"></i> CHECKIN KANTOR</button>
+      <button class="modeBtn passport" id="modePaspor"><i class="fas fa-passport"></i> CHECK PASPOR</button>
+    </div>
 
-    <section class="pageView active" id="checkinPage">
-      <div class="controlBar">
-        <div class="statsStrip">
-          <div class="statBox total"><div><span>Total Aktif</span><b id="totalStaff">0</b></div><div class="statIcon"><i class="fas fa-user-group"></i></div></div>
-          <div class="statBox ok"><div><span>Sudah</span><b id="checkedCount">0</b></div><div class="statIcon"><i class="fas fa-circle-check"></i></div></div>
-          <div class="statBox wait"><div><span>Belum</span><b id="pendingCount">0</b></div><div class="statIcon"><i class="fas fa-hourglass-half"></i></div></div>
-          <div class="statBox off"><div><span>Off / Cuti</span><b id="offCount">0</b></div><div class="statIcon"><i class="fas fa-user-slash"></i></div></div>
+    <div class="checkinView" id="checkinView">
+    <div class="controlBar">
+      <div class="statsStrip">
+        <div class="statBox total"><div><span>Total Aktif</span><b id="totalStaff">0</b></div><div class="statIcon"><i class="fas fa-user-group"></i></div></div>
+        <div class="statBox ok"><div><span>Sudah</span><b id="checkedCount">0</b></div><div class="statIcon"><i class="fas fa-circle-check"></i></div></div>
+        <div class="statBox wait"><div><span>Belum</span><b id="pendingCount">0</b></div><div class="statIcon"><i class="fas fa-hourglass-half"></i></div></div>
+        <div class="statBox off"><div><span>Off / Cuti</span><b id="offCount">0</b></div><div class="statIcon"><i class="fas fa-user-slash"></i></div></div>
+      </div>
+      <label class="searchBox"><i class="fas fa-search"></i><input id="searchInput" type="text" placeholder="Cari nama staff..."></label>
+    </div>
+
+    <main class="board">
+      <section class="lane pagi">
+        <div class="laneHead">
+          <div class="laneTitle"><i class="fas fa-sun"></i> SHIFT PAGI</div>
+          <div class="timeChip"><i class="far fa-clock"></i>07:30:00</div>
         </div>
-        <label class="searchBox"><i class="fas fa-search"></i><input id="searchInput" type="text" placeholder="Cari nama staff..."></label>
-      </div>
-
-      <div class="workArea">
-        <main class="board">
-          <section class="lane pagi">
-            <div class="laneHead">
-              <div class="laneTitle"><i class="fas fa-sun"></i> SHIFT PAGI</div>
-              <div class="timeChip"><i class="far fa-clock"></i>07:30:00</div>
-            </div>
-            <div class="crewGrid" id="pagiList"></div>
-          </section>
-          <section class="lane malam">
-            <div class="laneHead">
-              <div class="laneTitle"><i class="fas fa-moon"></i> SHIFT MALAM</div>
-              <div class="timeChip"><i class="far fa-clock"></i>19:30:00</div>
-            </div>
-            <div class="crewGrid" id="malamList"></div>
-          </section>
-        </main>
-      </div>
-
-      <section class="offSection">
-        <div class="offHead"><h2><i class="fas fa-ban"></i> NON AKTIF HARI INI</h2><strong id="offInfo">0 Staff</strong></div>
-        <div class="offGrid" id="offList"></div>
+        <div class="crewGrid" id="pagiList"></div>
       </section>
-    </section>
-
-    <section class="pageView" id="passportPage">
-      <div class="passportPageShell">
-        <div class="passportToolBar">
-          <div class="passportInfoCard">
-            <div class="bigIcon"><i class="fas fa-passport"></i></div>
-            <div>
-              <h3>Checkin Paspor / Kumpul Paspor</h3>
-              <p>Halaman terpisah. Nama mengikuti data Absen Checkin / Jadwal hari ini dan tersimpan ke database.</p>
-            </div>
-          </div>
-          <label class="searchBox passportSearch"><i class="fas fa-search"></i><input id="passportSearchInput" type="text" placeholder="Cari nama paspor..."></label>
-          <button class="passportResetBtn big" id="resetPassportBtn" title="Reset ceklis paspor hari ini"><i class="fas fa-rotate-left"></i> Reset Paspor</button>
+      <section class="lane malam">
+        <div class="laneHead">
+          <div class="laneTitle"><i class="fas fa-moon"></i> SHIFT MALAM</div>
+          <div class="timeChip"><i class="far fa-clock"></i>19:30:00</div>
         </div>
+        <div class="crewGrid" id="malamList"></div>
+      </section>
+    </main>
 
-        <div class="passportShiftBoard">
-          <aside class="passportPanel pagiPassport">
-            <div class="passportHead">
-              <div>
-                <h2><i class="fas fa-sun"></i> PASPOR SHIFT PAGI</h2>
-                <p>Nama mengikuti kolom Shift Pagi pada jadwal absen checkin hari ini.</p>
-              </div>
-              <span class="passportMiniBadge" id="passportTotalPagi">0 Staff</span>
-            </div>
-            <div class="passportStats">
-              <div class="passportStat done"><span>Sudah Kumpul</span><b id="passportDonePagi">0</b></div>
-              <div class="passportStat wait"><span>Belum Kumpul</span><b id="passportPendingPagi">0</b></div>
-            </div>
-            <div class="passportList" id="passportPagiList"></div>
-          </aside>
-
-          <aside class="passportPanel malamPassport">
-            <div class="passportHead">
-              <div>
-                <h2><i class="fas fa-moon"></i> PASPOR SHIFT MALAM</h2>
-                <p>Nama mengikuti kolom Shift Malam pada jadwal absen checkin hari ini.</p>
-              </div>
-              <span class="passportMiniBadge" id="passportTotalMalam">0 Staff</span>
-            </div>
-            <div class="passportStats">
-              <div class="passportStat done"><span>Sudah Kumpul</span><b id="passportDoneMalam">0</b></div>
-              <div class="passportStat wait"><span>Belum Kumpul</span><b id="passportPendingMalam">0</b></div>
-            </div>
-            <div class="passportList" id="passportMalamList"></div>
-          </aside>
-        </div>
-      </div>
+    <section class="offSection">
+      <div class="offHead"><h2><i class="fas fa-ban"></i> NON AKTIF HARI INI</h2><strong id="offInfo">0 Staff</strong></div>
+      <div class="offGrid" id="offList"></div>
     </section>
     <div class="foot"><i class="fas fa-circle-info"></i> Dashboard ini khusus checkin kedatangan kantor. Data akan berganti otomatis mengikuti JADWAL SHIFT harian.</div>
+
+    </div>
+
+    <section class="passportView" id="passportView">
+      <div class="passportHero">
+        <div>
+          <h2><i class="fas fa-passport"></i> CHECK PASPOR / KUMPUL PASPOR</h2>
+          <p>Nama staff otomatis mengikuti JADWAL SHIFT hari ini. Klik ceklis untuk menandai paspor sudah dikumpulkan.</p>
+        </div>
+        <div class="passportStats">
+          <div class="miniStat"><span>Total Aktif</span><b id="pasporTotal">0</b></div>
+          <div class="miniStat ok"><span>Sudah Kumpul</span><b id="pasporSudah">0</b></div>
+          <div class="miniStat wait"><span>Belum</span><b id="pasporBelum">0</b></div>
+          <div class="miniStat off"><span>Off/Cuti</span><b id="pasporOff">0</b></div>
+          <button class="btnPassportResetAll" id="resetAllPasporBtn"><i class="fas fa-eraser"></i> Reset All Paspor</button>
+        </div>
+      </div>
+      <main class="passportBoard">
+        <section class="passportLane pagi">
+          <div class="passportHead"><h3><i class="fas fa-sun"></i> PASPOR SHIFT PAGI</h3><small>07:30:00</small></div>
+          <div class="passportGrid" id="pasporPagiList"></div>
+        </section>
+        <section class="passportLane malam">
+          <div class="passportHead"><h3><i class="fas fa-moon"></i> PASPOR SHIFT MALAM</h3><small>19:30:00</small></div>
+          <div class="passportGrid" id="pasporMalamList"></div>
+        </section>
+      </main>
+      <section class="passportOff">
+        <div class="offHead"><h2><i class="fas fa-ban"></i> NON AKTIF / TIDAK PERLU PASPOR</h2><strong id="pasporOffInfo">0 Staff</strong></div>
+        <div class="offGrid" id="pasporOffList"></div>
+      </section>
+      <div class="foot"><i class="fas fa-circle-info"></i> Menu ini hanya untuk tanda kumpul paspor. Data checkin kantor tetap berada di menu CHECKIN KANTOR.</div>
+    </section>
+
   </div>
   <div class="toast" id="toast"></div>
 
@@ -292,10 +225,8 @@
     const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbweh1Z2FZtVOrahg63azhbpheA33NqBKe9I0JlCpOjyuTJRWQXZM-5Vfss2gomhE0G_/exec';
 
     let allData = [];
-    let passportState = {};
-    let currentDateKey = '';
-    let passportLoading = false;
-    const pendingPassports = new Set();
+    let passportData = [];
+    let currentMode = 'checkin';
     const pendingCheckins = new Set();
     const pendingResets = new Set();
     let isResetAllBusy = false;
@@ -303,7 +234,10 @@
     let lastLoadAt = 0;
     let searchTimer = null;
     let dataSignature = '';
-    let activeTab = 'checkin';
+    let passportSignature = '';
+    const pendingPassport = new Set();
+    const pendingPassportReset = new Set();
+    let isPassportResetAllBusy = false;
     const REALTIME_REFRESH_MS = 5000;
 
     const els = {
@@ -322,25 +256,19 @@
       liveDot: document.getElementById('liveDot'),
       liveText: document.getElementById('liveText'),
       toast: document.getElementById('toast'),
-      passportPagiList: document.getElementById('passportPagiList'),
-      passportMalamList: document.getElementById('passportMalamList'),
-      passportDonePagi: document.getElementById('passportDonePagi'),
-      passportPendingPagi: document.getElementById('passportPendingPagi'),
-      passportDoneMalam: document.getElementById('passportDoneMalam'),
-      passportPendingMalam: document.getElementById('passportPendingMalam'),
-      passportTotalPagi: document.getElementById('passportTotalPagi'),
-      passportTotalMalam: document.getElementById('passportTotalMalam'),
-      resetPassportBtn: document.getElementById('resetPassportBtn'),
-      passportSearchInput: document.getElementById('passportSearchInput'),
-      tabCheckinBtn: document.getElementById('tabCheckinBtn'),
-      tabPassportBtn: document.getElementById('tabPassportBtn'),
-      tabCheckinBadge: document.getElementById('tabCheckinBadge'),
-      tabPassportBadge: document.getElementById('tabPassportBadge'),
-      checkinPage: document.getElementById('checkinPage'),
-      passportPage: document.getElementById('passportPage'),
-      mainTitle: document.getElementById('mainTitle'),
-      subTitle: document.getElementById('subTitle'),
-      emblemIcon: document.getElementById('emblemIcon')
+      modeCheckin: document.getElementById('modeCheckin'),
+      modePaspor: document.getElementById('modePaspor'),
+      checkinView: document.getElementById('checkinView'),
+      passportView: document.getElementById('passportView'),
+      pasporTotal: document.getElementById('pasporTotal'),
+      pasporSudah: document.getElementById('pasporSudah'),
+      pasporBelum: document.getElementById('pasporBelum'),
+      pasporOff: document.getElementById('pasporOff'),
+      pasporOffInfo: document.getElementById('pasporOffInfo'),
+      pasporPagiList: document.getElementById('pasporPagiList'),
+      pasporMalamList: document.getElementById('pasporMalamList'),
+      pasporOffList: document.getElementById('pasporOffList'),
+      resetAllPasporBtn: document.getElementById('resetAllPasporBtn')
     };
 
     function setLive(ok){
@@ -381,11 +309,6 @@
         lastLoadAt = Date.now();
         setLive(true);
 
-        const nextDateKey = makePassportDateKey(result.tanggalKey || result.tanggal || currentWibDateKey());
-        const shouldReloadPassport = nextDateKey !== currentDateKey || force || !silent;
-        if(nextDateKey !== currentDateKey) currentDateKey = nextDateKey;
-        if(shouldReloadPassport) loadPassportState(true);
-
         // Render hanya kalau data berubah, supaya dashboard tetap ringan dan responsif.
         if(force || !silent || newSignature !== dataSignature){
           dataSignature = newSignature;
@@ -405,15 +328,46 @@
       }
     }
 
+
+    async function loadPassport(silent=false, force=false){
+      if(silent && (pendingPassport.size || pendingPassportReset.size || isPassportResetAllBusy)) return;
+      try{
+        const result = await api('loadPaspor');
+        if(!result.success) throw new Error(result.message || 'Gagal load data paspor');
+        const newData = Array.isArray(result.data) ? result.data : [];
+        const newSignature = JSON.stringify({ tanggal: result.tanggal || '', data: newData.map(x => [x.id,x.nama,x.status_paspor,x.waktu_paspor,x.shift,x.kategori]) });
+        setLive(true);
+        if(force || !silent || newSignature !== passportSignature){
+          passportSignature = newSignature;
+          passportData = newData;
+          if(result.tanggal) els.dateText.textContent = result.tanggal;
+          renderPassport();
+        }
+      }catch(err){
+        setLive(false);
+        if(!silent) showToast('Gagal memuat paspor: ' + err.message, 'error');
+      }
+    }
+
+    function renderCurrent(){
+      if(currentMode === 'paspor') renderPassport();
+      else renderAll();
+    }
+
+    function setMode(mode){
+      currentMode = mode;
+      const paspor = mode === 'paspor';
+      els.modeCheckin.classList.toggle('active', !paspor);
+      els.modePaspor.classList.toggle('active', paspor);
+      els.checkinView.classList.toggle('hide', paspor);
+      els.passportView.classList.toggle('show', paspor);
+      if(paspor) loadPassport(false, true); else loadData(false, true);
+    }
+
     function renderAll(){
-      const q = (els.searchInput ? els.searchInput.value : '').trim().toLowerCase();
-      const pQ = (els.passportSearchInput ? els.passportSearchInput.value : '').trim().toLowerCase();
-
-      let checkinData = allData;
-      if(q) checkinData = checkinData.filter(x => String(x.nama || '').toLowerCase().includes(q) || String(x.jabatan || '').toLowerCase().includes(q));
-
-      let passportData = allData.filter(x => !x.off);
-      if(pQ) passportData = passportData.filter(x => String(x.nama || '').toLowerCase().includes(pQ) || String(x.jabatan || '').toLowerCase().includes(pQ) || String(x.shift || '').toLowerCase().includes(pQ));
+      const q = (els.searchInput.value || '').trim().toLowerCase();
+      let data = allData;
+      if(q) data = data.filter(x => String(x.nama || '').toLowerCase().includes(q) || String(x.jabatan || '').toLowerCase().includes(q));
 
       const active = allData.filter(x => !x.off);
       const checked = active.filter(x => x.status_checkin === 'Sudah Checkin');
@@ -425,13 +379,9 @@
       els.offCount.textContent = off.length;
       els.offInfo.textContent = off.length + ' Staff';
 
-      updatePassportStats(active);
-      updateTabBadges(active, pending);
-      renderPassport(passportData);
-
-      renderList(els.pagiList, checkinData.filter(x => !x.off && String(x.shift).toLowerCase() === 'pagi'));
-      renderList(els.malamList, checkinData.filter(x => !x.off && String(x.shift).toLowerCase() === 'malam'));
-      renderOff(checkinData.filter(x => x.off));
+      renderList(els.pagiList, data.filter(x => !x.off && String(x.shift).toLowerCase() === 'pagi'));
+      renderList(els.malamList, data.filter(x => !x.off && String(x.shift).toLowerCase() === 'malam'));
+      renderOff(data.filter(x => x.off));
     }
 
     function renderList(container, list){
@@ -457,190 +407,6 @@
         </article>`;
     }
 
-    function renderPassport(list){
-      const safeList = Array.isArray(list) ? list : [];
-      const pagi = safeList
-        .filter(x => normalizeShiftName(x.shift) === 'pagi')
-        .sort((a,b) => String(a.nama || '').localeCompare(String(b.nama || '')));
-      const malam = safeList
-        .filter(x => normalizeShiftName(x.shift) === 'malam')
-        .sort((a,b) => String(a.nama || '').localeCompare(String(b.nama || '')));
-
-      renderPassportList(els.passportPagiList, pagi, 'Tidak ada staff Shift Pagi pada jadwal hari ini');
-      renderPassportList(els.passportMalamList, malam, 'Tidak ada staff Shift Malam pada jadwal hari ini');
-    }
-
-    function renderPassportList(container, list, emptyText){
-      if(!container) return;
-      if(!list.length){
-        container.innerHTML = `<div class="passportEmpty">${escapeHtml(emptyText || 'Tidak ada data')}</div>`;
-        return;
-      }
-      container.innerHTML = list.map(item => passportRowHtml(item)).join('');
-    }
-
-    function passportRowHtml(item){
-      const key = passportKey(item);
-      const done = !!passportState[key];
-      const shift = String(item.shift || '-').toUpperCase();
-      return `
-        <label class="passportItem ${done ? 'done' : ''}">
-          <span class="passportIcon">${initials(item.nama)}</span>
-          <span class="passportInfo">
-            <b title="${escapeAttr(item.nama)}">${escapeHtml(item.nama)}</b>
-            <small>${escapeHtml(shift)} · ${escapeHtml(item.jabatan || 'Staff')}</small>
-          </span>
-          <input class="passportCheck" type="checkbox" data-key="${escapeAttr(key)}" ${done ? 'checked' : ''}>
-          <span class="passportBox"><i class="fas fa-check"></i></span>
-        </label>`;
-    }
-
-    function updatePassportStats(activeList){
-      const active = Array.isArray(activeList) ? activeList : allData.filter(x => !x.off);
-      const pagi = active.filter(x => normalizeShiftName(x.shift) === 'pagi');
-      const malam = active.filter(x => normalizeShiftName(x.shift) === 'malam');
-      const donePagi = pagi.filter(x => passportState[passportKey(x)]).length;
-      const doneMalam = malam.filter(x => passportState[passportKey(x)]).length;
-      const pendingPagi = Math.max(0, pagi.length - donePagi);
-      const pendingMalam = Math.max(0, malam.length - doneMalam);
-
-      if(els.passportDonePagi) els.passportDonePagi.textContent = donePagi;
-      if(els.passportPendingPagi) els.passportPendingPagi.textContent = pendingPagi;
-      if(els.passportDoneMalam) els.passportDoneMalam.textContent = doneMalam;
-      if(els.passportPendingMalam) els.passportPendingMalam.textContent = pendingMalam;
-      if(els.passportTotalPagi) els.passportTotalPagi.textContent = pagi.length + ' Staff';
-      if(els.passportTotalMalam) els.passportTotalMalam.textContent = malam.length + ' Staff';
-    }
-
-    function updateTabBadges(activeList, checkinPendingList){
-      const active = Array.isArray(activeList) ? activeList : allData.filter(x => !x.off);
-      const checkinPending = Array.isArray(checkinPendingList) ? checkinPendingList.length : active.filter(x => x.status_checkin !== 'Sudah Checkin').length;
-      const passportDone = active.filter(x => passportState[passportKey(x)]).length;
-      if(els.tabCheckinBadge) els.tabCheckinBadge.textContent = checkinPending;
-      if(els.tabPassportBadge) els.tabPassportBadge.textContent = passportDone;
-    }
-
-    function switchTab(tab){
-      activeTab = tab === 'passport' ? 'passport' : 'checkin';
-      const isPassport = activeTab === 'passport';
-      if(els.tabCheckinBtn) els.tabCheckinBtn.classList.toggle('active', !isPassport);
-      if(els.tabPassportBtn) els.tabPassportBtn.classList.toggle('active', isPassport);
-      if(els.checkinPage) els.checkinPage.classList.toggle('active', !isPassport);
-      if(els.passportPage) els.passportPage.classList.toggle('active', isPassport);
-      if(els.resetAllBtn) els.resetAllBtn.style.display = isPassport ? 'none' : '';
-      if(els.mainTitle) els.mainTitle.textContent = isPassport ? 'KUMPUL PASPOR' : 'CHECKIN KANTOR';
-      if(els.subTitle) els.subTitle.textContent = isPassport ? 'LINE TOGEL · Passport Collection Board' : 'LINE TOGEL · Arrival Board Staff';
-      if(els.emblemIcon) els.emblemIcon.className = isPassport ? 'fas fa-passport' : 'fas fa-location-crosshairs';
-      renderAll();
-    }
-
-    async function loadPassportState(silent=true){
-      if(passportLoading) return;
-      passportLoading = true;
-      try{
-        const result = await api('loadPaspor');
-        if(!result.success) throw new Error(result.message || 'Gagal load data paspor');
-
-        const nextState = {};
-        (Array.isArray(result.data) ? result.data : []).forEach(item => {
-          const done = item.sudah_paspor || item.passport_done || String(item.status_paspor || item.status_passport || '').toLowerCase().includes('sudah');
-          if(done) nextState[passportKey(item)] = true;
-        });
-
-        passportState = nextState;
-        if(result.tanggalKey) currentDateKey = makePassportDateKey(result.tanggalKey);
-        renderAll();
-      }catch(err){
-        if(!silent) showToast('Gagal memuat data paspor: ' + err.message, 'error');
-      }finally{
-        passportLoading = false;
-      }
-    }
-
-    function passportKey(item){
-      if(typeof item === 'string') return normalizeKey(item);
-      return normalizeKey(item.id || item.username || item.nama);
-    }
-
-    function makePassportDateKey(value){
-      return normalizeKey(value || currentWibDateKey()) || currentWibDateKey();
-    }
-
-    function currentWibDateKey(){
-      const parts = new Intl.DateTimeFormat('en-GB', {
-        timeZone: 'Asia/Jakarta',
-        year: 'numeric', month: '2-digit', day: '2-digit'
-      }).formatToParts(new Date());
-      const get = type => (parts.find(p => p.type === type) || {}).value || '00';
-      return `${get('year')}${get('month')}${get('day')}`;
-    }
-
-    async function togglePassport(key, checked){
-      if(!key) return;
-      if(pendingPassports.has(key)) return;
-
-      const oldValue = !!passportState[key];
-      pendingPassports.add(key);
-
-      if(checked) passportState[key] = true;
-      else delete passportState[key];
-
-      renderAll();
-
-      try{
-        const result = await api('togglePaspor','POST',{ id:key, checked:!!checked });
-        if(!result.success) throw new Error(result.message || 'Gagal menyimpan paspor');
-
-        if(result.checked) passportState[key] = true;
-        else delete passportState[key];
-
-        renderAll();
-      }catch(err){
-        if(oldValue) passportState[key] = true;
-        else delete passportState[key];
-
-        renderAll();
-        showToast(err.message,'error');
-      }finally{
-        pendingPassports.delete(key);
-        setTimeout(() => loadPassportState(true), 350);
-      }
-    }
-
-    async function resetPassportToday(){
-      const activeCount = allData.filter(x => !x.off).length;
-      if(activeCount <= 0){ showToast('Belum ada data staff aktif untuk paspor','warning'); return; }
-      if(!confirm('Reset semua ceklis Kumpul Paspor hari ini?')) return;
-
-      const oldState = Object.assign({}, passportState);
-      passportState = {};
-      renderAll();
-
-      if(els.resetPassportBtn){
-        els.resetPassportBtn.disabled = true;
-        els.resetPassportBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Reset...';
-      }
-
-      try{
-        const result = await api('resetPaspor','POST',{});
-        if(!result.success) throw new Error(result.message || 'Gagal reset paspor');
-
-        passportState = {};
-        renderAll();
-        showToast(result.message || 'Ceklis paspor hari ini berhasil direset','success');
-        setTimeout(() => loadPassportState(true), 350);
-      }catch(err){
-        passportState = oldState;
-        renderAll();
-        showToast(err.message,'error');
-      }finally{
-        if(els.resetPassportBtn){
-          els.resetPassportBtn.disabled = false;
-          els.resetPassportBtn.innerHTML = '<i class="fas fa-rotate-left"></i> Reset Paspor';
-        }
-      }
-    }
-
     function renderOff(list){
       if(!list.length){ els.offList.innerHTML = '<div class="empty">Tidak ada OFFDAY / CUTI</div>'; return; }
       els.offList.innerHTML = list.map(item => {
@@ -648,6 +414,122 @@
         const isCuti = status.includes('CUTI');
         return `<article class="offItem ${isCuti ? 'cuti':'offday'}"><div class="avatar">${initials(item.nama)}</div><div><h4 title="${escapeAttr(item.nama)}">${escapeHtml(item.nama)}</h4><p>${escapeHtml(item.jabatan || 'Staff')}</p></div><div class="offBadge">${escapeHtml(status || '-')}</div></article>`;
       }).join('');
+    }
+
+
+    function renderPassport(){
+      const q = (els.searchInput.value || '').trim().toLowerCase();
+      let data = passportData;
+      if(q) data = data.filter(x => String(x.nama || '').toLowerCase().includes(q) || String(x.jabatan || '').toLowerCase().includes(q));
+      const active = passportData.filter(x => !x.off);
+      const sudah = active.filter(x => x.status_paspor === 'Sudah Kumpul');
+      const belum = active.filter(x => x.status_paspor !== 'Sudah Kumpul');
+      const off = passportData.filter(x => x.off);
+      els.pasporTotal.textContent = active.length;
+      els.pasporSudah.textContent = sudah.length;
+      els.pasporBelum.textContent = belum.length;
+      els.pasporOff.textContent = off.length;
+      els.pasporOffInfo.textContent = off.length + ' Staff';
+      renderPassportList(els.pasporPagiList, data.filter(x => !x.off && String(x.shift).toLowerCase() === 'pagi'));
+      renderPassportList(els.pasporMalamList, data.filter(x => !x.off && String(x.shift).toLowerCase() === 'malam'));
+      renderPasporOff(data.filter(x => x.off));
+    }
+
+    function renderPassportList(container, list){
+      if(!list.length){ container.innerHTML = '<div class="empty">Tidak ada data paspor</div>'; return; }
+      container.innerHTML = list.map(item => passportRowHtml(item)).join('');
+    }
+
+    function passportRowHtml(item){
+      const collected = item.status_paspor === 'Sudah Kumpul';
+      const action = collected
+        ? `<button class="btnPaspor undo" data-id="${escapeAttr(item.id)}" data-name="${escapeAttr(item.nama)}"><i class="fas fa-rotate-left"></i> BATAL</button><div class="pasporTime">${escapeHtml(item.waktu_paspor || '-')}</div>`
+        : `<button class="btnPaspor" data-id="${escapeAttr(item.id)}"><i class="fas fa-check"></i> CEKLIS</button>`;
+      return `<article class="passportPerson ${collected ? 'collected' : ''}">
+        <div class="checkBox">${collected ? '<i class="fas fa-check"></i>' : ''}</div>
+        <div><h4 title="${escapeAttr(item.nama)}">${escapeHtml(item.nama)}</h4><p>${escapeHtml(item.jabatan || 'Staff')} · ${escapeHtml(item.shift || '-')}</p></div>
+        <div class="pasporAct">${action}</div>
+      </article>`;
+    }
+
+    function renderPasporOff(list){
+      if(!list.length){ els.pasporOffList.innerHTML = '<div class="empty">Tidak ada OFFDAY / CUTI</div>'; return; }
+      els.pasporOffList.innerHTML = list.map(item => {
+        const status = String(item.kategori || item.shift || '').toUpperCase();
+        const isCuti = status.includes('CUTI');
+        return `<article class="offItem ${isCuti ? 'cuti':'offday'}"><div class="avatar">${initials(item.nama)}</div><div><h4 title="${escapeAttr(item.nama)}">${escapeHtml(item.nama)}</h4><p>${escapeHtml(item.jabatan || 'Staff')}</p></div><div class="offBadge">${escapeHtml(status || '-')}</div></article>`;
+      }).join('');
+    }
+
+    function findPassportItem(id){
+      const key = normalizeKey(id);
+      return passportData.find(x => normalizeKey(x.id) === key || normalizeKey(x.username) === key || normalizeKey(x.nama) === key);
+    }
+
+    function applyPassportLocal(id, collected, result={}){
+      const item = findPassportItem(id);
+      if(!item) return;
+      item.status_paspor = collected ? 'Sudah Kumpul' : 'Belum Kumpul';
+      item.terkumpul = collected;
+      item.waktu_paspor = collected ? (result.waktu || currentWibTime()) : '-';
+      item.timestamp = collected ? (result.timestamp || '') : '';
+    }
+
+    function doPassportMark(id){
+      if(!id || isPassportResetAllBusy) return;
+      const key = normalizeKey(id);
+      if(pendingPassport.has(key)) return;
+      const target = findPassportItem(id);
+      if(!target || target.off || target.status_paspor === 'Sudah Kumpul') return;
+      const snapshot = cloneItem(target);
+      pendingPassport.add(key);
+      applyPassportLocal(id, true);
+      passportSignature = '';
+      renderPassport();
+      api('markPaspor','POST',{id})
+        .then(result => { if(!result.success) throw new Error(result.message || 'Gagal ceklis paspor'); applyPassportLocal(id, true, result); passportSignature=''; renderPassport(); })
+        .catch(err => { Object.assign(target, snapshot); passportSignature=''; renderPassport(); showToast(err.message,'error'); })
+        .finally(() => { pendingPassport.delete(key); setTimeout(() => loadPassport(true, true), 350); });
+    }
+
+    function doPassportReset(id, button){
+      if(!id || isPassportResetAllBusy) return;
+      const key = normalizeKey(id);
+      if(pendingPassportReset.has(key)) return;
+      const name = button ? (button.dataset.name || id) : id;
+      if(!confirm('Batalkan tanda kumpul paspor untuk ' + name + '?')) return;
+      const target = findPassportItem(id);
+      if(!target) return;
+      const snapshot = cloneItem(target);
+      pendingPassportReset.add(key);
+      applyPassportLocal(id, false);
+      passportSignature = '';
+      renderPassport();
+      api('resetOnePaspor','POST',{id})
+        .then(result => { if(!result.success) throw new Error(result.message || 'Gagal reset paspor'); applyPassportLocal(id, false, result); passportSignature=''; renderPassport(); })
+        .catch(err => { Object.assign(target, snapshot); passportSignature=''; renderPassport(); showToast(err.message,'error'); })
+        .finally(() => { pendingPassportReset.delete(key); setTimeout(() => loadPassport(true, true), 350); });
+    }
+
+    async function doResetAllPaspor(){
+      if(isPassportResetAllBusy) return;
+      const count = passportData.filter(x => !x.off && x.status_paspor === 'Sudah Kumpul').length;
+      if(count <= 0){ showToast('Belum ada paspor yang sudah ditandai kumpul','warning'); return; }
+      if(!confirm('Reset semua status paspor terkumpul (' + count + ' staff) menjadi Belum Kumpul?')) return;
+      isPassportResetAllBusy = true;
+      const oldText = els.resetAllPasporBtn.innerHTML;
+      els.resetAllPasporBtn.disabled = true;
+      els.resetAllPasporBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Reset...';
+      try{
+        const result = await api('resetAllPaspor','POST',{});
+        if(!result.success) throw new Error(result.message || 'Gagal reset all paspor');
+        passportData.forEach(x => { if(!x.off){ x.status_paspor='Belum Kumpul'; x.terkumpul=false; x.waktu_paspor='-'; x.timestamp=''; }});
+        passportSignature='';
+        renderPassport();
+        showToast(result.message || 'Reset All Paspor berhasil','success');
+        setTimeout(() => loadPassport(true, true), 350);
+      }catch(err){ showToast(err.message,'error'); }
+      finally{ isPassportResetAllBusy=false; els.resetAllPasporBtn.disabled=false; els.resetAllPasporBtn.innerHTML=oldText; }
     }
 
     async function doCheckin(id, button){
@@ -842,13 +724,6 @@
       setTimeout(() => els.toast.classList.remove('show'), 2800);
     }
 
-    function normalizeShiftName(value){
-      const s = String(value || '').toLowerCase().trim();
-      if(s.includes('pagi')) return 'pagi';
-      if(s.includes('malam')) return 'malam';
-      return s;
-    }
-
     function initials(name){ return String(name || '?').trim().split(/\s+/).slice(0,2).map(x => x[0] || '').join('').toUpperCase() || '?'; }
     function escapeHtml(s){ return String(s ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
     function escapeAttr(s){ return escapeHtml(s).replace(/`/g,'&#96;'); }
@@ -856,30 +731,23 @@
 
     els.pagiList.addEventListener('click', (e) => { const resetBtn = e.target.closest('.btnReset'); if(resetBtn) return doResetCheckin(resetBtn.dataset.id, resetBtn); const btn = e.target.closest('.btnCheck'); if(btn) doCheckin(btn.dataset.id, btn); });
     els.malamList.addEventListener('click', (e) => { const resetBtn = e.target.closest('.btnReset'); if(resetBtn) return doResetCheckin(resetBtn.dataset.id, resetBtn); const btn = e.target.closest('.btnCheck'); if(btn) doCheckin(btn.dataset.id, btn); });
-    els.searchInput.addEventListener('input', () => { clearTimeout(searchTimer); searchTimer = setTimeout(renderAll, 100); });
-    if(els.passportSearchInput) els.passportSearchInput.addEventListener('input', () => { clearTimeout(searchTimer); searchTimer = setTimeout(renderAll, 100); });
-    if(els.tabCheckinBtn) els.tabCheckinBtn.addEventListener('click', () => switchTab('checkin'));
-    if(els.tabPassportBtn) els.tabPassportBtn.addEventListener('click', () => switchTab('passport'));
-    els.refreshBtn.addEventListener('click', () => loadData(false));
+    els.searchInput.addEventListener('input', () => { clearTimeout(searchTimer); searchTimer = setTimeout(renderCurrent, 100); });
+    els.refreshBtn.addEventListener('click', () => currentMode === 'paspor' ? loadPassport(false, true) : loadData(false, true));
     els.resetAllBtn.addEventListener('click', doResetAllCheckin);
-    function bindPassportChecklist(container){
-      if(!container) return;
-      container.addEventListener('change', (e) => {
-        const box = e.target.closest('.passportCheck');
-        if(box) togglePassport(box.dataset.key, box.checked);
-      });
-    }
-    bindPassportChecklist(els.passportPagiList);
-    bindPassportChecklist(els.passportMalamList);
-    if(els.resetPassportBtn) els.resetPassportBtn.addEventListener('click', resetPassportToday);
+    els.modeCheckin.addEventListener('click', () => setMode('checkin'));
+    els.modePaspor.addEventListener('click', () => setMode('paspor'));
+    els.pasporPagiList.addEventListener('click', (e) => { const undo = e.target.closest('.btnPaspor.undo'); if(undo) return doPassportReset(undo.dataset.id, undo); const btn = e.target.closest('.btnPaspor'); if(btn) doPassportMark(btn.dataset.id); });
+    els.pasporMalamList.addEventListener('click', (e) => { const undo = e.target.closest('.btnPaspor.undo'); if(undo) return doPassportReset(undo.dataset.id, undo); const btn = e.target.closest('.btnPaspor'); if(btn) doPassportMark(btn.dataset.id); });
+    els.resetAllPasporBtn.addEventListener('click', doResetAllPaspor);
 
     // Real-time polling: Apps Script tidak punya push/socket, jadi dashboard dibuat polling ringan.
-    // Setiap 5 detik dashboard cek perubahan dari DATA CHECKIN HARIAN dan DATA PASPOR HARIAN.
+    // Setiap 5 detik dashboard cek perubahan dari DATA CHECKIN HARIAN.
     loadData(false, true);
-    setInterval(() => loadData(true), REALTIME_REFRESH_MS);
-    document.addEventListener('visibilitychange', () => { if(!document.hidden) loadData(true, true); });
-    window.addEventListener('focus', () => loadData(true, true));
-    window.addEventListener('online', () => loadData(true, true));
+    loadPassport(true, true);
+    setInterval(() => currentMode === 'paspor' ? loadPassport(true) : loadData(true), REALTIME_REFRESH_MS);
+    document.addEventListener('visibilitychange', () => { if(!document.hidden) currentMode === 'paspor' ? loadPassport(true, true) : loadData(true, true); });
+    window.addEventListener('focus', () => currentMode === 'paspor' ? loadPassport(true, true) : loadData(true, true));
+    window.addEventListener('online', () => currentMode === 'paspor' ? loadPassport(true, true) : loadData(true, true));
   </script>
 </body>
 </html>
