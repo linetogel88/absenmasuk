@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>CHECKIN KANTOR & PASPOR - OPTIMIZED</title>
+  <title>CHECKIN KANTOR & PASPOR </title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%8D%3C/text%3E%3C/svg%3E">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -252,9 +252,11 @@
     const resetCheckinBatchQueue = new Map();
     const resetPasporBatchQueue = new Map();
 
-    // Khusus paspor: tahan status lokal beberapa detik agar tidak bolak-balik
+    // Khusus checkin & paspor: tahan status lokal beberapa detik agar tidak bolak-balik
     // saat auto-sync membaca data lama dari Apps Script/Sheet.
+    const CHECKIN_LOCAL_HOLD_MS = 15000;
     const PASPOR_LOCAL_HOLD_MS = 15000;
+    const checkinLocalHold = new Map();
     const pasporLocalHold = new Map();
 
     const els = {
@@ -350,6 +352,49 @@
       return pendingPassport.size || pendingPassportReset.size || pasporBatchQueue.size || resetPasporBatchQueue.size || isPassportResetAllBusy;
     }
 
+    function setCheckinHold(id, checked, result={}){
+      const key = normalizeKey(id);
+      if(!key) return;
+      checkinLocalHold.set(key, {
+        checked: !!checked,
+        status_checkin: checked ? 'Sudah Checkin' : 'Belum Checkin',
+        waktu_checkin: checked ? (result.waktu || currentWibTime()) : '-',
+        keterangan: checked ? (result.keterangan || 'Tepat Waktu') : 'Belum Checkin',
+        telat: checked ? (result.telat || '') : '',
+        timestamp: checked ? (result.timestamp || '') : '',
+        until: Date.now() + CHECKIN_LOCAL_HOLD_MS
+      });
+    }
+
+    function clearCheckinHold(id){
+      checkinLocalHold.delete(normalizeKey(id));
+    }
+
+    function applyCheckinHolds(data){
+      const now = Date.now();
+      for(const [key, hold] of Array.from(checkinLocalHold.entries())){
+        if(!hold || hold.until < now){
+          checkinLocalHold.delete(key);
+          continue;
+        }
+
+        const item = data.find(x =>
+          normalizeKey(x.id) === key ||
+          normalizeKey(x.username) === key ||
+          normalizeKey(x.nama) === key
+        );
+
+        if(item && !item.off){
+          item.status_checkin = hold.status_checkin;
+          item.waktu_checkin = hold.waktu_checkin;
+          item.keterangan = hold.keterangan;
+          item.telat = hold.telat;
+          item.timestamp = hold.timestamp;
+        }
+      }
+      return data;
+    }
+
     function setPasporHold(id, collected, result={}){
       const key = normalizeKey(id);
       if(!key) return;
@@ -402,7 +447,8 @@
         const result = await api('loadCheckin');
         if(!result.success) throw new Error(result.message || 'Gagal load data');
 
-        const newData = Array.isArray(result.data) ? result.data : [];
+        let newData = Array.isArray(result.data) ? result.data : [];
+        newData = applyCheckinHolds(newData);
         const newSignature = JSON.stringify({
           tanggal: result.tanggal || '',
           data: newData.map(x => [x.id, x.nama, x.status_checkin, x.waktu_checkin, x.keterangan, x.telat, x.shift, x.kategori])
@@ -757,6 +803,7 @@
       const snapshot = cloneItem(target);
       pendingCheckins.add(key);
       applyOptimisticCheckin(target);
+      setCheckinHold(id, true, target);
       dataSignature = '';
       renderAll();
 
@@ -780,11 +827,16 @@
           if(!result.success) throw new Error(result.message || 'Gagal checkin batch');
           const rows = result.results || [];
           rows.forEach(r => {
-            if(r && r.success) updateLocalCheckin(r.id || r.nama || r.username, r);
+            if(r && r.success){
+              const rid = r.id || r.nama || r.username;
+              updateLocalCheckin(rid, r);
+              setCheckinHold(rid, true, r);
+            }
             else if(r && r.id){
               const original = batch.find(x => normalizeKey(x.id) === normalizeKey(r.id));
               const target = findLocalItem(r.id);
               if(original && target) Object.assign(target, original.snapshot);
+              clearCheckinHold(r.id);
               showToast(r.message || 'Sebagian checkin gagal disimpan', 'error');
             }
           });
@@ -792,7 +844,10 @@
           renderAll();
         })
         .catch(err => {
-          batch.forEach(x => restoreLocalItem(x.id, x.snapshot));
+          batch.forEach(x => {
+            restoreLocalItem(x.id, x.snapshot);
+            clearCheckinHold(x.id);
+          });
           dataSignature = '';
           renderAll();
           showToast(err.message,'error');
@@ -818,6 +873,7 @@
 
       pendingResets.add(key);
       updateLocalReset(id, {});
+      setCheckinHold(id, false);
       dataSignature = '';
       renderAll();
 
@@ -841,10 +897,15 @@
           if(!result.success) throw new Error(result.message || 'Gagal reset checkin batch');
           const rows = result.results || [];
           rows.forEach(r => {
-            if(r && r.success) updateLocalReset(r.id || r.nama || r.username, r);
+            if(r && r.success){
+              const rid = r.id || r.nama || r.username;
+              updateLocalReset(rid, r);
+              setCheckinHold(rid, false, r);
+            }
             else if(r && r.id){
               const original = batch.find(x => normalizeKey(x.id) === normalizeKey(r.id));
               if(original) restoreLocalItem(r.id, original.snapshot);
+              clearCheckinHold(r.id);
               showToast(r.message || 'Sebagian reset checkin gagal disimpan', 'error');
             }
           });
@@ -852,7 +913,10 @@
           renderAll();
         })
         .catch(err => {
-          batch.forEach(x => restoreLocalItem(x.id, x.snapshot));
+          batch.forEach(x => {
+            restoreLocalItem(x.id, x.snapshot);
+            clearCheckinHold(x.id);
+          });
           dataSignature = '';
           renderAll();
           showToast(err.message,'error');
@@ -883,12 +947,13 @@
             item.keterangan = 'Belum Checkin';
             item.telat = '';
             item.timestamp = '';
+            setCheckinHold(item.id || item.username || item.nama, false);
           }
         });
         dataSignature = '';
         renderAll();
         showToast(result.message || 'Reset All berhasil','success');
-        scheduleCheckinSync(1600);
+        scheduleCheckinSync(2500);
       }catch(err){
         showToast(err.message,'error');
       }finally{
