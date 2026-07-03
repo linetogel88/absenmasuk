@@ -121,8 +121,19 @@
     .passportBoard{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}.passportLane{border-radius:24px;overflow:hidden;border:1px solid rgba(45,212,191,.18);background:rgba(12,16,32,.86);box-shadow:0 18px 45px rgba(0,0,0,.22)}.passportLane.pagi{border-color:rgba(251,191,36,.28);background:linear-gradient(180deg,rgba(71,45,8,.85),rgba(12,16,32,.95) 20%)}.passportLane.malam{border-color:rgba(129,140,248,.25);background:linear-gradient(180deg,rgba(30,27,75,.88),rgba(12,16,32,.95) 20%)}.passportHead{padding:13px 15px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.09)}.passportLane.pagi .passportHead{background:rgba(251,191,36,.16)}.passportLane.malam .passportHead{background:rgba(129,140,248,.16)}.passportHead h3{font-size:1rem;font-weight:950;display:flex;gap:9px;align-items:center}.passportHead small{color:#cbd5e1;font-weight:900}.passportGrid{padding:11px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
     .passportPerson{display:grid;grid-template-columns:34px 1fr auto;gap:9px;align-items:center;min-height:58px;padding:9px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.025));position:relative;overflow:hidden}.passportPerson:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:#64748b}.passportPerson.collected{background:linear-gradient(135deg,rgba(22,199,132,.25),rgba(20,184,166,.08));border-color:rgba(22,199,132,.40)}.passportPerson.collected:before{background:#16c784}.checkBox{width:34px;height:34px;border-radius:11px;border:2px solid rgba(148,163,184,.35);display:flex;align-items:center;justify-content:center;font-weight:950;color:#94a3b8;background:rgba(2,6,23,.35)}.passportPerson.collected .checkBox{background:#16c784;border-color:#34d399;color:white;box-shadow:0 0 18px rgba(22,199,132,.22)}.passportPerson h4{font-size:.78rem;font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.passportPerson p{font-size:.62rem;color:#94a3b8;font-weight:800;margin-top:2px}.pasporAct{text-align:right}.btnPaspor{border:0;border-radius:12px;padding:8px 10px;min-width:72px;font-size:.62rem;font-weight:950;cursor:pointer;color:#fff;background:linear-gradient(135deg,#14b8a6,#0ea5e9)}.btnPaspor.undo{background:rgba(15,23,42,.75);border:1px solid rgba(255,255,255,.15);color:#fcd34d}.pasporTime{font-size:.58rem;color:#bbf7d0;font-weight:900;margin-top:3px;text-align:center}.passportOff{margin-top:14px;border:1px solid rgba(20,184,166,.22);border-radius:22px;background:linear-gradient(135deg,rgba(20,184,166,.09),rgba(139,92,246,.07));overflow:hidden}.passportOff .offHead{border-bottom-color:rgba(45,212,191,.22)}
 
-    @media(max-width:1260px){.controlBar{grid-template-columns:1fr}.searchBox{min-height:56px}.board{grid-template-columns:1fr}.crewGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.offGrid{grid-template-columns:repeat(2,1fr)}.passportBoard{grid-template-columns:1fr}.passportGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.passportHero{grid-template-columns:1fr}}
-    @media(max-width:760px){.page{padding:10px}.heroRow{grid-template-columns:1fr}.topActions{justify-content:flex-start}.titleWrap h1{font-size:1.55rem}.emblem{width:48px;height:48px}.statsStrip{grid-template-columns:repeat(2,1fr)}.crewGrid{grid-template-columns:1fr}.person{grid-template-columns:38px 1fr}.act{grid-column:1/3;width:100%}.btnCheck,.stateTag{width:100%}.offGrid{grid-template-columns:1fr}.controlBar{gap:8px}.hero{padding:14px}.statBox{min-height:62px;padding:10px}.statBox b{font-size:1.35rem}.switchPanel{position:relative;top:auto}.modeBtn{flex:1;justify-content:center;padding:10px}.passportGrid{grid-template-columns:1fr}.passportPerson{grid-template-columns:34px 1fr}.pasporAct{grid-column:1/3}.btnPaspor{width:100%}}
+
+
+    .monitorView{display:none}.monitorView.show{display:block}
+    .modeBtn.monitor.active{color:#fff;background:linear-gradient(135deg,rgba(16,185,129,.35),rgba(56,189,248,.28));border-color:rgba(52,211,153,.34)}
+    .monitorHero{border:1px solid rgba(52,211,153,.22);background:linear-gradient(135deg,rgba(16,185,129,.13),rgba(56,189,248,.07));border-radius:24px;padding:14px;margin-bottom:14px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+    .monitorHero h2{font-size:1.35rem;font-weight:950;letter-spacing:-.04em;display:flex;align-items:center;gap:10px}.monitorHero h2 i{color:#34d399}.monitorHero p{color:#a7f3d0;font-weight:750;font-size:.82rem;margin-top:3px}.monitorSource{font-size:.68rem;color:#94a3b8;font-weight:900;margin-top:5px}
+    .monitorStats{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}.monitorStats .miniStat.problem b{color:#fb7185}.monitorStats .miniStat.telat b{color:#fbbf24}
+    .monitorPanel{display:grid;grid-template-columns:380px 1fr;gap:14px;align-items:start}.monitorCard{border:1px solid rgba(255,255,255,.10);background:rgba(12,16,32,.82);border-radius:22px;overflow:hidden;box-shadow:0 18px 45px rgba(0,0,0,.20)}.monitorHead{padding:13px 15px;border-bottom:1px solid rgba(255,255,255,.09);display:flex;align-items:center;justify-content:space-between;gap:10px;background:linear-gradient(90deg,rgba(16,185,129,.16),rgba(56,189,248,.08))}.monitorHead h3{font-size:.95rem;font-weight:950;display:flex;gap:9px;align-items:center}.monitorHead small{color:#cbd5e1;font-weight:900}
+    .problemList{padding:10px;display:grid;gap:8px;max-height:560px;overflow:auto}.problemItem{border:1px solid rgba(255,255,255,.08);background:rgba(2,6,23,.35);border-radius:15px;padding:10px;display:grid;grid-template-columns:34px 1fr auto;gap:9px;align-items:center}.problemItem h4{font-size:.78rem;font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.problemItem p{font-size:.62rem;color:#94a3b8;font-weight:800;margin-top:2px}.problemIcon{width:34px;height:34px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);color:#fbbf24}.problemItem.telat .problemIcon{color:#fbbf24}.problemItem.belum .problemIcon,.problemItem.alpa .problemIcon{color:#fb7185}.problemItem.izin .problemIcon{color:#38bdf8}
+    .monitorTableWrap{overflow:auto;max-height:640px}.monitorTable{width:100%;border-collapse:separate;border-spacing:0}.monitorTable th{position:sticky;top:0;background:#111827;color:#e5e7eb;text-align:left;font-size:.68rem;text-transform:uppercase;letter-spacing:.03em;padding:11px 12px;border-bottom:1px solid rgba(255,255,255,.11);z-index:1}.monitorTable td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.06);font-size:.76rem;font-weight:750;color:#e2e8f0;white-space:nowrap}.monitorTable tr:hover td{background:rgba(255,255,255,.035)}.absenName{font-weight:950;color:#fff}.statusBadge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 9px;font-size:.62rem;font-weight:950}.statusBadge.hadir{background:rgba(22,199,132,.18);color:#86efac}.statusBadge.belum,.statusBadge.alpa{background:rgba(244,63,94,.16);color:#fecdd3}.statusBadge.telat{background:rgba(245,158,11,.17);color:#fde68a}.statusBadge.izin{background:rgba(56,189,248,.16);color:#bae6fd}.statusBadge.off{background:rgba(139,92,246,.17);color:#ddd6fe}.statusBadge.other{background:rgba(148,163,184,.16);color:#cbd5e1}
+
+    @media(max-width:1260px){.controlBar{grid-template-columns:1fr}.searchBox{min-height:56px}.board{grid-template-columns:1fr}.crewGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.offGrid{grid-template-columns:repeat(2,1fr)}.passportBoard{grid-template-columns:1fr}.passportGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.passportHero{grid-template-columns:1fr}.monitorHero{grid-template-columns:1fr}.monitorPanel{grid-template-columns:1fr}.monitorStats{justify-content:flex-start}}
+    @media(max-width:760px){.page{padding:10px}.heroRow{grid-template-columns:1fr}.topActions{justify-content:flex-start}.titleWrap h1{font-size:1.55rem}.emblem{width:48px;height:48px}.statsStrip{grid-template-columns:repeat(2,1fr)}.crewGrid{grid-template-columns:1fr}.person{grid-template-columns:38px 1fr}.act{grid-column:1/3;width:100%}.btnCheck,.stateTag{width:100%}.offGrid{grid-template-columns:1fr}.controlBar{gap:8px}.hero{padding:14px}.statBox{min-height:62px;padding:10px}.statBox b{font-size:1.35rem}.switchPanel{position:relative;top:auto}.modeBtn{flex:1;justify-content:center;padding:10px}.passportGrid{grid-template-columns:1fr}.passportPerson{grid-template-columns:34px 1fr}.pasporAct{grid-column:1/3}.btnPaspor{width:100%}.monitorStats{justify-content:flex-start}.monitorPanel{grid-template-columns:1fr}.problemList{max-height:none}}
     @media(min-width:1261px) and (max-height:850px){.page{padding:10px 16px}.hero{padding:12px 16px;margin-bottom:9px}.emblem{width:48px;height:48px}.titleWrap h1{font-size:1.65rem}.controlBar{margin-bottom:9px}.statBox{min-height:58px;padding:9px 12px}.statBox b{font-size:1.35rem}.statIcon{width:34px;height:34px}.laneHead{padding:11px 13px}.crewGrid{gap:7px;padding:9px}.person{min-height:59px;padding:8px;grid-template-columns:36px 1fr 88px}.avatar{width:36px;height:36px;border-radius:13px}.person h4{font-size:.76rem}.person p{font-size:.61rem}.btnCheck{min-width:80px;padding:8px 8px;font-size:.64rem}.btnReset{min-width:72px;padding:4px 6px;font-size:.50rem}.stateTag{min-width:80px;padding:7px 7px;font-size:.58rem}.smallNote{font-size:.56rem}.timeText{font-size:.58rem}.offSection{margin-top:9px}.offHead{padding:9px 13px}.offGrid{gap:7px;padding:8px}.offItem{padding:7px}.offItem h4{font-size:.69rem}.foot{display:none}}
   </style>
 </head>
@@ -149,6 +160,7 @@
     <div class="switchPanel">
       <button class="modeBtn active" id="modeCheckin"><i class="fas fa-location-dot"></i> CHECKIN KANTOR</button>
       <button class="modeBtn passport" id="modePaspor"><i class="fas fa-passport"></i> CHECK PASPOR</button>
+      <button class="modeBtn monitor" id="modeMonitor"><i class="fas fa-chart-line"></i> MONITORING ABSEN</button>
     </div>
 
     <div class="checkinView" id="checkinView">
@@ -218,6 +230,52 @@
       <div class="foot"><i class="fas fa-circle-info"></i> Menu ini hanya untuk tanda kumpul paspor. Data checkin kantor tetap berada di menu CHECKIN KANTOR.</div>
     </section>
 
+    <section class="monitorView" id="monitorView">
+      <div class="monitorHero">
+        <div>
+          <h2><i class="fas fa-chart-line"></i> MONITORING DATA ABSEN HARIAN</h2>
+          <p>Menu khusus pantau data dari sheet DATA ABSEN HARIAN. Tidak mengubah data checkin maupun paspor.</p>
+          <div class="monitorSource" id="monitorSource">Sumber: DATA ABSEN HARIAN</div>
+        </div>
+        <div class="monitorStats">
+          <div class="miniStat"><span>Total Data</span><b id="monitorTotal">0</b></div>
+          <div class="miniStat ok"><span>Hadir</span><b id="monitorHadir">0</b></div>
+          <div class="miniStat wait"><span>Belum</span><b id="monitorBelum">0</b></div>
+          <div class="miniStat telat"><span>Telat</span><b id="monitorTelat">0</b></div>
+          <div class="miniStat problem"><span>Perlu Dicek</span><b id="monitorProblem">0</b></div>
+        </div>
+      </div>
+
+      <div class="monitorPanel">
+        <section class="monitorCard">
+          <div class="monitorHead"><h3><i class="fas fa-triangle-exclamation"></i> Perlu Dicek</h3><small id="monitorProblemInfo">0 data</small></div>
+          <div class="problemList" id="monitorProblemList"></div>
+        </section>
+
+        <section class="monitorCard">
+          <div class="monitorHead"><h3><i class="fas fa-table-list"></i> Semua Data Absen</h3><small id="monitorInfo">0 data</small></div>
+          <div class="monitorTableWrap">
+            <table class="monitorTable">
+              <thead>
+                <tr>
+                  <th>Nama</th>
+                  <th>Jabatan</th>
+                  <th>Shift</th>
+                  <th>Jam Masuk</th>
+                  <th>Jam Pulang</th>
+                  <th>Status</th>
+                  <th>Telat</th>
+                </tr>
+              </thead>
+              <tbody id="monitorBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+      <div class="foot"><i class="fas fa-circle-info"></i> Monitoring ini membaca otomatis dari DATA ABSEN HARIAN dan ikut refresh real-time.</div>
+    </section>
+
+
   </div>
   <div class="toast" id="toast"></div>
 
@@ -226,6 +284,7 @@
 
     let allData = [];
     let passportData = [];
+    let monitorData = [];
     let currentMode = 'checkin';
     const pendingCheckins = new Set();
     const pendingResets = new Set();
@@ -235,12 +294,14 @@
     let searchTimer = null;
     let dataSignature = '';
     let passportSignature = '';
+    let monitorSignature = '';
     const pendingPassport = new Set();
     const pendingPassportReset = new Set();
     let isPassportResetAllBusy = false;
     const REALTIME_REFRESH_MS = 5000;
     let checkinSyncTimer = null;
     let passportSyncTimer = null;
+    let monitorSyncTimer = null;
 
     // Batch queue supaya klik banyak tidak saling tarik data lama.
     let checkinBatchTimer = null;
@@ -277,8 +338,10 @@
       toast: document.getElementById('toast'),
       modeCheckin: document.getElementById('modeCheckin'),
       modePaspor: document.getElementById('modePaspor'),
+      modeMonitor: document.getElementById('modeMonitor'),
       checkinView: document.getElementById('checkinView'),
       passportView: document.getElementById('passportView'),
+      monitorView: document.getElementById('monitorView'),
       pasporTotal: document.getElementById('pasporTotal'),
       pasporSudah: document.getElementById('pasporSudah'),
       pasporBelum: document.getElementById('pasporBelum'),
@@ -287,7 +350,17 @@
       pasporPagiList: document.getElementById('pasporPagiList'),
       pasporMalamList: document.getElementById('pasporMalamList'),
       pasporOffList: document.getElementById('pasporOffList'),
-      resetAllPasporBtn: document.getElementById('resetAllPasporBtn')
+      resetAllPasporBtn: document.getElementById('resetAllPasporBtn'),
+      monitorTotal: document.getElementById('monitorTotal'),
+      monitorHadir: document.getElementById('monitorHadir'),
+      monitorBelum: document.getElementById('monitorBelum'),
+      monitorTelat: document.getElementById('monitorTelat'),
+      monitorProblem: document.getElementById('monitorProblem'),
+      monitorProblemInfo: document.getElementById('monitorProblemInfo'),
+      monitorProblemList: document.getElementById('monitorProblemList'),
+      monitorInfo: document.getElementById('monitorInfo'),
+      monitorBody: document.getElementById('monitorBody'),
+      monitorSource: document.getElementById('monitorSource')
     };
 
     function setLive(ok){
@@ -324,6 +397,11 @@
     function schedulePassportSync(delay=900){
       clearTimeout(passportSyncTimer);
       passportSyncTimer = setTimeout(() => loadPassport(true, true), delay);
+    }
+
+    function scheduleMonitorSync(delay=900){
+      clearTimeout(monitorSyncTimer);
+      monitorSyncTimer = setTimeout(() => loadMonitoring(true, true), delay);
     }
 
 
@@ -498,24 +576,62 @@
       }
     }
 
+    async function loadMonitoring(silent=false, force=false){
+      try{
+        const result = await api('loadMonitoringAbsen');
+        if(!result.success) throw new Error(result.message || 'Gagal load monitoring absen');
+        const newData = Array.isArray(result.data) ? result.data : [];
+        const summary = result.summary || {};
+        const newSignature = JSON.stringify({ tanggal: result.tanggal || '', data: newData.map(x => [x.id,x.nama,x.jabatan,x.shift,x.jam_masuk,x.jam_pulang,x.status_absen,x.bucket,x.telat]), summary });
+        setLive(true);
+        if(force || !silent || newSignature !== monitorSignature){
+          monitorSignature = newSignature;
+          monitorData = newData;
+          if(result.tanggal) els.dateText.textContent = result.tanggal;
+          if(els.monitorSource){
+            els.monitorSource.textContent = 'Sumber: ' + (result.sheetName || 'DATA ABSEN HARIAN') + (result.hasTodayData === false ? ' · tanggal hari ini tidak terdeteksi, menampilkan semua baris' : ' · data hari ini');
+          }
+          renderMonitor();
+        }
+      }catch(err){
+        setLive(false);
+        if(!silent) showToast('Gagal memuat monitoring absen: ' + err.message, 'error');
+        if(!monitorData.length && els.monitorBody){
+          els.monitorBody.innerHTML = '<tr><td colspan="7" class="empty">Gagal memuat DATA ABSEN HARIAN</td></tr>';
+        }
+      }
+    }
+
+    function loadCurrent(silent=false, force=false){
+      if(currentMode === 'paspor') return loadPassport(silent, force);
+      if(currentMode === 'monitor') return loadMonitoring(silent, force);
+      return loadData(silent, force);
+    }
+
     function renderCurrent(){
-      if(currentMode === 'paspor') renderPassport();
-      else renderAll();
+      if(currentMode === 'paspor') return renderPassport();
+      if(currentMode === 'monitor') return renderMonitor();
+      renderAll();
     }
 
     function setMode(mode){
       currentMode = mode;
       const paspor = mode === 'paspor';
-      els.modeCheckin.classList.toggle('active', !paspor);
+      const monitor = mode === 'monitor';
+      const checkin = mode === 'checkin';
+
+      els.modeCheckin.classList.toggle('active', checkin);
       els.modePaspor.classList.toggle('active', paspor);
-      els.checkinView.classList.toggle('hide', paspor);
+      if(els.modeMonitor) els.modeMonitor.classList.toggle('active', monitor);
+
+      els.checkinView.classList.toggle('hide', !checkin);
       els.passportView.classList.toggle('show', paspor);
+      if(els.monitorView) els.monitorView.classList.toggle('show', monitor);
 
-      // Saat menu PASPOR aktif, tombol Reset All utama disembunyikan.
-      // Yang tampil cukup Reset All Paspor di panel paspor.
-      if(els.resetAllBtn) els.resetAllBtn.style.display = paspor ? 'none' : '';
+      // Reset All utama hanya untuk menu CHECKIN KANTOR.
+      if(els.resetAllBtn) els.resetAllBtn.style.display = checkin ? '' : 'none';
 
-      if(paspor) loadPassport(false, true); else loadData(false, true);
+      loadCurrent(false, true);
     }
 
     function renderAll(){
@@ -614,6 +730,78 @@
         return `<article class="offItem ${isCuti ? 'cuti':'offday'}"><div class="avatar">${initials(item.nama)}</div><div><h4 title="${escapeAttr(item.nama)}">${escapeHtml(item.nama)}</h4><p>${escapeHtml(item.jabatan || 'Staff')}</p></div><div class="offBadge">${escapeHtml(status || '-')}</div></article>`;
       }).join('');
     }
+
+    function renderMonitor(){
+      const q = (els.searchInput.value || '').trim().toLowerCase();
+      let data = monitorData;
+      if(q){
+        data = data.filter(x =>
+          String(x.nama || '').toLowerCase().includes(q) ||
+          String(x.jabatan || '').toLowerCase().includes(q) ||
+          String(x.shift || '').toLowerCase().includes(q) ||
+          String(x.status_absen || '').toLowerCase().includes(q)
+        );
+      }
+
+      const summary = buildMonitorSummary(monitorData);
+      els.monitorTotal.textContent = summary.total;
+      els.monitorHadir.textContent = summary.hadir;
+      els.monitorBelum.textContent = summary.belum;
+      els.monitorTelat.textContent = summary.telat;
+      els.monitorProblem.textContent = summary.perluDicek;
+      els.monitorInfo.textContent = data.length + ' data';
+
+      const problem = data.filter(x => x.perlu_dicek).slice(0, 80);
+      els.monitorProblemInfo.textContent = problem.length + ' data';
+      renderMonitorProblems(problem);
+      renderMonitorTable(data);
+    }
+
+    function buildMonitorSummary(data){
+      const out = { total: data.length, hadir:0, belum:0, telat:0, izin:0, alpa:0, off:0, other:0, perluDicek:0 };
+      data.forEach(x => {
+        const b = x.bucket || 'other';
+        if(out[b] === undefined) out[b] = 0;
+        out[b]++;
+        if(x.perlu_dicek) out.perluDicek++;
+      });
+      return out;
+    }
+
+    function renderMonitorProblems(list){
+      if(!list.length){ els.monitorProblemList.innerHTML = '<div class="empty">Tidak ada data yang perlu dicek</div>'; return; }
+      els.monitorProblemList.innerHTML = list.map(item => {
+        const bucket = item.bucket || 'other';
+        const icon = bucket === 'telat' ? 'fa-clock' : bucket === 'belum' ? 'fa-user-clock' : bucket === 'alpa' ? 'fa-circle-xmark' : bucket === 'izin' ? 'fa-file-circle-info' : 'fa-triangle-exclamation';
+        return `<article class="problemItem ${escapeAttr(bucket)}">
+          <div class="problemIcon"><i class="fas ${icon}"></i></div>
+          <div><h4 title="${escapeAttr(item.nama)}">${escapeHtml(item.nama || '-')}</h4><p>${escapeHtml(item.jabatan || 'Staff')} · ${escapeHtml(item.shift || '-')} · ${escapeHtml(item.jam_masuk || '-')}</p></div>
+          ${statusBadge(item)}
+        </article>`;
+      }).join('');
+    }
+
+    function renderMonitorTable(list){
+      if(!list.length){ els.monitorBody.innerHTML = '<tr><td colspan="7" class="empty">Tidak ada data monitoring absen</td></tr>'; return; }
+      els.monitorBody.innerHTML = list.map(item => `
+        <tr>
+          <td><span class="absenName">${escapeHtml(item.nama || '-')}</span></td>
+          <td>${escapeHtml(item.jabatan || '-')}</td>
+          <td>${escapeHtml(item.shift || '-')}</td>
+          <td>${escapeHtml(item.jam_masuk || '-')}</td>
+          <td>${escapeHtml(item.jam_pulang || '-')}</td>
+          <td>${statusBadge(item)}</td>
+          <td>${escapeHtml(item.telat || '-')}</td>
+        </tr>`).join('');
+    }
+
+    function statusBadge(item){
+      const bucket = item.bucket || 'other';
+      const label = item.status_absen || '-';
+      const icon = bucket === 'hadir' ? 'fa-circle-check' : bucket === 'telat' ? 'fa-clock' : bucket === 'belum' ? 'fa-hourglass-half' : bucket === 'off' ? 'fa-ban' : bucket === 'izin' ? 'fa-file-lines' : bucket === 'alpa' ? 'fa-circle-xmark' : 'fa-circle-info';
+      return `<span class="statusBadge ${escapeAttr(bucket)}"><i class="fas ${icon}"></i>${escapeHtml(label)}</span>`;
+    }
+
 
     function findPassportItem(id){
       const key = normalizeKey(id);
@@ -1056,10 +1244,11 @@
     els.pagiList.addEventListener('click', (e) => { const resetBtn = e.target.closest('.btnReset'); if(resetBtn) return doResetCheckin(resetBtn.dataset.id, resetBtn); const btn = e.target.closest('.btnCheck'); if(btn) doCheckin(btn.dataset.id, btn); });
     els.malamList.addEventListener('click', (e) => { const resetBtn = e.target.closest('.btnReset'); if(resetBtn) return doResetCheckin(resetBtn.dataset.id, resetBtn); const btn = e.target.closest('.btnCheck'); if(btn) doCheckin(btn.dataset.id, btn); });
     els.searchInput.addEventListener('input', () => { clearTimeout(searchTimer); searchTimer = setTimeout(renderCurrent, 100); });
-    els.refreshBtn.addEventListener('click', () => currentMode === 'paspor' ? loadPassport(false, true) : loadData(false, true));
+    els.refreshBtn.addEventListener('click', () => loadCurrent(false, true));
     els.resetAllBtn.addEventListener('click', doResetAllCheckin);
     els.modeCheckin.addEventListener('click', () => setMode('checkin'));
     els.modePaspor.addEventListener('click', () => setMode('paspor'));
+    if(els.modeMonitor) els.modeMonitor.addEventListener('click', () => setMode('monitor'));
     els.pasporPagiList.addEventListener('click', (e) => { const undo = e.target.closest('.btnPaspor.undo'); if(undo) return doPassportReset(undo.dataset.id, undo); const btn = e.target.closest('.btnPaspor'); if(btn) doPassportMark(btn.dataset.id); });
     els.pasporMalamList.addEventListener('click', (e) => { const undo = e.target.closest('.btnPaspor.undo'); if(undo) return doPassportReset(undo.dataset.id, undo); const btn = e.target.closest('.btnPaspor'); if(btn) doPassportMark(btn.dataset.id); });
     els.resetAllPasporBtn.addEventListener('click', doResetAllPaspor);
@@ -1068,10 +1257,11 @@
     // Setiap 5 detik dashboard cek perubahan dari DATA CHECKIN HARIAN.
     loadData(false, true);
     loadPassport(true, true);
-    setInterval(() => currentMode === 'paspor' ? loadPassport(true) : loadData(true), REALTIME_REFRESH_MS);
-    document.addEventListener('visibilitychange', () => { if(!document.hidden) currentMode === 'paspor' ? loadPassport(true, true) : loadData(true, true); });
-    window.addEventListener('focus', () => currentMode === 'paspor' ? loadPassport(true, true) : loadData(true, true));
-    window.addEventListener('online', () => currentMode === 'paspor' ? loadPassport(true, true) : loadData(true, true));
+    loadMonitoring(true, true);
+    setInterval(() => loadCurrent(true), REALTIME_REFRESH_MS);
+    document.addEventListener('visibilitychange', () => { if(!document.hidden) loadCurrent(true, true); });
+    window.addEventListener('focus', () => loadCurrent(true, true));
+    window.addEventListener('online', () => loadCurrent(true, true));
   </script>
 </body>
 </html>
