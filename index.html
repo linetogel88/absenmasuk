@@ -123,17 +123,22 @@
 
 
 
-    .monitorView{display:none}.monitorView.show{display:block}
-    .modeBtn.monitor.active{color:#fff;background:linear-gradient(135deg,rgba(16,185,129,.35),rgba(56,189,248,.28));border-color:rgba(52,211,153,.34)}
-    .monitorHero{border:1px solid rgba(52,211,153,.22);background:linear-gradient(135deg,rgba(16,185,129,.13),rgba(56,189,248,.07));border-radius:24px;padding:14px;margin-bottom:14px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
-    .monitorHero h2{font-size:1.35rem;font-weight:950;letter-spacing:-.04em;display:flex;align-items:center;gap:10px}.monitorHero h2 i{color:#34d399}.monitorHero p{color:#a7f3d0;font-weight:750;font-size:.82rem;margin-top:3px}.monitorSource{font-size:.68rem;color:#94a3b8;font-weight:900;margin-top:5px}
-    .monitorStats{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}.monitorStats .miniStat.problem b{color:#fb7185}.monitorStats .miniStat.telat b{color:#fbbf24}
-    .monitorPanel{display:grid;grid-template-columns:380px 1fr;gap:14px;align-items:start}.monitorCard{border:1px solid rgba(255,255,255,.10);background:rgba(12,16,32,.82);border-radius:22px;overflow:hidden;box-shadow:0 18px 45px rgba(0,0,0,.20)}.monitorHead{padding:13px 15px;border-bottom:1px solid rgba(255,255,255,.09);display:flex;align-items:center;justify-content:space-between;gap:10px;background:linear-gradient(90deg,rgba(16,185,129,.16),rgba(56,189,248,.08))}.monitorHead h3{font-size:.95rem;font-weight:950;display:flex;gap:9px;align-items:center}.monitorHead small{color:#cbd5e1;font-weight:900}
-    .problemList{padding:10px;display:grid;gap:8px;max-height:560px;overflow:auto}.problemItem{border:1px solid rgba(255,255,255,.08);background:rgba(2,6,23,.35);border-radius:15px;padding:10px;display:grid;grid-template-columns:34px 1fr auto;gap:9px;align-items:center}.problemItem h4{font-size:.78rem;font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.problemItem p{font-size:.62rem;color:#94a3b8;font-weight:800;margin-top:2px}.problemIcon{width:34px;height:34px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);color:#fbbf24}.problemItem.telat .problemIcon{color:#fbbf24}.problemItem.belum .problemIcon,.problemItem.alpa .problemIcon{color:#fb7185}.problemItem.izin .problemIcon{color:#38bdf8}
-    .monitorTableWrap{overflow:auto;max-height:640px}.monitorTable{width:100%;border-collapse:separate;border-spacing:0}.monitorTable th{position:sticky;top:0;background:#111827;color:#e5e7eb;text-align:left;font-size:.68rem;text-transform:uppercase;letter-spacing:.03em;padding:11px 12px;border-bottom:1px solid rgba(255,255,255,.11);z-index:1}.monitorTable td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.06);font-size:.76rem;font-weight:750;color:#e2e8f0;white-space:nowrap}.monitorTable tr:hover td{background:rgba(255,255,255,.035)}.absenName{font-weight:950;color:#fff}.statusBadge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 9px;font-size:.62rem;font-weight:950}.statusBadge.hadir{background:rgba(22,199,132,.18);color:#86efac}.statusBadge.belum,.statusBadge.alpa{background:rgba(244,63,94,.16);color:#fecdd3}.statusBadge.telat{background:rgba(245,158,11,.17);color:#fde68a}.statusBadge.izin{background:rgba(56,189,248,.16);color:#bae6fd}.statusBadge.off{background:rgba(139,92,246,.17);color:#ddd6fe}.statusBadge.other{background:rgba(148,163,184,.16);color:#cbd5e1}
 
-    @media(max-width:1260px){.controlBar{grid-template-columns:1fr}.searchBox{min-height:56px}.board{grid-template-columns:1fr}.crewGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.offGrid{grid-template-columns:repeat(2,1fr)}.passportBoard{grid-template-columns:1fr}.passportGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.passportHero{grid-template-columns:1fr}.monitorHero{grid-template-columns:1fr}.monitorPanel{grid-template-columns:1fr}.monitorStats{justify-content:flex-start}}
-    @media(max-width:760px){.page{padding:10px}.heroRow{grid-template-columns:1fr}.topActions{justify-content:flex-start}.titleWrap h1{font-size:1.55rem}.emblem{width:48px;height:48px}.statsStrip{grid-template-columns:repeat(2,1fr)}.crewGrid{grid-template-columns:1fr}.person{grid-template-columns:38px 1fr}.act{grid-column:1/3;width:100%}.btnCheck,.stateTag{width:100%}.offGrid{grid-template-columns:1fr}.controlBar{gap:8px}.hero{padding:14px}.statBox{min-height:62px;padding:10px}.statBox b{font-size:1.35rem}.switchPanel{position:relative;top:auto}.modeBtn{flex:1;justify-content:center;padding:10px}.passportGrid{grid-template-columns:1fr}.passportPerson{grid-template-columns:34px 1fr}.pasporAct{grid-column:1/3}.btnPaspor{width:100%}.monitorStats{justify-content:flex-start}.monitorPanel{grid-template-columns:1fr}.problemList{max-height:none}}
+    .monitorView{display:none}.monitorView.show{display:block}
+    .modeBtn.monitor.active{color:#fff;background:linear-gradient(135deg,rgba(16,185,129,.42),rgba(20,184,166,.26),rgba(56,189,248,.24));border-color:rgba(52,211,153,.42);box-shadow:0 14px 30px rgba(16,185,129,.14)}
+    .monitorHero{position:relative;border:1px solid rgba(52,211,153,.24);background:linear-gradient(135deg,rgba(16,185,129,.16),rgba(14,165,233,.08));border-radius:28px;padding:16px 18px;margin-bottom:14px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;overflow:hidden;box-shadow:0 18px 45px rgba(0,0,0,.20)}
+    .monitorHero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 0%,rgba(52,211,153,.22),transparent 34%),radial-gradient(circle at 100% 0%,rgba(56,189,248,.16),transparent 35%);pointer-events:none}.monitorHero>*{position:relative}
+    .monitorHero h2{font-size:1.35rem;font-weight:950;letter-spacing:-.04em;display:flex;align-items:center;gap:10px}.monitorHero h2 i{color:#34d399}.monitorHero p{color:#bbf7d0;font-weight:800;font-size:.82rem;margin-top:3px}.monitorSource{font-size:.68rem;color:#94a3b8;font-weight:900;margin-top:5px}
+    .monitorStats{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}.monitorStats .miniStat{background:rgba(2,6,23,.42);border-color:rgba(255,255,255,.12)}.monitorStats .miniStat.ok b{color:#34d399}.monitorStats .miniStat.problem b{color:#fb7185}.monitorStats .miniStat.telat b{color:#fbbf24}
+    .monitorShiftBoard{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}.monitorLane{border-radius:26px;overflow:hidden;border:1px solid rgba(255,255,255,.10);background:linear-gradient(180deg,rgba(15,23,42,.92),rgba(8,12,28,.95));box-shadow:0 20px 52px rgba(0,0,0,.24)}.monitorLane.pagi{border-color:rgba(251,191,36,.28);background:linear-gradient(180deg,rgba(71,45,8,.78),rgba(12,16,32,.96) 20%)}.monitorLane.malam{border-color:rgba(129,140,248,.28);background:linear-gradient(180deg,rgba(30,27,75,.86),rgba(12,16,32,.96) 20%)}
+    .monitorLaneHead{padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(255,255,255,.10)}.monitorLane.pagi .monitorLaneHead{background:linear-gradient(90deg,rgba(251,191,36,.20),rgba(255,255,255,.02))}.monitorLane.malam .monitorLaneHead{background:linear-gradient(90deg,rgba(129,140,248,.22),rgba(255,255,255,.02))}.monitorLaneTitle{display:flex;align-items:center;gap:10px;font-size:1rem;font-weight:950;letter-spacing:-.03em;text-transform:uppercase}.monitorLane.pagi .monitorLaneTitle{color:#fff7d6}.monitorLane.pagi .monitorLaneTitle i{color:#fbbf24}.monitorLane.malam .monitorLaneTitle{color:#ede9fe}.monitorLane.malam .monitorLaneTitle i{color:#c4b5fd}.monitorLaneInfo{font-size:.72rem;font-weight:950;color:#cbd5e1;background:rgba(2,6,23,.36);border:1px solid rgba(255,255,255,.10);border-radius:999px;padding:7px 10px}
+    .monitorGrid{padding:11px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;max-height:570px;overflow:auto}.monitorPerson{position:relative;display:grid;grid-template-columns:38px 1fr auto;gap:9px;align-items:center;min-height:64px;padding:10px;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.025));overflow:hidden}.monitorPerson:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:#64748b}.monitorPerson.hadir{background:linear-gradient(135deg,rgba(22,199,132,.24),rgba(20,184,166,.07));border-color:rgba(34,197,94,.42)}.monitorPerson.hadir:before{background:#22c55e}.monitorPerson.telat{background:linear-gradient(135deg,rgba(245,158,11,.23),rgba(245,158,11,.055));border-color:rgba(245,158,11,.42)}.monitorPerson.telat:before{background:#f59e0b}.monitorPerson.belum,.monitorPerson.alpa{background:linear-gradient(135deg,rgba(244,63,94,.22),rgba(244,63,94,.045));border-color:rgba(244,63,94,.42)}.monitorPerson.belum:before,.monitorPerson.alpa:before{background:#f43f5e}.monitorPerson.izin{background:linear-gradient(135deg,rgba(56,189,248,.20),rgba(56,189,248,.045));border-color:rgba(56,189,248,.35)}.monitorPerson.izin:before{background:#38bdf8}.monitorPerson.off{background:linear-gradient(135deg,rgba(139,92,246,.18),rgba(139,92,246,.04));border-color:rgba(139,92,246,.34)}.monitorPerson.off:before{background:#8b5cf6}
+    .monitorMark{width:38px;height:38px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.07);color:#94a3b8;font-weight:950}.monitorPerson.hadir .monitorMark{background:#16c784;color:#fff;box-shadow:0 0 20px rgba(22,199,132,.28)}.monitorPerson.telat .monitorMark{background:#f59e0b;color:#111827;box-shadow:0 0 20px rgba(245,158,11,.25)}.monitorPerson.belum .monitorMark,.monitorPerson.alpa .monitorMark{background:#f43f5e;color:#fff;box-shadow:0 0 18px rgba(244,63,94,.20)}.monitorPerson.izin .monitorMark{background:#38bdf8;color:#062233}.monitorPerson.off .monitorMark{background:#6d5dfc;color:#fff}
+    .monitorPersonInfo{min-width:0}.monitorPersonInfo h4{font-size:.78rem;font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.monitorPersonInfo p{font-size:.62rem;color:#94a3b8;font-weight:850;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.monitorRight{text-align:right;min-width:96px}.monitorLate{font-size:.56rem;font-weight:950;color:#fcd34d;margin-top:4px}.monitorLowerBoard{display:grid;grid-template-columns:380px 1fr;gap:14px;align-items:start;margin-top:14px}.monitorCard{border:1px solid rgba(255,255,255,.10);background:rgba(12,16,32,.82);border-radius:22px;overflow:hidden;box-shadow:0 18px 45px rgba(0,0,0,.20)}.monitorHead{padding:13px 15px;border-bottom:1px solid rgba(255,255,255,.09);display:flex;align-items:center;justify-content:space-between;gap:10px;background:linear-gradient(90deg,rgba(16,185,129,.16),rgba(56,189,248,.08))}.monitorHead h3{font-size:.95rem;font-weight:950;display:flex;gap:9px;align-items:center}.monitorHead small{color:#cbd5e1;font-weight:900}
+    .problemList{padding:10px;display:grid;gap:8px;max-height:380px;overflow:auto}.problemItem{border:1px solid rgba(255,255,255,.08);background:rgba(2,6,23,.35);border-radius:15px;padding:10px;display:grid;grid-template-columns:34px 1fr auto;gap:9px;align-items:center}.problemItem h4{font-size:.78rem;font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.problemItem p{font-size:.62rem;color:#94a3b8;font-weight:800;margin-top:2px}.problemIcon{width:34px;height:34px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);color:#fbbf24}.problemItem.telat .problemIcon{color:#fbbf24}.problemItem.belum .problemIcon,.problemItem.alpa .problemIcon{color:#fb7185}.problemItem.izin .problemIcon{color:#38bdf8}.monitorOffGrid{padding:10px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;max-height:380px;overflow:auto}.statusBadge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 9px;font-size:.60rem;font-weight:950;white-space:nowrap}.statusBadge.hadir{background:rgba(22,199,132,.20);color:#86efac}.statusBadge.belum,.statusBadge.alpa{background:rgba(244,63,94,.16);color:#fecdd3}.statusBadge.telat{background:rgba(245,158,11,.17);color:#fde68a}.statusBadge.izin{background:rgba(56,189,248,.16);color:#bae6fd}.statusBadge.off{background:rgba(139,92,246,.17);color:#ddd6fe}.statusBadge.other{background:rgba(148,163,184,.16);color:#cbd5e1}
+
+    @media(max-width:1260px){.controlBar{grid-template-columns:1fr}.searchBox{min-height:56px}.board{grid-template-columns:1fr}.crewGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.offGrid{grid-template-columns:repeat(2,1fr)}.passportBoard{grid-template-columns:1fr}.passportGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.passportHero{grid-template-columns:1fr}.monitorHero{grid-template-columns:1fr}.monitorShiftBoard{grid-template-columns:1fr}.monitorLowerBoard{grid-template-columns:1fr}.monitorStats{justify-content:flex-start}.monitorOffGrid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:760px){.page{padding:10px}.heroRow{grid-template-columns:1fr}.topActions{justify-content:flex-start}.titleWrap h1{font-size:1.55rem}.emblem{width:48px;height:48px}.statsStrip{grid-template-columns:repeat(2,1fr)}.crewGrid{grid-template-columns:1fr}.person{grid-template-columns:38px 1fr}.act{grid-column:1/3;width:100%}.btnCheck,.stateTag{width:100%}.offGrid{grid-template-columns:1fr}.controlBar{gap:8px}.hero{padding:14px}.statBox{min-height:62px;padding:10px}.statBox b{font-size:1.35rem}.switchPanel{position:relative;top:auto}.modeBtn{flex:1;justify-content:center;padding:10px}.passportGrid{grid-template-columns:1fr}.passportPerson{grid-template-columns:34px 1fr}.pasporAct{grid-column:1/3}.btnPaspor{width:100%}.monitorStats{justify-content:flex-start}.monitorShiftBoard{grid-template-columns:1fr}.monitorLowerBoard{grid-template-columns:1fr}.monitorGrid{grid-template-columns:1fr;max-height:none}.monitorOffGrid{grid-template-columns:1fr}.problemList{max-height:none}}
     @media(min-width:1261px) and (max-height:850px){.page{padding:10px 16px}.hero{padding:12px 16px;margin-bottom:9px}.emblem{width:48px;height:48px}.titleWrap h1{font-size:1.65rem}.controlBar{margin-bottom:9px}.statBox{min-height:58px;padding:9px 12px}.statBox b{font-size:1.35rem}.statIcon{width:34px;height:34px}.laneHead{padding:11px 13px}.crewGrid{gap:7px;padding:9px}.person{min-height:59px;padding:8px;grid-template-columns:36px 1fr 88px}.avatar{width:36px;height:36px;border-radius:13px}.person h4{font-size:.76rem}.person p{font-size:.61rem}.btnCheck{min-width:80px;padding:8px 8px;font-size:.64rem}.btnReset{min-width:72px;padding:4px 6px;font-size:.50rem}.stateTag{min-width:80px;padding:7px 7px;font-size:.58rem}.smallNote{font-size:.56rem}.timeText{font-size:.58rem}.offSection{margin-top:9px}.offHead{padding:9px 13px}.offGrid{gap:7px;padding:8px}.offItem{padding:7px}.offItem h4{font-size:.69rem}.foot{display:none}}
   </style>
 </head>
@@ -246,33 +251,36 @@
         </div>
       </div>
 
-      <div class="monitorPanel">
+      <div class="monitorShiftBoard">
+        <section class="monitorLane pagi">
+          <div class="monitorLaneHead">
+            <div class="monitorLaneTitle"><i class="fas fa-sun"></i> SHIFT PAGI</div>
+            <div class="monitorLaneInfo" id="monitorPagiInfo">0 data</div>
+          </div>
+          <div class="monitorGrid" id="monitorPagiList"></div>
+        </section>
+
+        <section class="monitorLane malam">
+          <div class="monitorLaneHead">
+            <div class="monitorLaneTitle"><i class="fas fa-moon"></i> SHIFT MALAM</div>
+            <div class="monitorLaneInfo" id="monitorMalamInfo">0 data</div>
+          </div>
+          <div class="monitorGrid" id="monitorMalamList"></div>
+        </section>
+      </div>
+
+      <div class="monitorLowerBoard">
         <section class="monitorCard">
           <div class="monitorHead"><h3><i class="fas fa-triangle-exclamation"></i> Perlu Dicek</h3><small id="monitorProblemInfo">0 data</small></div>
           <div class="problemList" id="monitorProblemList"></div>
         </section>
 
         <section class="monitorCard">
-          <div class="monitorHead"><h3><i class="fas fa-table-list"></i> Semua Data Absen</h3><small id="monitorInfo">0 data</small></div>
-          <div class="monitorTableWrap">
-            <table class="monitorTable">
-              <thead>
-                <tr>
-                  <th>Nama</th>
-                  <th>Jabatan</th>
-                  <th>Shift</th>
-                  <th>Jam Masuk</th>
-                  <th>Jam Pulang</th>
-                  <th>Status</th>
-                  <th>Telat</th>
-                </tr>
-              </thead>
-              <tbody id="monitorBody"></tbody>
-            </table>
-          </div>
+          <div class="monitorHead"><h3><i class="fas fa-user-slash"></i> OFFDAY / CUTI / LIBUR</h3><small id="monitorOffInfo">0 data</small></div>
+          <div class="monitorOffGrid" id="monitorOffList"></div>
         </section>
       </div>
-      <div class="foot"><i class="fas fa-circle-info"></i> Monitoring ini membaca otomatis dari DATA ABSEN HARIAN dan ikut refresh real-time.</div>
+      <div class="foot"><i class="fas fa-circle-info"></i> Monitoring absen dibuat sejajar per shift. Jam kerja tidak ditampilkan khusus di menu ini.</div>
     </section>
 
 
@@ -358,8 +366,12 @@
       monitorProblem: document.getElementById('monitorProblem'),
       monitorProblemInfo: document.getElementById('monitorProblemInfo'),
       monitorProblemList: document.getElementById('monitorProblemList'),
-      monitorInfo: document.getElementById('monitorInfo'),
-      monitorBody: document.getElementById('monitorBody'),
+      monitorPagiInfo: document.getElementById('monitorPagiInfo'),
+      monitorMalamInfo: document.getElementById('monitorMalamInfo'),
+      monitorOffInfo: document.getElementById('monitorOffInfo'),
+      monitorPagiList: document.getElementById('monitorPagiList'),
+      monitorMalamList: document.getElementById('monitorMalamList'),
+      monitorOffList: document.getElementById('monitorOffList'),
       monitorSource: document.getElementById('monitorSource')
     };
 
@@ -749,12 +761,22 @@
       els.monitorBelum.textContent = summary.belum;
       els.monitorTelat.textContent = summary.telat;
       els.monitorProblem.textContent = summary.perluDicek;
-      els.monitorInfo.textContent = data.length + ' data';
 
+      const active = data.filter(x => !isMonitorOff(x));
+      const pagi = active.filter(x => isShiftPagi(x.shift));
+      const malam = active.filter(x => isShiftMalam(x.shift));
+      const off = data.filter(x => isMonitorOff(x));
       const problem = data.filter(x => x.perlu_dicek).slice(0, 80);
+
+      els.monitorPagiInfo.textContent = pagi.length + ' data';
+      els.monitorMalamInfo.textContent = malam.length + ' data';
+      els.monitorOffInfo.textContent = off.length + ' data';
       els.monitorProblemInfo.textContent = problem.length + ' data';
+
+      renderMonitorLane(els.monitorPagiList, pagi, 'pagi');
+      renderMonitorLane(els.monitorMalamList, malam, 'malam');
+      renderMonitorOff(off);
       renderMonitorProblems(problem);
-      renderMonitorTable(data);
     }
 
     function buildMonitorSummary(data){
@@ -768,6 +790,37 @@
       return out;
     }
 
+    function renderMonitorLane(container, list, shiftType){
+      if(!container) return;
+      if(!list.length){ container.innerHTML = `<div class="empty">Tidak ada data shift ${shiftType === 'malam' ? 'malam' : 'pagi'}</div>`; return; }
+      container.innerHTML = list.map(item => monitorPersonHtml(item)).join('');
+    }
+
+    function monitorPersonHtml(item){
+      const bucket = item.bucket || 'other';
+      const icon = bucket === 'hadir' ? 'fa-check' : bucket === 'telat' ? 'fa-clock' : bucket === 'belum' ? 'fa-hourglass-half' : bucket === 'alpa' ? 'fa-xmark' : bucket === 'izin' ? 'fa-file-lines' : 'fa-circle-info';
+      const telat = item.telat && item.telat !== '-' ? `<div class="monitorLate"><i class="fas fa-clock"></i> ${escapeHtml(item.telat)}</div>` : '';
+      return `<article class="monitorPerson ${escapeAttr(bucket)}">
+        <div class="monitorMark"><i class="fas ${icon}"></i></div>
+        <div class="monitorPersonInfo"><h4 title="${escapeAttr(item.nama)}">${escapeHtml(item.nama || '-')}</h4><p>${escapeHtml(item.jabatan || 'Staff')}</p></div>
+        <div class="monitorRight">${statusBadge(item)}${telat}</div>
+      </article>`;
+    }
+
+    function renderMonitorOff(list){
+      if(!els.monitorOffList) return;
+      if(!list.length){ els.monitorOffList.innerHTML = '<div class="empty">Tidak ada OFFDAY / CUTI / LIBUR</div>'; return; }
+      els.monitorOffList.innerHTML = list.map(item => {
+        const status = item.status_absen || item.shift || '-';
+        const isCuti = String(status).toUpperCase().includes('CUTI');
+        return `<article class="offItem ${isCuti ? 'cuti':'offday'}">
+          <div class="avatar">${initials(item.nama || '-')}</div>
+          <div><h4 title="${escapeAttr(item.nama)}">${escapeHtml(item.nama || '-')}</h4><p>${escapeHtml(item.jabatan || 'Staff')}</p></div>
+          <div class="offBadge">${escapeHtml(status)}</div>
+        </article>`;
+      }).join('');
+    }
+
     function renderMonitorProblems(list){
       if(!list.length){ els.monitorProblemList.innerHTML = '<div class="empty">Tidak ada data yang perlu dicek</div>'; return; }
       els.monitorProblemList.innerHTML = list.map(item => {
@@ -775,25 +828,21 @@
         const icon = bucket === 'telat' ? 'fa-clock' : bucket === 'belum' ? 'fa-user-clock' : bucket === 'alpa' ? 'fa-circle-xmark' : bucket === 'izin' ? 'fa-file-circle-info' : 'fa-triangle-exclamation';
         return `<article class="problemItem ${escapeAttr(bucket)}">
           <div class="problemIcon"><i class="fas ${icon}"></i></div>
-          <div><h4 title="${escapeAttr(item.nama)}">${escapeHtml(item.nama || '-')}</h4><p>${escapeHtml(item.jabatan || 'Staff')} · ${escapeHtml(item.shift || '-')} · ${escapeHtml(item.jam_masuk || '-')}</p></div>
+          <div><h4 title="${escapeAttr(item.nama)}">${escapeHtml(item.nama || '-')}</h4><p>${escapeHtml(item.jabatan || 'Staff')} · ${escapeHtml(item.shift || '-')}</p></div>
           ${statusBadge(item)}
         </article>`;
       }).join('');
     }
 
-    function renderMonitorTable(list){
-      if(!list.length){ els.monitorBody.innerHTML = '<tr><td colspan="7" class="empty">Tidak ada data monitoring absen</td></tr>'; return; }
-      els.monitorBody.innerHTML = list.map(item => `
-        <tr>
-          <td><span class="absenName">${escapeHtml(item.nama || '-')}</span></td>
-          <td>${escapeHtml(item.jabatan || '-')}</td>
-          <td>${escapeHtml(item.shift || '-')}</td>
-          <td>${escapeHtml(item.jam_masuk || '-')}</td>
-          <td>${escapeHtml(item.jam_pulang || '-')}</td>
-          <td>${statusBadge(item)}</td>
-          <td>${escapeHtml(item.telat || '-')}</td>
-        </tr>`).join('');
+    function isMonitorOff(item){
+      const b = String(item.bucket || '').toLowerCase();
+      const s = String(item.shift || '').toUpperCase();
+      const st = String(item.status_absen || '').toUpperCase();
+      return b === 'off' || /OFF|OFFDAY|OFF DAY|CUTI|LIBUR/.test(s) || /OFF|OFFDAY|OFF DAY|CUTI|LIBUR/.test(st);
     }
+
+    function isShiftPagi(shift){ return String(shift || '').trim().toLowerCase() === 'pagi'; }
+    function isShiftMalam(shift){ return String(shift || '').trim().toLowerCase() === 'malam'; }
 
     function statusBadge(item){
       const bucket = item.bucket || 'other';
@@ -801,7 +850,6 @@
       const icon = bucket === 'hadir' ? 'fa-circle-check' : bucket === 'telat' ? 'fa-clock' : bucket === 'belum' ? 'fa-hourglass-half' : bucket === 'off' ? 'fa-ban' : bucket === 'izin' ? 'fa-file-lines' : bucket === 'alpa' ? 'fa-circle-xmark' : 'fa-circle-info';
       return `<span class="statusBadge ${escapeAttr(bucket)}"><i class="fas ${icon}"></i>${escapeHtml(label)}</span>`;
     }
-
 
     function findPassportItem(id){
       const key = normalizeKey(id);
