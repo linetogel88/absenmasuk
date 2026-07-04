@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -132,10 +133,10 @@
     .monitorStats{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}.monitorStats .miniStat{background:rgba(2,6,23,.46);border-color:rgba(125,211,252,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}.monitorStats .miniStat.ok b{color:#34d399}.monitorStats .miniStat.problem b{color:#fb7185}.monitorStats .miniStat.telat b{color:#fbbf24}
     .monitorShiftBoard{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}.monitorLane{position:relative;border-radius:26px;overflow:hidden;border:1px solid rgba(125,211,252,.15);background:linear-gradient(180deg,rgba(2,8,23,.96),rgba(8,13,30,.96));box-shadow:0 22px 55px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.04)}.monitorLane:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 0% 0%,rgba(56,189,248,.10),transparent 32%)}.monitorLane.pagi{border-color:rgba(251,191,36,.30);background:linear-gradient(180deg,rgba(44,28,7,.92),rgba(7,12,26,.97) 24%)}.monitorLane.malam{border-color:rgba(99,102,241,.32);background:linear-gradient(180deg,rgba(21,19,61,.94),rgba(7,12,26,.97) 24%)}
     .monitorLaneHead{position:relative;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(255,255,255,.10)}.monitorLane.pagi .monitorLaneHead{background:linear-gradient(90deg,rgba(245,158,11,.23),rgba(14,165,233,.05))}.monitorLane.malam .monitorLaneHead{background:linear-gradient(90deg,rgba(99,102,241,.25),rgba(14,165,233,.06))}.monitorLaneTitle{display:flex;align-items:center;gap:10px;font-size:1rem;font-weight:950;letter-spacing:-.03em;text-transform:uppercase}.monitorLane.pagi .monitorLaneTitle{color:#fff7d6}.monitorLane.pagi .monitorLaneTitle i{color:#fbbf24}.monitorLane.malam .monitorLaneTitle{color:#e0e7ff}.monitorLane.malam .monitorLaneTitle i{color:#a5b4fc}.monitorLaneInfo{font-size:.72rem;font-weight:950;color:#dbeafe;background:rgba(2,6,23,.44);border:1px solid rgba(125,211,252,.16);border-radius:999px;padding:7px 10px}
-    .monitorGrid{position:relative;padding:11px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;max-height:570px;overflow:auto}.monitorPerson{position:relative;display:grid;grid-template-columns:42px 1fr auto;gap:10px;align-items:center;min-height:66px;padding:10px 11px;border-radius:20px;border:1px solid rgba(125,211,252,.10);background:linear-gradient(135deg,rgba(15,23,42,.76),rgba(2,6,23,.60));overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}.monitorPerson:before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:4px;border-radius:999px;background:#64748b}.monitorPerson:after{content:"";position:absolute;right:-28px;top:-40px;width:90px;height:90px;border-radius:99px;background:rgba(56,189,248,.055);pointer-events:none}.monitorPerson.hadir{background:linear-gradient(135deg,rgba(6,78,59,.36),rgba(2,20,34,.72));border-color:rgba(34,197,94,.38)}.monitorPerson.hadir:before{background:#22c55e;box-shadow:0 0 16px rgba(34,197,94,.42)}.monitorPerson.telat{background:linear-gradient(135deg,rgba(120,53,15,.40),rgba(23,16,7,.72));border-color:rgba(245,158,11,.46)}.monitorPerson.telat:before{background:#f59e0b;box-shadow:0 0 16px rgba(245,158,11,.38)}.monitorPerson.belum,.monitorPerson.alpa{background:linear-gradient(135deg,rgba(127,29,29,.56),rgba(45,9,22,.80));border-color:rgba(244,63,94,.72);animation:monitorRedBlink 1.05s infinite}.monitorPerson.belum:before,.monitorPerson.alpa:before{background:#f43f5e;box-shadow:0 0 20px rgba(244,63,94,.70)}.monitorPerson.izin{background:linear-gradient(135deg,rgba(7,89,133,.34),rgba(2,20,34,.72));border-color:rgba(56,189,248,.42)}.monitorPerson.izin:before{background:#38bdf8}.monitorPerson.off{background:linear-gradient(135deg,rgba(76,29,149,.28),rgba(15,23,42,.74));border-color:rgba(139,92,246,.36)}.monitorPerson.off:before{background:#8b5cf6}
-    .monitorMark{position:relative;width:42px;height:42px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:rgba(15,23,42,.78);border:1px solid rgba(148,163,184,.18);color:#94a3b8;font-weight:950;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}.monitorMark:after{content:"";position:absolute;inset:-5px;border-radius:inherit;border:1px solid rgba(125,211,252,.08)}.monitorPerson.hadir .monitorMark{background:linear-gradient(135deg,#16c784,#059669);color:#fff;box-shadow:0 0 20px rgba(22,199,132,.28)}.monitorPerson.telat .monitorMark{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#111827;box-shadow:0 0 20px rgba(245,158,11,.25)}.monitorPerson.belum .monitorMark,.monitorPerson.alpa .monitorMark{background:linear-gradient(135deg,#ef4444,#be123c);color:#fff;box-shadow:0 0 26px rgba(244,63,94,.58);animation:monitorRedOrb .75s infinite}.monitorPerson.izin .monitorMark{background:linear-gradient(135deg,#38bdf8,#0ea5e9);color:#062233}.monitorPerson.off .monitorMark{background:linear-gradient(135deg,#8b5cf6,#4c1d95);color:#fff}
-    .monitorPersonInfo{min-width:0}.monitorPersonInfo h4{font-size:.78rem;font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.monitorPersonInfo p{font-size:.62rem;color:#a7b4cc;font-weight:850;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.monitorRight{text-align:right;min-width:96px}.monitorLate{font-size:.56rem;font-weight:950;color:#fcd34d;margin-top:4px}.monitorLowerBoard{display:grid;grid-template-columns:380px 1fr;gap:14px;align-items:start;margin-top:14px}.monitorCard{border:1px solid rgba(125,211,252,.13);background:linear-gradient(180deg,rgba(15,23,42,.86),rgba(2,6,23,.82));border-radius:22px;overflow:hidden;box-shadow:0 18px 45px rgba(0,0,0,.20)}.monitorHead{padding:13px 15px;border-bottom:1px solid rgba(255,255,255,.09);display:flex;align-items:center;justify-content:space-between;gap:10px;background:linear-gradient(90deg,rgba(14,165,233,.16),rgba(16,185,129,.08))}.monitorHead h3{font-size:.95rem;font-weight:950;display:flex;gap:9px;align-items:center}.monitorHead small{color:#cbd5e1;font-weight:900}
-    .problemList{padding:10px;display:grid;gap:8px;max-height:380px;overflow:auto}.problemItem{border:1px solid rgba(125,211,252,.10);background:rgba(2,6,23,.40);border-radius:15px;padding:10px;display:grid;grid-template-columns:34px 1fr auto;gap:9px;align-items:center}.problemItem.belum,.problemItem.alpa{border-color:rgba(244,63,94,.62);background:linear-gradient(135deg,rgba(127,29,29,.40),rgba(2,6,23,.44));animation:monitorRedBlink 1.05s infinite}.problemItem h4{font-size:.78rem;font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.problemItem p{font-size:.62rem;color:#94a3b8;font-weight:800;margin-top:2px}.problemIcon{width:34px;height:34px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);color:#fbbf24}.problemItem.telat .problemIcon{color:#fbbf24}.problemItem.belum .problemIcon,.problemItem.alpa .problemIcon{background:#ef4444;color:#fff;box-shadow:0 0 18px rgba(244,63,94,.45);animation:monitorRedOrb .75s infinite}.problemItem.izin .problemIcon{color:#38bdf8}.monitorOffGrid{padding:10px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;max-height:380px;overflow:auto}.statusBadge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 9px;font-size:.60rem;font-weight:950;white-space:nowrap;border:1px solid rgba(255,255,255,.06)}.statusBadge.hadir{background:rgba(22,199,132,.20);color:#86efac}.statusBadge.belum,.statusBadge.alpa{background:rgba(244,63,94,.24);color:#fff;border-color:rgba(244,63,94,.32);box-shadow:0 0 14px rgba(244,63,94,.22);animation:monitorBadgeBlink .75s infinite}.statusBadge.telat{background:rgba(245,158,11,.17);color:#fde68a}.statusBadge.izin{background:rgba(56,189,248,.16);color:#bae6fd}.statusBadge.off{background:rgba(139,92,246,.17);color:#ddd6fe}.statusBadge.other{background:rgba(148,163,184,.16);color:#cbd5e1}
+    .monitorGrid{position:relative;padding:11px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;max-height:570px;overflow:auto}.monitorPerson{position:relative;display:grid;grid-template-columns:42px 1fr auto;gap:10px;align-items:center;min-height:66px;padding:10px 11px;border-radius:20px;border:1px solid rgba(125,211,252,.10);background:linear-gradient(135deg,rgba(15,23,42,.76),rgba(2,6,23,.60));overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}.monitorPerson:before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:4px;border-radius:999px;background:#64748b}.monitorPerson:after{content:"";position:absolute;right:-28px;top:-40px;width:90px;height:90px;border-radius:99px;background:rgba(56,189,248,.055);pointer-events:none}.monitorPerson.hadir{background:linear-gradient(135deg,rgba(6,78,59,.36),rgba(2,20,34,.72));border-color:rgba(34,197,94,.38)}.monitorPerson.hadir:before{background:#22c55e;box-shadow:0 0 16px rgba(34,197,94,.42)}.monitorPerson.telat{background:linear-gradient(135deg,rgba(120,53,15,.40),rgba(23,16,7,.72));border-color:rgba(245,158,11,.46)}.monitorPerson.telat:before{background:#f59e0b;box-shadow:0 0 16px rgba(245,158,11,.38)}.monitorPerson.belum,.monitorPerson.alpa{background:linear-gradient(135deg,rgba(127,29,29,.48),rgba(45,9,22,.72));border-color:rgba(244,63,94,.62)}.monitorPerson.belum:before,.monitorPerson.alpa:before{background:#f43f5e;box-shadow:0 0 14px rgba(244,63,94,.45)}.monitorPerson.belum.blinkNow,.monitorPerson.alpa.blinkNow{animation:monitorRedBlink 1.05s infinite}.monitorPerson.belum.blinkNow:before,.monitorPerson.alpa.blinkNow:before{box-shadow:0 0 24px rgba(244,63,94,.78)}.monitorPerson.izin{background:linear-gradient(135deg,rgba(7,89,133,.34),rgba(2,20,34,.72));border-color:rgba(56,189,248,.42)}.monitorPerson.izin:before{background:#38bdf8}.monitorPerson.off{background:linear-gradient(135deg,rgba(76,29,149,.28),rgba(15,23,42,.74));border-color:rgba(139,92,246,.36)}.monitorPerson.off:before{background:#8b5cf6}
+    .monitorMark{position:relative;width:42px;height:42px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:rgba(15,23,42,.78);border:1px solid rgba(148,163,184,.18);color:#94a3b8;font-weight:950;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}.monitorMark:after{content:"";position:absolute;inset:-5px;border-radius:inherit;border:1px solid rgba(125,211,252,.08)}.monitorPerson.hadir .monitorMark{background:linear-gradient(135deg,#16c784,#059669);color:#fff;box-shadow:0 0 20px rgba(22,199,132,.28)}.monitorPerson.telat .monitorMark{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#111827;box-shadow:0 0 20px rgba(245,158,11,.25)}.monitorPerson.belum .monitorMark,.monitorPerson.alpa .monitorMark{background:linear-gradient(135deg,#ef4444,#be123c);color:#fff;box-shadow:0 0 18px rgba(244,63,94,.38)}.monitorPerson.belum.blinkNow .monitorMark,.monitorPerson.alpa.blinkNow .monitorMark{box-shadow:0 0 28px rgba(244,63,94,.70);animation:monitorRedOrb .75s infinite}.monitorPerson.izin .monitorMark{background:linear-gradient(135deg,#38bdf8,#0ea5e9);color:#062233}.monitorPerson.off .monitorMark{background:linear-gradient(135deg,#8b5cf6,#4c1d95);color:#fff}
+    .monitorPersonInfo{min-width:0}.monitorPersonInfo h4{font-size:.78rem;font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.monitorPersonInfo p{font-size:.62rem;color:#a7b4cc;font-weight:850;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.monitorRight{text-align:right;min-width:96px}.monitorLate{font-size:.56rem;font-weight:950;color:#fcd34d;margin-top:4px}.monitorLowerBoard{display:grid;grid-template-columns:1fr;gap:14px;align-items:start;margin-top:14px}.monitorLowerBoard.single{grid-template-columns:1fr}.monitorCard{border:1px solid rgba(125,211,252,.13);background:linear-gradient(180deg,rgba(15,23,42,.86),rgba(2,6,23,.82));border-radius:22px;overflow:hidden;box-shadow:0 18px 45px rgba(0,0,0,.20)}.monitorOffCard{background:linear-gradient(135deg,rgba(30,41,59,.74),rgba(17,24,39,.82));border-color:rgba(139,92,246,.24)}.monitorHead{padding:13px 15px;border-bottom:1px solid rgba(255,255,255,.09);display:flex;align-items:center;justify-content:space-between;gap:10px;background:linear-gradient(90deg,rgba(14,165,233,.16),rgba(16,185,129,.08))}.monitorHead h3{font-size:.95rem;font-weight:950;display:flex;gap:9px;align-items:center}.monitorHead small{color:#cbd5e1;font-weight:900}
+    .problemList{padding:10px;display:grid;gap:8px;max-height:380px;overflow:auto}.problemItem{border:1px solid rgba(125,211,252,.10);background:rgba(2,6,23,.40);border-radius:15px;padding:10px;display:grid;grid-template-columns:34px 1fr auto;gap:9px;align-items:center}.problemItem.belum,.problemItem.alpa{border-color:rgba(244,63,94,.62);background:linear-gradient(135deg,rgba(127,29,29,.40),rgba(2,6,23,.44));animation:monitorRedBlink 1.05s infinite}.problemItem h4{font-size:.78rem;font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.problemItem p{font-size:.62rem;color:#94a3b8;font-weight:800;margin-top:2px}.problemIcon{width:34px;height:34px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);color:#fbbf24}.problemItem.telat .problemIcon{color:#fbbf24}.problemItem.belum .problemIcon,.problemItem.alpa .problemIcon{background:#ef4444;color:#fff;box-shadow:0 0 18px rgba(244,63,94,.45);animation:monitorRedOrb .75s infinite}.problemItem.izin .problemIcon{color:#38bdf8}.monitorOffGrid{padding:10px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;max-height:380px;overflow:auto}.statusBadge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 9px;font-size:.60rem;font-weight:950;white-space:nowrap;border:1px solid rgba(255,255,255,.06)}.statusBadge.hadir{background:rgba(22,199,132,.20);color:#86efac}.statusBadge.belum,.statusBadge.alpa{background:rgba(244,63,94,.24);color:#fff;border-color:rgba(244,63,94,.32);box-shadow:0 0 12px rgba(244,63,94,.18)}.monitorPerson.blinkNow .statusBadge.belum,.monitorPerson.blinkNow .statusBadge.alpa{animation:monitorBadgeBlink .75s infinite;box-shadow:0 0 18px rgba(244,63,94,.34)}.statusBadge.telat{background:rgba(245,158,11,.17);color:#fde68a}.statusBadge.izin{background:rgba(56,189,248,.16);color:#bae6fd}.statusBadge.off{background:rgba(139,92,246,.17);color:#ddd6fe}.statusBadge.other{background:rgba(148,163,184,.16);color:#cbd5e1}
     @keyframes monitorRedBlink{0%,100%{box-shadow:0 0 0 rgba(244,63,94,0),inset 0 1px 0 rgba(255,255,255,.035);filter:brightness(1)}50%{box-shadow:0 0 28px rgba(244,63,94,.42),inset 0 0 0 1px rgba(248,113,113,.35);filter:brightness(1.22)}}
     @keyframes monitorRedOrb{0%,100%{transform:scale(1);filter:brightness(1)}50%{transform:scale(1.08);filter:brightness(1.45)}}
     @keyframes monitorBadgeBlink{0%,100%{opacity:1}50%{opacity:.55}}
@@ -144,6 +145,21 @@
     @media(max-width:1260px){.controlBar{grid-template-columns:1fr}.searchBox{min-height:56px}.board{grid-template-columns:1fr}.crewGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.offGrid{grid-template-columns:repeat(2,1fr)}.passportBoard{grid-template-columns:1fr}.passportGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.passportHero{grid-template-columns:1fr}.monitorHero{grid-template-columns:1fr}.monitorShiftBoard{grid-template-columns:1fr}.monitorLowerBoard{grid-template-columns:1fr}.monitorStats{justify-content:flex-start}.monitorOffGrid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:760px){.page{padding:10px}.heroRow{grid-template-columns:1fr}.topActions{justify-content:flex-start}.titleWrap h1{font-size:1.55rem}.emblem{width:48px;height:48px}.statsStrip{grid-template-columns:repeat(2,1fr)}.crewGrid{grid-template-columns:1fr}.person{grid-template-columns:38px 1fr}.act{grid-column:1/3;width:100%}.btnCheck,.stateTag{width:100%}.offGrid{grid-template-columns:1fr}.controlBar{gap:8px}.hero{padding:14px}.statBox{min-height:62px;padding:10px}.statBox b{font-size:1.35rem}.switchPanel{position:relative;top:auto}.modeBtn{flex:1;justify-content:center;padding:10px}.passportGrid{grid-template-columns:1fr}.passportPerson{grid-template-columns:34px 1fr}.pasporAct{grid-column:1/3}.btnPaspor{width:100%}.monitorStats{justify-content:flex-start}.monitorShiftBoard{grid-template-columns:1fr}.monitorLowerBoard{grid-template-columns:1fr}.monitorGrid{grid-template-columns:1fr;max-height:none}.monitorOffGrid{grid-template-columns:1fr}.problemList{max-height:none}}
     @media(min-width:1261px) and (max-height:850px){.page{padding:10px 16px}.hero{padding:12px 16px;margin-bottom:9px}.emblem{width:48px;height:48px}.titleWrap h1{font-size:1.65rem}.controlBar{margin-bottom:9px}.statBox{min-height:58px;padding:9px 12px}.statBox b{font-size:1.35rem}.statIcon{width:34px;height:34px}.laneHead{padding:11px 13px}.crewGrid{gap:7px;padding:9px}.person{min-height:59px;padding:8px;grid-template-columns:36px 1fr 88px}.avatar{width:36px;height:36px;border-radius:13px}.person h4{font-size:.76rem}.person p{font-size:.61rem}.btnCheck{min-width:80px;padding:8px 8px;font-size:.64rem}.btnReset{min-width:72px;padding:4px 6px;font-size:.50rem}.stateTag{min-width:80px;padding:7px 7px;font-size:.58rem}.smallNote{font-size:.56rem}.timeText{font-size:.58rem}.offSection{margin-top:9px}.offHead{padding:9px 13px}.offGrid{gap:7px;padding:8px}.offItem{padding:7px}.offItem h4{font-size:.69rem}.foot{display:none}}
+
+    /* PATCH MONITORING ABSEN: beda dari check paspor + jadwal kedip */
+    .monitorHero{border-radius:30px;background:linear-gradient(135deg,rgba(3,105,161,.24),rgba(8,13,30,.78) 42%,rgba(20,184,166,.14));}
+    .monitorStats .miniStat{min-width:132px;border-radius:18px;}
+    .monitorStats .miniStat.wait b{color:#fbbf24}
+    .monitorShiftBoard{align-items:stretch}
+    .monitorLane{border-radius:28px;}
+    .monitorLaneHead{min-height:58px}
+    .monitorGrid::-webkit-scrollbar,.monitorOffGrid::-webkit-scrollbar{width:8px;height:8px}
+    .monitorGrid::-webkit-scrollbar-thumb,.monitorOffGrid::-webkit-scrollbar-thumb{background:rgba(125,211,252,.25);border-radius:999px}
+    .monitorPerson{border-radius:18px}
+    .monitorPerson.hadir .statusBadge{background:rgba(34,197,94,.22);border-color:rgba(34,197,94,.20)}
+
+    @media(max-width:1260px){.monitorOffGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:760px){.monitorOffGrid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -249,7 +265,6 @@
           <div class="miniStat ok"><span>Hadir</span><b id="monitorHadir">0</b></div>
           <div class="miniStat wait"><span>Belum</span><b id="monitorBelum">0</b></div>
           <div class="miniStat telat"><span>Telat</span><b id="monitorTelat">0</b></div>
-          <div class="miniStat problem"><span>Perlu Dicek</span><b id="monitorProblem">0</b></div>
         </div>
       </div>
 
@@ -271,18 +286,12 @@
         </section>
       </div>
 
-      <div class="monitorLowerBoard">
-        <section class="monitorCard">
-          <div class="monitorHead"><h3><i class="fas fa-triangle-exclamation"></i> Perlu Dicek</h3><small id="monitorProblemInfo">0 data</small></div>
-          <div class="problemList" id="monitorProblemList"></div>
-        </section>
-
-        <section class="monitorCard">
+      <div class="monitorLowerBoard single">
+        <section class="monitorCard monitorOffCard">
           <div class="monitorHead"><h3><i class="fas fa-user-slash"></i> OFFDAY / CUTI / LIBUR</h3><small id="monitorOffInfo">0 data</small></div>
           <div class="monitorOffGrid" id="monitorOffList"></div>
         </section>
       </div>
-      <div class="foot"><i class="fas fa-circle-info"></i> Monitoring absen dibuat sejajar per shift. Jam kerja tidak ditampilkan khusus di menu ini.</div>
     </section>
 
 
@@ -606,6 +615,9 @@
             els.monitorSource.textContent = 'Sumber: ' + (result.sheetName || 'DATA ABSEN HARIAN') + (result.hasTodayData === false ? ' · tanggal hari ini tidak terdeteksi, menampilkan semua baris' : ' · data hari ini');
           }
           renderMonitor();
+        } else if(currentMode === 'monitor') {
+          // Tetap render ulang supaya efek kedip aktif tepat saat melewati 05:30 / 17:30 WIB.
+          renderMonitor();
         }
       }catch(err){
         setLive(false);
@@ -762,7 +774,7 @@
       els.monitorHadir.textContent = summary.hadir;
       els.monitorBelum.textContent = summary.belum;
       els.monitorTelat.textContent = summary.telat;
-      els.monitorProblem.textContent = summary.perluDicek;
+      if(els.monitorProblem) els.monitorProblem.textContent = summary.perluDicek;
 
       const active = data.filter(x => !isMonitorOff(x));
       const pagi = active.filter(x => isShiftPagi(x.shift));
@@ -773,12 +785,12 @@
       els.monitorPagiInfo.textContent = pagi.length + ' data';
       els.monitorMalamInfo.textContent = malam.length + ' data';
       els.monitorOffInfo.textContent = off.length + ' data';
-      els.monitorProblemInfo.textContent = problem.length + ' data';
+      if(els.monitorProblemInfo) els.monitorProblemInfo.textContent = problem.length + ' data';
 
       renderMonitorLane(els.monitorPagiList, pagi, 'pagi');
       renderMonitorLane(els.monitorMalamList, malam, 'malam');
       renderMonitorOff(off);
-      renderMonitorProblems(problem);
+      if(els.monitorProblemList) renderMonitorProblems(problem);
     }
 
     function buildMonitorSummary(data){
@@ -798,11 +810,24 @@
       container.innerHTML = list.map(item => monitorPersonHtml(item)).join('');
     }
 
+    function shouldBlinkAbsent(item){
+      const bucket = String(item.bucket || '').toLowerCase();
+      if(bucket !== 'belum' && bucket !== 'alpa') return false;
+
+      // Kedip hanya aktif setelah batas waktu monitoring:
+      // Shift Pagi mulai 05:30 WIB, Shift Malam mulai 17:30 WIB.
+      const nowSec = timeToSeconds(currentWibTime());
+      if(isShiftPagi(item.shift)) return nowSec >= timeToSeconds('05:30:00');
+      if(isShiftMalam(item.shift)) return nowSec >= timeToSeconds('17:30:00');
+      return false;
+    }
+
     function monitorPersonHtml(item){
       const bucket = item.bucket || 'other';
+      const blink = shouldBlinkAbsent(item) ? ' blinkNow' : '';
       const icon = bucket === 'hadir' ? 'fa-check' : bucket === 'telat' ? 'fa-clock' : bucket === 'belum' ? 'fa-hourglass-half' : bucket === 'alpa' ? 'fa-xmark' : bucket === 'izin' ? 'fa-file-lines' : 'fa-circle-info';
       const telat = item.telat && item.telat !== '-' ? `<div class="monitorLate"><i class="fas fa-clock"></i> ${escapeHtml(item.telat)}</div>` : '';
-      return `<article class="monitorPerson ${escapeAttr(bucket)}">
+      return `<article class="monitorPerson ${escapeAttr(bucket)}${blink}">
         <div class="monitorMark"><i class="fas ${icon}"></i></div>
         <div class="monitorPersonInfo"><h4 title="${escapeAttr(item.nama)}">${escapeHtml(item.nama || '-')}</h4><p>${escapeHtml(item.jabatan || 'Staff')}</p></div>
         <div class="monitorRight">${statusBadge(item)}${telat}</div>
