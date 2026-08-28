@@ -272,14 +272,14 @@
       <section class="lane pagi">
         <div class="laneHead">
           <div class="laneTitle"><i class="fas fa-sun"></i> SHIFT PAGI</div>
-          <div class="timeChip"><i class="far fa-clock"></i>07:30:00</div>
+          <div class="timeChip"><i class="far fa-clock"></i>07:45:00</div>
         </div>
         <div class="crewGrid" id="pagiList"></div>
       </section>
       <section class="lane malam">
         <div class="laneHead">
           <div class="laneTitle"><i class="fas fa-moon"></i> SHIFT MALAM</div>
-          <div class="timeChip"><i class="far fa-clock"></i>19:30:00</div>
+          <div class="timeChip"><i class="far fa-clock"></i>19:45:00</div>
         </div>
         <div class="crewGrid" id="malamList"></div>
       </section>
@@ -309,11 +309,11 @@
       </div>
       <main class="passportBoard">
         <section class="passportLane pagi">
-          <div class="passportHead"><h3><i class="fas fa-sun"></i> PASPOR SHIFT PAGI</h3><small>07:30:00</small></div>
+          <div class="passportHead"><h3><i class="fas fa-sun"></i> PASPOR SHIFT PAGI</h3><small>07:45:00</small></div>
           <div class="passportGrid" id="pasporPagiList"></div>
         </section>
         <section class="passportLane malam">
-          <div class="passportHead"><h3><i class="fas fa-moon"></i> PASPOR SHIFT MALAM</h3><small>19:30:00</small></div>
+          <div class="passportHead"><h3><i class="fas fa-moon"></i> PASPOR SHIFT MALAM</h3><small>19:45:00</small></div>
           <div class="passportGrid" id="pasporMalamList"></div>
         </section>
       </main>
@@ -765,7 +765,7 @@
           <div class="avatar">${initials(item.nama)}</div>
           <div class="info">
             <h4 title="${escapeAttr(item.nama)}">${escapeHtml(item.nama)}</h4>
-            <p><span>${escapeHtml(item.jabatan || 'Staff')}</span><span>·</span><span>${escapeHtml(item.jam_kerja || '-')}</span></p>
+            <p><span>${escapeHtml(item.jabatan || 'Staff')}</span><span>·</span><span>${escapeHtml(displayWorkSchedule(item.jam_kerja))}</span></p>
             ${note}
           </div>
           <div class="act">${action}</div>
@@ -887,11 +887,11 @@
       // Utamakan jam_masuk dari data staff. Jika kosong, gunakan jadwal awal shift.
       const nowSec = timeToSeconds(currentWibTime());
       const defaultJadwal = isShiftPagi(item.shift)
-        ? '05:45:00'
+        ? '07:45:00'
         : isShiftMalam(item.shift)
-          ? '17:45:00'
+          ? '19:45:00'
           : '';
-      const jadwalMasuk = normalizeTimeString(item.jam_masuk || defaultJadwal);
+      const jadwalMasuk = normalizeWorkSchedule(item.jam_masuk || defaultJadwal);
       if(!defaultJadwal && jadwalMasuk === '00:00:00') return false;
       return nowSec >= timeToSeconds(jadwalMasuk);
     }
@@ -1317,7 +1317,7 @@
 
     function applyOptimisticCheckin(item){
       const waktu = currentWibTime();
-      const jamKerja = normalizeTimeString(item.jam_kerja || '00:00:00');
+      const jamKerja = normalizeWorkSchedule(item.jam_kerja || '00:00:00');
       const diff = timeToSeconds(waktu) - timeToSeconds(jamKerja);
       const late = diff > 0;
       item.status_checkin = 'Sudah Checkin';
@@ -1340,6 +1340,18 @@
       const m = String(value || '').match(/(\d{1,2})[:.](\d{2})(?::(\d{2}))?/);
       if(!m) return '00:00:00';
       return `${String(m[1]).padStart(2,'0')}:${m[2]}:${m[3] || '00'}`;
+    }
+
+    function normalizeWorkSchedule(value){
+      const time = normalizeTimeString(value);
+      if(time === '07:30:00') return '07:45:00';
+      if(time === '19:30:00') return '19:45:00';
+      return time;
+    }
+
+    function displayWorkSchedule(value){
+      if(!value) return '-';
+      return normalizeWorkSchedule(value);
     }
 
     function timeToSeconds(timeStr){
